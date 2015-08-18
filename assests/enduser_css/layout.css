@@ -1,0 +1,887 @@
+
+
+@font-face {
+	font-family:'Franklin Gothic Book';
+	src: url('FRABK.TTF');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body{
+	background:#999;
+	font-size:13.5px;
+	color:#333;
+	font-family:'Franklin Gothic Book';
+}
+	
+.main-wrapper{
+	width:1000px;
+	margin:0px auto;
+	background:#fff;
+}
+
+.wrapper{
+	background:#fff;
+}
+
+.wrapper, .header, .nav-1, .nav-2, .nav-3, .container, .footer{
+	width:1000px;
+	float:left;
+}
+.nav-1.mainMenu ul{
+	margin-left:344px;
+	margin-right:55px
+}
+
+.nav-3.mainMenu ul{
+	margin-left:344px;
+	margin-right:0px
+}
+
+.header{
+	height:120px;
+}
+
+
+.footer{
+	height:40px;
+	background:#5b4a42;
+}
+
+.footer p{
+	margin-top:9px;
+}
+.footer p img{
+	margin-right:5px;
+}
+
+.left-logo{
+	float:left;
+	height:120px;
+	width:206px;
+}
+
+.right-logo{
+	float:right;
+	height:120px;
+	width:406px;
+}
+
+
+
+/*----------Navigation 1-----------*/
+
+.nav-1{
+	height:32px;
+	background:#dbdcde;
+}
+
+.nav-1 ul{
+	width:600px;
+	margin:0px 200px;
+	height:32px;
+}
+.nav-1 li{
+	float:left;
+	list-style-type:none;
+	padding:0px 1px 0px 0px;
+	height:32px;
+	background:url(../images/nav-1-devider.jpg) top right no-repeat;
+
+}
+
+.nav-1 li a{
+	display:block;
+	padding:9px 48px;
+	color:#333;
+	font-family:'Franklin Gothic Book';
+	font-size:15px;
+	text-decoration:none;
+
+}
+
+.nav-1 li a:hover{
+	color:#eb4036;
+	text-decoration:none;
+}
+
+.nav-1 li a.active1{
+	color:#eb4036;
+	text-decoration:none;
+}
+
+
+.nav-1 li.last1{
+	height:32px;
+	background:none;
+
+}
+
+.nav-3{
+	height:32px;
+	background:#dbdcde;
+}
+
+.nav-3 ul{
+	width:950px;
+	margin:0px 33px	;
+	height:32px;
+}
+.nav-3 li{
+	float:left;
+	list-style-type:none;
+	padding:0px 1px 0px 0px;
+	height:32px;
+	background:url(../images/nav-1-devider.jpg) top right no-repeat;
+
+}
+
+.nav-3 li a{
+	display:block;
+	padding:9px 27px;
+	color:#333;
+	font-family:'Franklin Gothic Book';
+	font-size:15px;
+	text-decoration:none;
+
+}
+
+.nav-3 li a:hover{
+	color:#eb4036;
+	text-decoration:none;
+}
+
+.nav-3 li a.active1{
+	color:#eb4036;
+	text-decoration:none;
+}
+
+
+.nav-3 li.last1{
+	height:32px;
+	background:none;
+
+}
+
+
+/*----------End Navigation 1-----------*/
+
+/*----------Navigation 2-----------*/
+
+
+.nav-2{
+	height:32px;
+	background:#ea3732;
+	border-top:solid 1px #fff;
+}
+
+.nav-2 ul{
+	width:1000px;
+	height:32px;
+}
+.nav-2 li{
+	float:left;
+	list-style-type:none;
+	padding:0px 2px 0px 0px;
+	height:32px;
+	background:url(../images/nav-2-devider.jpg) top right no-repeat;
+
+}
+
+.nav-2 li a{
+	display:block;
+	padding:9px 19px;
+	color:#333;
+	font-family:'Franklin Gothic Book';
+	font-size:15px;
+	text-decoration:none;
+
+}
+
+.nav-2 li a:hover{
+	color:#fff;
+	text-decoration:none;
+}
+
+.nav-2 li a.active2{
+	color:#fff;
+	text-decoration:none;
+}
+
+
+.nav-2 li.last1{
+	height:32px;
+	background:none;
+}
+
+/*----------End Navigation 1-----------*/
+
+
+.container-box1{
+	width:835px;
+	float:left;
+}
+
+
+.left-content{
+	width:835px;
+	float:left;
+	margin:10px 0px 0px 0px;
+}
+
+.left-nav{
+	float:left;
+	width:250px; 
+	margin-left:10px;
+}
+
+.left-nav ul{
+	float:left;
+	width:250px; 
+}
+
+.left-nav li{
+	width:250px;
+	margin-bottom:5px;
+	list-style-type:none;
+}
+
+.left-nav li a{
+	width:230px;
+	margin-bottom:5px;
+	list-style-type:none;
+	border-radius:15px;
+	background:#dbdcde;
+	color:#010103;
+	padding:5px 10px;
+	display:block;
+	text-decoration:none;
+	font-size:13.5px;
+	font-family:'Franklin Gothic Book';
+}
+
+.left-nav li a:hover{
+	background:#594b42;
+	color:#fff;
+}
+
+.left-nav li a.active3{
+	background:#594b42;
+	color:#fff;
+}
+
+
+
+.mid-content-inner{
+	float:right;
+	width:565px; 
+}
+
+.mid-content-inner h1{
+	font-size:18px;
+	color:#F00;
+	padding-bottom:15px;
+	font-weight: normal;
+
+}
+
+.mid-content-inner p{
+	font-size:13.5px;
+	color:#333;
+	padding-bottom:10px;
+	line-height:18px;
+	text-align:justify;
+}
+
+.pagination{
+	width:215px;
+	float:right;
+	margin-left:165px;
+	margin-bottom:5px;
+}
+
+.pagination ul{
+	width:400px;
+	float:left;
+}
+.pagination ul li{
+	float:left;
+	list-style-type:none;
+	margin-right:5px;
+}
+.pagination ul li a{
+	display:block;
+	color:#333;
+	text-decoration:none;
+	font-size:12px;
+	padding:0px 3px;
+	border-right:solid 1px #666;
+}
+.pagination ul li a:hover{
+	color:#ee4b44;
+}
+
+.pagination ul li a.pagination-active{
+	color:#ee4b44;
+}
+
+
+.pagination ul li a.pagination-last{
+	border-right:none;
+}
+
+.container-box2{
+	width:155px;
+	float:right;
+}
+.right-content{
+	width:155px;
+	float:left;
+	border-top:solid 5px #fff;
+	background:#dbdcde;
+}
+.right-content-block{
+	width:128px;
+	margin:0px auto;
+}
+
+.img1{
+	width:128px;
+	float:left;
+	margin-bottom:20px;
+}
+.img2{
+	width:128px;
+	float:left;
+	background:url(../images/subscribe-newsletter.jpg) top left no-repeat;
+	height:111px;
+	text-align:center;
+	
+}
+
+.img2 img{
+	margin-top:86px;
+	
+}
+
+/*---------index css start-----------*/
+.contant_ind{
+	width:1000px;
+	float:left;
+	}
+.left{
+	width:500px;
+	float:left;
+	}
+.bg_cercle{
+	background:url(../images/cercle_bg.png) no-repeat;
+	width:448px;
+	height:492px;
+	margin-top:-35px;
+	float:left;
+	}
+.sme_new_div{	
+	padding-top:35px;	
+	text-align:center;
+}
+.sme_new_div p{
+	color:#838383;
+	margin:5px;
+	font-family:'Franklin Gothic Book';
+	font-size:14px;
+}
+
+.sme_new_div, p.readmore{
+	color:#20B7EE;
+	margin:15px;
+	font-family:'Franklin Gothic Book';
+	font-size:13px;
+	font-weight:600;
+	
+}
+
+.sme_new_div, p.readmore a{
+	color:#20B7EE;;
+	text-decoration:none;
+	}
+
+.padding_box{
+	padding:40px;
+	}	
+.bci_box{
+	width:250px;
+	margin-left:40px;
+	text-align:center;
+	
+}
+.sme_new_div, h3{
+	color:#EB1C24;
+	font-family:'Franklin Gothic Book';
+	font-size:16px;
+	margin:5px;
+	line-height:18px;
+}
+	
+.middle_nav{
+	float:left;
+	top:268px;
+	position:absolute;
+	margin-left:350px;
+	}
+	
+.middle_nav ul{
+	width:151px;
+	float:left;
+	}
+	
+.middle_nav li{
+	list-style-type:none;
+	width:151px;
+	margin-bottom:5px;
+	}
+	
+.middle_nav li a{
+	width: 151px;
+	border-radius: 15px;
+	background: #dbdcde;
+	color: #010103;
+	padding: 5px 10px;
+	display: block;
+	text-decoration: none;
+	font-size: 13.5px;
+	font-family:'Franklin Gothic Book';
+	cursor:pointer;
+	}
+
+.middle_nav li a.active4{
+	width: 151px;
+	color: #FFF;
+	background-color:#594b42;
+	cursor:pointer;
+}	
+	
+.middle_nav li a:hover{
+	width: 151px;
+	color: #FFF;
+	background:#594b42;
+	cursor:pointer;
+	}
+	
+.right{
+	width:475px;
+	float:right;
+	height:500px;
+	}
+.right_inner{
+	padding:15px;
+}
+
+.msme_left{
+	border:1px solid #ababad;	
+	width:218px;
+	height:465px;
+	border-radius:12px;
+	float:left;
+}
+
+.msme_right{
+	border:1px solid #ababad;	
+	width:218px;
+	height:465px;
+	border-radius:12px;
+	float:left;
+	margin-left:4px;
+}
+
+.blog-left img{
+margin-left:7px;
+width:35px;
+height:35px;
+}
+
+.blog-left{
+	width:65px; 
+	float:left;
+}
+
+	
+.msmepanel{
+	margin-left:-1px;
+	margin-top:-1px;
+	width:220px;
+	height:33px;
+	background:#5b4a42;
+	float:left;
+	-webkit-border-top-left-radius: 12px;
+	-webkit-border-top-right-radius: 12px;
+	-moz-border-radius-topleft: 12px;
+	-moz-border-radius-topright: 12px;
+	border-top-left-radius: 12px;
+	border-top-right-radius: 12px;
+
+}
+
+.msmepanel.width_2{
+	width:274px;
+	background:#6F5D53;
+	}
+.msmepanel.width_2 h3{
+	font-size:13px;
+	margin-left:13px;
+	}
+
+.msmepanel.red{
+	background:#EB3732;
+	}
+
+.msmepanel h3{
+	color:white;
+	margin-top:9px;
+	margin-left:32px;
+	float:left;
+}
+
+.msme_n_box{
+	width:218px;
+	float:left;
+	margin-top:10px;
+	margin-bottom:5px;
+}
+
+.bg_img_arrow{
+	background:url(../images/left_arrow.png);
+	width:54px;
+	height:42px;
+	float:left;
+	margin-left:3px;
+}
+
+.border_div{
+	border:1px solid #a6a6a7;
+	width:146px;
+	float:left;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+	height:88px;
+}
+
+.arrow-comment{
+width: 23px;
+height: 35px;
+position: absolute;
+z-index: 1000;
+margin-left: 44px;
+margin-top: 10px;
+}
+
+.border_div.border_width{
+	width:203px;
+	margin-left:7px;
+	height:88px;
+	}
+	
+.border_div.border_width p{
+	line-height:17px;
+}	
+	
+.border_div.border_width span{
+	 color:#000;
+	 font-weight:600;
+	 margin-top:5px;
+	 margin-left:5px;
+	}	
+
+.border_div p{
+	font-family:'Franklin Gothic Book';
+	color:#6c6c6c;
+	font-size:13.5px;
+	line-height:14px;
+	padding:0px 5px;
+}
+
+.userpanel{
+	width:216px;
+	height:33px;
+	background:#999999;
+	float:left;
+	webkit-border-top-right-radius: 12px;
+	-moz-border-radius-topleft: 12px;
+	-moz-border-radius-topright: 12px;
+	border-top-left-radius: 12px;
+	border-top-right-radius: 12px;
+	border:1px solid #d5d5d5;
+}
+.width{
+	width:7px;
+	float:left;
+	height:22px;
+}
+
+.img_div{
+	width:100%;
+	float:left;
+	margin-top:5px;
+	margin-bottom:5px;
+	}			
+/*---------index css end-----------*/
+
+
+/*---------sme finance css start-----------*/
+
+.frist-divbox{
+	width:237px;
+	padding:4px;
+	line-height:18px;
+	}
+.frist-divbox h3{
+	font-size:18px;
+	}
+.frist-divbox h3.t_heading{
+	font-size:16px;
+	color:#caa03d;
+	font-weight:normal;
+	line-height:16px;
+	margin:0px;
+	}	
+.frist-divbox p{
+	color:#5d5d60;
+	font-size:13.5px;
+   	}
+.frist-divbox h3.t_heading.blue{	
+	color:#006AE7;
+	}
+.left-nav.lastdiv_box{
+	float:left;
+	width:274px; 
+	border-bottom:1px solid #CCC;
+}
+
+.left-nav.lastdiv_box.bor_none{
+	border-bottom:none;
+	}
+	
+.last_float{
+	float:left;
+/*	margin-top:15px;
+	margin-bottom:10px;*/
+		margin-top:5px;
+	margin-bottom:5px;
+	}
+.img_last_div{
+	width:50px;
+	float:left;
+	margin-right:8px;
+	margin-top:4px;
+	margin-bottom:65px;
+	}
+	
+	
+	.img_last_div img{
+width:40px;
+height:40px;
+}
+	
+.parabox{
+	font-size: 13px;
+    line-height: 18px;
+	color:#5d5d60;
+	}
+	
+	.parabox p a{
+	color:#FF0000;
+
+	}	
+/*---------sme finance css end-----------*/
+
+
+/*---------Contact css start-----------*/
+.contant_left{
+	width:500px;
+	float:left;
+	}
+	.contant_left-main{
+	width:480px;
+	float:left;
+	margin:10px;
+	border: 1px solid #d5d5d5;
+	border-radius:12px;
+	}
+	
+	.contant_left-main h1{
+	width:460px;
+	border-radius:12px;
+	background:#5b4a42;
+	color:#fff;
+	padding:7px 10px;
+	border-bottom-left-radius:0px;
+	border-bottom-right-radius:0px;
+	font-size:15px;
+	font-weight:normal;
+	}
+	
+	.contact-form{
+	width:460px; 
+	margin:10px;
+	float:left;
+}
+
+	.contact-form-row{
+	width:460px; 
+	float:left;
+	margin-bottom:7px;
+}
+	
+.contant_right{
+	width:500px;
+	float:right;
+	}
+	
+.contant_right-main{
+	width:480px;
+	float:left;
+	margin:10px;
+	border: 1px solid #d5d5d5;
+	border-radius:12px;
+	}
+	
+	.contant_right-main h1{
+	width:460px;
+	border-radius:12px;
+	background:#EB3732;
+	color:#fff;
+	padding:7px 10px;
+	border-bottom-left-radius:0px;
+	border-bottom-right-radius:0px;
+	font-size:15px;
+	font-weight:normal;
+	}
+	
+.address{
+	width:460px; 
+	margin:10px;
+	float:left;
+}
+
+.address h2{
+	color:#EB3732;
+	padding:10px 0px;
+	font-size:18px;
+	
+}
+
+.google-map{
+	width:980px; 
+	margin:10px; 
+	float:left;
+}
+
+
+.contat-page-icon{
+	float:left; 
+	width:40px;
+}
+
+.contat-address{
+	float:right; 
+	width:420px; 
+	font-size:15px;
+	line-height:25px; 
+	color:#444;
+}
+	
+.contact-form-row-left{
+	width:95px; float:left; 
+	text-align:right; 
+	line-height:25px; 
+	font-weight:bold;
+}
+
+.contact-form-row-right{
+	width:360px;
+	float:right;
+}
+	
+.contact-form-row-left1{
+	width:145px; 
+	float:left;
+	text-align:right; 
+	line-height:25px; 
+	font-weight:bold;
+ }
+.contact-form-row-left2{
+	width:145px; 
+	float:left;
+	line-height:25px; 
+	padding-left:20px;
+	font-size:16px;
+ }
+ 
+.contact-form-row-right1{
+	width:300px; 
+	float:right;
+}
+	
+.text-field1{
+	border: 1px solid #cccccc; 
+	width:98%; 
+	padding:1%; 
+	height:20px;
+}
+.select-field1{
+	border: 1px solid #cccccc; 
+	width:100%;  
+	height:30px;
+}
+
+.text-area1{
+	border: 1px solid #cccccc; 
+	width:98%;
+	padding:1%; 
+	height:40px;
+ }
+ 
+.text-area2{
+	border: 1px solid #cccccc;
+	width:98%; 
+	padding:1%; 
+	height:100px;
+ }
+ 
+.sub-btn {
+	background: #333;
+	padding: 6px 10px;
+	color: #fff;
+	cursor: pointer;
+	border: none;
+	font-weight: bold;
+}
+
+.red-color{
+	color:#F00;
+}
+
+.sign-in-login{
+	margin:25px 0px;
+}
+
+.forgot{
+	font-size:13.5px;
+	cursor:pointer;
+ }
+
+.forgot a{
+	font-size:13.5px;
+	color:#900; 
+	text-decoration:none;
+}
+
+.forgot a:hover{
+	font-size:13.5px;
+	color:#900; 
+	text-decoration:underline;
+}
+	
+
+	
+/*---------Contact css End-----------*/

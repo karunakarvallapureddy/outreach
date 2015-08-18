@@ -1,0 +1,103 @@
+.body-contant{
+	width:1000px;
+	height:auto;
+	background:#CCC;
+}
+
+.leftslider-007
+{
+	width:200px;
+	height:auto;
+	background:white;
+	float:left;
+}
+
+.leftslider-007 ul li{
+	list-style:none;
+	padding:5px;
+} 
+ a{
+	text-decoration:none;
+}
+
+.rightslider-007{
+	 width:800px;
+	 height:auto;
+	 float:left;
+	
+}
+.card {
+	width:255px;
+	height:106px;
+	float:left;
+	margin-top:12px;
+	margin-left:6px;
+	margin-bottom:30px;
+}
+.card a img {
+	
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+
+.vochure-bg-007 p {
+font-size:12px;
+padding: 2px 0px 6px 0px;
+}
+
+body{margin:0px; padding:0px;}
+p{margin:0px; padding:0px;}
+
+
+
+
+
+.vochure-bg-007{width:255px;
+	height:106px;
+	float:left;
+	margin-top:12px;
+	margin-left:6px;
+	margin-bottom:30px; }
+
+
+.vochure-image-007{width:250px; height:100px; z-index:100;}
+.vochure-image-007 img{
+		opacity:0.7; 	
+		-webkit-border-radius: 15px;
+		-moz-border-radius: 12px;
+		border-radius: 15px;
+	}
+.vochure-content-007{width:250px; height:100px; z-index:200; position:absolute;}
+
+.vochure-left-007{float:left; width:56px; height:100px; background:url(../images/card_images/ribban.png) top left no-repeat;}
+
+.logo-volyty-007{width:100%; height:28px; float:left; margin:4px 0px 0px 4px;}
+.logo-volyty-007 img{width:39px;}
+
+.vochure-number-007{color:#b2b3b6;  float:left; margin:50px 0px 0px 5px; font-size:9px; text-transform:uppercase; font-family:Arial, Helvetica, sans-serif;}
+
+
+
+.vochure-right-007{float:right; width:194px; height:100px;}
+
+.v-top-row-007{float:left; width:194px;}
+.client-name-007{float:left; width:100px; text-align:center; font-size:10px; color:#a7a9ac; font-family:Arial, Helvetica, sans-serif; margin-top:13px; font-family: 'helveticaneuemedium'; font-weight:normal;}
+.client-logo-007{float:right; /*with:105px;*/ margin-top:10px; margin-right:12px;}
+.logocode-007{ font-size:8px; color:#a7a9ac; font-family:Arial, Helvetica, sans-serif; padding:2px 0px; font-family: 'helveticaneuemedium';}
+
+
+
+
+.v-mid-row-007{float:left; width:194px; margin-top:-10px;}
+.card-text-007{float:left; width:90px; text-align:center; font-size:18px; color:#f00; font-weight:bold; font-family: 'maratremedium';}
+.price-text-007{float:right; width:82px; text-align:right; font-size:11px; margin-right:17px; color:#58595b;font-family: 'helvetica Neue'; margin-top:10px;}
+.price-text-007 span{color:#a7a9ac; font-family: 'helvetica Neue';}
+
+
+
+
+
+.v-bottom-row-007{float:left; width:194px;  margin-top:-10px;}
+.bar-code-007{float:left; width:90px; text-align:center;  margin-top:20px;}
+.scan-code-007{float:right; width:70px;  text-align:center; margin-top:17px;}	
