@@ -348,6 +348,16 @@ Thub Team
 				$this->email->message($message);
 				$this->email->send();
 				
+				
+				$to = $postdata['email'];
+$subject = "Your Outreach  account Password";
+//$txt = "Hello world!";
+$headers = "From: webmaster@example.com" . "\r\n" .
+"CC: somebodyelse@example.com";
+
+mail($to,$subject,$message);
+
+				
 				/* Add Logs */
 				$page = ucfirst($this -> input -> post('las_name'))." has been added. ";
 				$notification = array('subject' => $page, 'type' => 'Staff', 'msg_type' => 'success');

@@ -216,7 +216,7 @@ public function forgot_password() {
 $data['get_name']=$this->home_site_m->getnames();
 $data['get_getworkshopgr']=$this->home_site_m->getworkshopgr();
 $data['getworkshopcreated']=$this->home_site_m->getworkshopcreated();
-
+	$data['get_workshop1']=$this->home_site_m->get_nodal();	
 			//echo "<pre>";print_r($data['get_workshop_history']);exit;
 			$postdata=$this -> input ->post();
 				$res=$this->home_site_m->profileedit($postdata);

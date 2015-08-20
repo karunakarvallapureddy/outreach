@@ -65,36 +65,6 @@
         <div class="container">
       
         <section class="homeslider fullwidth flexslider col-md-9" id="home-slider" style="height:350px;"> <!--fullwidth  -->
-
-      <!--  <ul class="slides">
-		
-			<li class="text-center">
-			<img src="<?php echo base_url();?>site/img/outreach1.jpg" alt=""/>
-			<div class="flex-caption transparent light-font center" style="top:17%;">
-				<div>
-					<h1 class="animated fadeInDown"><span class="uppercase"></span></h1>
-					<p class="animated fadeInLeftBig">
-						<i></i>
-					</p>
-                  
-				</div>
-			</div>
-			</li>
-			<li class="text-center">
-			<img src="<?php echo base_url();?>site/img/outreach2.jpg" alt=""/>
-			<div class="flex-caption transparent light-font center" style="top:17%;">
-				<div>
-					<h1 class="animated fadeInDown"><span class="uppercase"></span></h1>
-					<p class="animated fadeInLeftBig">
-						<i></i>
-					</p>
-                    
-				</div>
-			</div>
-			</li>
-            
-			
-		</ul>-->
 		<div id="map" style="width:auto;height:740px;color:#000;"></div>
 
         </section>
@@ -187,14 +157,15 @@ Forgot-Password">.</a>
 	
 			<?php
 											foreach($get_workshop_upcoming as $workshopdata){
-												$newDate = date("M", strtotime($workshopdata['date']));												
+												$newDate = strtoupper(date("M", strtotime($workshopdata['date'])));												
 												$newDated = date("d", strtotime($workshopdata['date']));	
+												$newyear = date("Y", strtotime($workshopdata['date']));	
 														?>
 												
 			<div class="col-md-12 align-top-botm">
 				
-				<div class="col-md-2">
-					<div class="month-box"><span><?php echo $newDate; ?> <br/><?php echo $newDated; ?></span></div>				
+				<div class="col-md-1">
+					<div class="month-box"><span><?php echo $newDated; ?> <?php echo $newDate; ?><br/><?php echo $newyear; ?></span></div>				
 				</div>
 				
 				<div class="col-md-3 mid-align"><?php echo $workshopdata['location']; ?></div>

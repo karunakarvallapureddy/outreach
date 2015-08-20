@@ -71,6 +71,22 @@
 	//border: 1px solid red;
 	color : red;
 	}
+	.navbar {
+    background: none repeat scroll 0 0 #fff;
+    border-bottom: 1px solid#FFB400;
+}
+.navbar .dropdown-toggle .username {
+    font-weight: 600;
+    color: #000;
+}
+.metro-nav .metro-nav-block .status, .metro-nav .metro-nav-block .tile-status {
+    background-color: transparent;
+    bottom: -10px;
+    font-size: 13px;
+    left: 10px;
+    min-height: 30px!important;
+    position: absolute;
+}
 	</style>
 	</head>
 <body>
@@ -86,21 +102,11 @@
     height: 66px;
 ">
 					</a>
-					<!-- /COMPANY LOGO -->
-					<!-- SIDEBAR COLLAPSE -->
-					<div id="sidebar-collapse" class="sidebar-collapse btn">
-						<i class="fa fa-bars" 
-							data-icon1="fa fa-bars" 
-							data-icon2="fa fa-bars" ></i>
-					</div>
-					<!-- /SIDEBAR COLLAPSE -->
+					
 				</div>
 				<!-- BEGIN TOP NAVIGATION MENU -->					
 				<ul class="nav navbar-nav pull-right">
-					<!-- BEGIN USER LOGIN DROPDOWN -->
-					<!--<li class="dropdown" id="header-notification"></li>
-					<li class="dropdown" id="header-message"></li>
-					<li class="dropdown" id="header-tasks"></li> -->
+					
 					<li class="dropdown user" style="float:right" id="header-user">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							<?php $adminDetails = $this->session->userdata('adminDetails');
@@ -141,28 +147,19 @@
 					
 					<li class="">
 								<a class="" href="<?php echo site_url('admin/home/coordinator');?>">
-								<span class="menu-text">Add Outreach Coordinator</span>
+							<i class="fa fa-users"></i> 	<span class="menu-text">Add Outreach Coordinator</span>
 								<span class="selected"></span>
 								</a>					
 							</li>
 				
-					<!--<li class="has-sub">
-								<a href="javascript:;">
-								<i class="fa fa-users"></i> <span class="menu-text">Outreach Coordinator</span>
-								
-								</a>	
-								<ul class="sub">
-									<li><a class="" href="<?php echo site_url('admin/home/coordinator');?>"><span class="sub-menu-text">Add Outreach Coordinator</span></a></li>
-									<!--<li><a class="" href="<?php //echo site_url('admin/home/permissions');?>"><span class="sub-menu-text">Permissions </span></a></li>--
-							</li>
-								</ul>		-->						
+									
 					
 					
 					
 					
 					<li class="has-sub">
 								<a href="javascript:;">
-								<i class="fa fa-users"></i> <span class="menu-text">Documents</span>
+								<i class="fa fa-users"></i>  <span class="menu-text">Documents</span>
 								</a>	
 								<ul class="sub">
 									<li><a class="" href="<?php echo site_url('admin/guidance_metirial');?>"><span class="sub-menu-text">Add Guidance & Material</span></a></li>

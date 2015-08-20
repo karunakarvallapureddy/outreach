@@ -8,6 +8,9 @@
             delay: 10,
             time: 1000
         });
+		setTimeout(function(){
+  $('#divaid').hide();
+}, 5000);
     });
 </script>
 <script type="text/javascript">
@@ -17,12 +20,14 @@
 		$("#scroller123").simplyScroll({orientation:'vertical',customClass:'vert'});
 	});
 })(jQuery);
+
 </script>
 
 		
         <!-- end fixedmenu -->
 		<?php $ses_data=$this->session->userdata('user_details'); ?>
           <!-- end servicesbox -->
+		  
 		<section class="strip-colors">
 		<div class="container">
 			<div>
@@ -30,7 +35,7 @@
 					<div class="icon-box-top">
 					<div class="value-disp">
 						<p align="left" class="value-list">
-							<span class="counter" style="display:inline-block; color:#fff;">150</span><span class="resu-top">WORKSHOPS RUN</span>
+							<span class="counternew" style="display:inline-block; color:#fff;">0/150</span><span class="resu-top">WORKSHOPS RUN</span>
 						</p>
 						</div>
 					</div>
@@ -39,7 +44,7 @@
 					<div class="icon-box-top">
 						<div class="value-disp">
 						<p align="left" class="value-list">
-							<span class="counter" style="display: inline-block;color:#fff;">7,500</span><span class="resu-top">LABS TAKEN</span>
+							<span class="counternew" style="display: inline-block;color:#fff;">0/7,500</span><span class="resu-top">PARTICIPANTS</span>
 						</p>
 					</div></div>
 				</div>
@@ -47,7 +52,7 @@
 					<div class="icon-box-top">
 						<div class="value-disp">
 						<p align="left" class="value-list">
-							<span class="counter" style="display: inline-block;color:#fff;">250</span><span class="resu-top">NODAL CENTERS
+							<span class="counternew" style="display: inline-block;color:#fff;">0/250</span><span class="resu-top">EXPERIMENTS
 
 </span>
 						</p>
@@ -58,6 +63,7 @@
 		</div>
         
 		</section>
+		
 		<!-- end homerecentportfolio -->
         <div class="container" style="margin-top:30px;">
       
@@ -71,6 +77,12 @@
 <style>
 .nav_li_pad {
     margin-left: 0px !important;
+}
+.counternew {
+    font-size: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    line-height: 0px;
 }
 </style>
 <script>
@@ -151,7 +163,11 @@ geocoder.geocode( { 'address': address}, function(results, status) {
 			<div class="col-md-12 align-top-botm">
 				<h2 class="head-events">Workshop Material</h2><p class="print-color"><strong>For Print </strong><a class="download-clr" onclick="downloadAll(window.links)">Download all</a></p>
 				<?php if($getWorkshopMetirial){ foreach($getWorkshopMetirial as $workshop){ ?>
-				<div class="col-md-11 mid-align"><a href="<?php echo base_url().'uploads/workshop_material/'.$workshop['document_path'];?>" download><span class="btn">PDF</span></a>&nbsp;&nbsp;<?php echo $workshop['document_name'];?></div>
+				<div class="col-md-11 mid-align"><a href="<?php echo base_url().'uploads/workshop_material/'.$workshop['document_path'];?>" download>
+				<span class="btn"><?php  
+				$extension = pathinfo($workshop['document_path'], PATHINFO_EXTENSION);
+echo strtoupper($extension);
+				?></span></a>&nbsp;&nbsp;<?php echo $workshop['document_name'];?></div>
 				<?php }} else{?>
 				
 				<div class="col-md-11 mid-align">No Workshop Material Documents</div>
@@ -164,7 +180,14 @@ geocoder.geocode( { 'address': address}, function(results, status) {
 				<strong>Presentation & Reporting </strong><a href="http://ideativedigital.com/outreach/assets/download-pdf/Outreach%20Schema.pdf" download class="download-clr">Download all</a>
                 </p>
 				<?php if($getPresentationReporting){ foreach($getPresentationReporting as $reporting){ ?>
-				<div class="col-md-11 mid-align"><a href="<?php echo base_url().'uploads/presentation_reporting/'.$workshop['document_path'];?>" download><span class="btn">PDF</span></a>&nbsp;&nbsp;<?php echo $reporting['document_name'];?></div>
+				<div class="col-md-11 mid-align"><a href="<?php echo base_url().'uploads/presentation_reporting/'.$workshop['document_path'];?>" download>
+				<span class="btn"><?php 
+				
+				$extension = pathinfo($workshop['document_path'], PATHINFO_EXTENSION); 
+				echo strtoupper($extension);
+				?></span>
+				
+				</a>&nbsp;&nbsp;<?php echo $reporting['document_name'];?></div>
 			<?php }} else{?>
 				
 				<div class="col-md-11 mid-align">No Presentation & Reporting Documents</div>
@@ -179,30 +202,8 @@ geocoder.geocode( { 'address': address}, function(results, status) {
     <div role="tabpanel" class="tab-pane" id="profile">
 										<table id="datatable2" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered table-hover">
 
-											<thead>
-
-												<tr>
-
-													<th>S.No</th>
-
-													<th>Date Of Workshop</th>
-													<th>Name</th>
-
-													<th>Location</th>
-													<th>Participating institutes</th>
-												<!--	<th>Date</th><th>Submit Reports</th>-->
-													<th>No of participants</th>
-													<th>No of sessions</th>
-													<th>Duration of sessions</th>
-													<th>Subject of sessions</th>
-													<th>Labs planned</th>
-													<th style="width: 125px!important;">Status</th>
-													
-													<th>Action</th>
-												
-												</tr>
-											</thead>
-												<?php
+											
+												<?php /*
 												//echo "<pre>";
 												//print_r($get_workshop_upcoming1);
 												
@@ -237,10 +238,82 @@ geocoder.geocode( { 'address': address}, function(results, status) {
 
 
 													</tr>
+													
 													<?php
 											}
-													?>
+												*/	?>
 </table>
+											<?php
+												
+											foreach($get_workshop_upcoming1 as $workshopdata){	
+											
+											$newDate = strtoupper(date("M", strtotime($workshopdata['date'])));												
+												$newDated = date("d", strtotime($workshopdata['date']));	
+												$newyear = date("Y", strtotime($workshopdata['date']));	
+											?>
+   <div class="col-md-12 align-top-botm">
+				
+				
+                <div class="col-md-1">
+					<div class="month-box"><?php echo $newDated; ?> <?php echo $newDate; ?><br/><?php echo $newyear; ?></span></div>				
+				</div>
+				
+				 <div class="col-md-2"><?php echo $workshopdata['location']; ?></div>
+                <div class="col-md-1"><?php echo $workshopdata['number_of_participants'];  ?></div>
+                <div class="col-md-1"><?php echo $workshopdata['number_of_participants'];  ?></div>
+                <div class="col-md-3 "><p style="font-size: 12px;line-height: 20px;text-align: justify;"><?php 
+				$workshopdataa = explode(",", $workshopdata['participate_institute']);
+foreach($workshopdataa as $workshopdataget){
+	//echo $aaa ."</br>";
+	$workshopdatagetlen = strlen($workshopdataget);
+	if($workshopdatagetlen>=20){
+	 $institutesnames = substr($workshopdataget, 0, 20);
+	echo $institutesnames."...";
+	echo "<br>";
+	}else{
+		echo $workshopdataget;
+		}
+	}
+				//echo $workshopdata['participate_institute']; 
+				
+				?></p></div>
+                <div class="col-md-2"><?php echo $workshopdata['name']; ?></div>
+                  <div class="col-md-2">
+				  
+	<a style="text-decoration:none;cursor:pointer;"  id="s-<?php echo  $workshopdata['workshop_status'];?>" class="activeclass btn-xs <?php if($workshopdata['workshop_status']== 2) { ?>btn-success <?php }else{  }?>" > 
+		<?php if($workshopdata['workshop_status'] == 2) {
+			echo " Pending approval";
+			}elseif($workshopdata['workshop_status'] == 1){
+	}else{
+		 echo "delete";} ?></a></td>
+		 	<td>
+				<a href="<?php echo site_url('home/editWorkshop');?>/<?php echo $workshopdata['workshop_id']; ?>">Edit</a>
+				<?php
+				
+				 if($workshopdata['workshop_status'] == 2) {
+?>
+<span id="feedback1-<?php echo $workshopdata["workshop_id"]; ?>"><span id="mew1">►</span>view Reports</span>
+
+
+<?php			}
+				?>			</br><?php if($workshopdata['report_id']){ echo ""; }else{?><a href="<?php echo site_url('home/submitReports');?>/<?php echo $workshopdata['workshop_id']; ?>">Submit Reports</a><?php } ?>&nbsp;&nbsp;&nbsp;
+
+
+				  
+				  </div>
+				  <div style='display:none' id="reportnew-<?php echo $workshopdata["workshop_id"]; ?>">
+				  <div class="col-md-3">&radic; Attendance sheet</div>
+                <div class="col-md-3">&radic;	College report</div>
+                <div class="col-md-3"> &radic;	Workshop photos</div>
+				  
+				  </div>
+				
+                
+                
+			</div>
+			<?php 
+											}
+			 ?>
 </br>
 </br>
 
@@ -290,14 +363,37 @@ geocoder.geocode( { 'address': address}, function(results, status) {
 												  
 													<label class="col-sm-3 label-names">Date<span style="color:red">*</span></label>
 													<div class="col-sm-8">
+													
+  <?php  /*<div class="container"> <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' >
+                    <input type='text' class="form-control"  id='datepicker' required name = "date" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+		  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
+    </div> </div> */ ?>
+
 													  <input type="date" required name = "date" id = "mou" class="required" value="<?php echo set_value('mou');?>">
-													  <?php echo "<span style='color:red'>".form_error('mou')."</span>"; ?>
+										 
+													 <?php echo "<span style='color:red'>".form_error('mou')."</span>"; ?>
 													</div>
 												  </div>
 												  <div class="form-group">
 													<label class="col-sm-3 label-names">Number of participants</label>
 													<div class="col-sm-8">
-													  <input type="text" name = "number_of_participants" id = "participants" class="required required-width no-radius" value="<?php echo set_value('participants');?>">
+													  <input type="number" name = "number_of_participants" id = "participants" class="required required-width no-radius" value="<?php echo set_value('participants');?>">
 													  <?php echo "<span style='color:red'>".form_error('participants')."</span>"; ?>
 													</div>
 												  </div>
@@ -507,12 +603,17 @@ tabs-below > .nav-tabs,
 .only-no-border{
 	border:none;	
 }
-													</style>
+		input[type=date], input[type=time], input[type=datetime-local], input[type=month] {
+    line-height: 14px!important;
+	::-webkit-calendar-picker-indicator { background: orange; }
+    
+}											</style>
 												<?php
 												
 											foreach($get_workshop_history as $workshopdata){
-												$newDate = date("M", strtotime($workshopdata['date']));												
-												$newDated = date("d", strtotime($workshopdata['date']));
+												$newDate = strtoupper(date("M", strtotime($workshopdata['date'])));												
+												$newDated = date("d", strtotime($workshopdata['date']));	
+												$newyear = date("Y", strtotime($workshopdata['date']));	
 												?>
                                                 
                                                 
@@ -520,13 +621,13 @@ tabs-below > .nav-tabs,
 				
 				
                 <div class="col-md-1">
-					<div class="month-box"><span><?php echo $newDate; ?> <br/><?php echo $newDated; ?></span></div>				
+					<div class="month-box"><span><?php echo $newDated; ?> <?php echo $newDate; ?><br/><?php echo $newyear; ?></span></div>				
 				</div>
 				
 				 <div class="col-md-2"><?php echo $workshopdata['location']; ?></div>
                 <div class="col-md-2"><?php echo $workshopdata['number_of_participants'];  ?>participants</div>
                 <div class="col-md-2"><?php echo $workshopdata['number_of_participants'];  ?>experiments</div>
-                 <div class="col-md-2"> <a href="#" id='feedback-<?php echo $workshopdata["workshop_id"]; ?>'>viewReport</a></div>
+                 <div class="col-md-2"> <a href="#" id='feedback-<?php echo $workshopdata["workshop_id"]; ?>'><span id="mew" >► </span> viewReport</a></div>
              <div style='display:none' id="frn_comment-<?php echo $workshopdata["workshop_id"]; ?>"></br></br></br>
 			<div class="tabbable tabs-left">
         <ul class="nav nav-tabs no-border">
@@ -537,18 +638,28 @@ tabs-below > .nav-tabs,
         </ul>
         <div class="tab-content only-no-border">
          <div class="tab-pane active" id="a-<?php echo $workshopdata["workshop_id"]; ?>"><div style="float: right; margin-right: 50%;  ">
-         	<img src="http://testingserver.website/outreach/uploads/attend_sheet/<?php echo $workshopdata['upload_experiment_sheet']; ?>" width="250px" height="250px"></div>
-         	    	    	
+         	<!--<img src="http://testingserver.website/outreach/uploads/attend_sheet/<?php //echo $workshopdata['upload_experiment_sheet']; ?>" width="250px" height="250px">--></div>
+         	    	 
+<object data="<?php echo base_url(); ?>uploads/attend_sheet/<?php echo $workshopdata['upload_attend_sheet']; ?>" type="application/pdf" width="80%" height="250px">
+  <p>Alternative text - include a link <a href="<?php echo base_url(); ?>uploads/attend_sheet/<?php echo $workshopdata['upload_experiment_sheet']; ?>">to the PDF!</a></p>
+</object>					 
          	         	</div>
          	
          <div class="tab-pane" id="b-<?php echo $workshopdata["workshop_id"]; ?>">
          	<div style="float: right; margin-right: 50%;  ">
-         		<img src="http://testingserver.website/outreach/uploads/college_report/<?php echo $workshopdata['college_report']; ?>"width="250px" height="250px"></div>
-         		
+         		<!--<img src="http://testingserver.website/outreach/uploads/college_report/<?php echo $workshopdata['college_report']; ?>"width="250px" height="250px">--></div>
+         		<object data="<?php echo base_url(); ?>uploads/attend_sheet/<?php echo $workshopdata['college_report']; ?>" type="application/pdf" width="80%" height="250px">
+  <p>Alternative text - include a link <a href="<?php echo base_url(); ?>uploads/college_report/<?php echo $workshopdata['college_report']; ?>">to the PDF!</a></p>
+</object>
 
          		</div>
          <div class="tab-pane" id="c-<?php echo $workshopdata["workshop_id"]; ?>">
-		 <img src="http://testingserver.website/outreach/uploads/workshop_photos/<?php echo $workshopdata['workshop_photos']; ?>" width="250px" height="250px">
+		 <!--<img src="http://testingserver.website/outreach/uploads/workshop_photos/<?php echo $workshopdata['workshop_photos']; ?>" width="250px" height="250px">-->
+		 <object data="<?php echo base_url(); ?>uploads/workshop_photos/<?php echo $workshopdata['workshop_photos']; ?>" type="application/pdf" width="80%" height="250px
+		 ">
+  <p>Alternative text - include a link <a href="<?php echo base_url(); ?>uploads/workshop_photos/<?php echo $workshopdata['workshop_photos']; ?>">to the PDF!</a></p>
+</object>
+		 
 		 </div>
         
         </div>
@@ -561,11 +672,28 @@ tabs-below > .nav-tabs,
 		//$("#frn_rating").css('display','block');
 		if($('#frn_comment-<?php echo $workshopdata["workshop_id"]; ?>').css('display') == 'none'){ 
 		   $('#frn_comment-<?php echo $workshopdata["workshop_id"]; ?>').show('slow'); 
+		   $('#mew').html("▼")
 		} else { 
 		   $('#frn_comment-<?php echo $workshopdata["workshop_id"]; ?>').hide('slow'); 
+		   
+		   $('#mew').html("►")
 		}
 	});
 </script>
+ <script type="text/javascript">
+	$("#feedback1-<?php echo $workshopdata["workshop_id"]; ?>").click(function(){
+		//$("#frn_rating").css('display','block');
+		if($('#reportnew-<?php echo $workshopdata["workshop_id"]; ?>').css('display') == 'none'){ 
+		   $('#reportnew-<?php echo $workshopdata["workshop_id"]; ?>').show('slow'); 
+		   $('#mew1').html("▼")
+		} else { 
+		   $('#reportnew-<?php echo $workshopdata["workshop_id"]; ?>').hide('slow'); 
+		   
+		   $('#mew1').html("►")
+		}
+	});
+</script>
+
                 
 			</div>
                                                 

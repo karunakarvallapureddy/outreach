@@ -56,7 +56,9 @@
 <!--------------Krishna 20-07-2015--------------------->
 
 		</style>
+		
 		<div class="col-md-2 less-padding">
+		
 		<li class="dropdown user"  id="header-user" style="list-style:none; float: right;">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							
@@ -68,7 +70,9 @@
 							
 							<span class="username"><?php echo ucfirst($ses_data['name']); ?> </span>
 							<i class="fa fa-angle-down"></i>
-						</a></br><?php if($ses_data['user_type']==1){ ?><a  href="<?php echo base_url();?>nodal-coordinator-listing" style="font-size: 15px;">Manage Nodal Centers</a>								<?php } ?>
+						</a></br><?php if($ses_data['user_type']==1){ ?>
+						<!--<a  href="<?php echo base_url();?>nodal-coordinator-listing" style="font-size: 15px;">Manage Nodal Centers</a>	-->
+						<?php } ?>
 						
 		<ul class="dropdown-menu">
 							<!--<li><a href="<?php echo base_url();?>site/editProfile"><i class="fa fa-user"></i> My Profile</a></li>
@@ -78,21 +82,14 @@
 						</li></div>
 		
 		<?php }?>
+		
 						
 						
 						
 						<nav class="navbar pull-right" role="navigation">
 					<div class="nav-top collapse navbar-collapse">
 						<ul id="main-menu" class="nav navbar-nav">
-					<?php if (empty($ses_data)){ ?> 
-					<li><a href="<?php echo base_url();?>" style="font-size: 15px;">Home</a></li>
-							<li ><a data-target="#" href="<?php echo base_url()."Cms/About-outreach";?>" style="font-size: 15px;">About outreach</a></li>
-							
-							<li ><a data-target="#" href="<?php echo base_url();?>Contact" style="font-size: 15px;">Contact</a></li>
-								<?php  }else{?>
-									
-								<?php
-									 } ?>
+					
                             
 							
                             <!--<li ><a data-target="#" href="<?php echo base_url();?>Contact">Contact</a></li>	-->						
@@ -102,7 +99,11 @@
 						
 						
                    </div>
-                   
+                   <div id="divaid" style="text-align:center;font-size:14px;font-weight:600">
+		<?php if($ses_data['user_type']==2){  ?> <span > Welcome <?php echo ucfirst($ses_data['name']); ?>, Nodal	Center	Coordinator</span><?php }?>
+		</div>
+		     
+		
 				</div>
 			</div>
 		</div>	
@@ -117,7 +118,10 @@
 		<?php $ses_data=$this->session->userdata('user_details'); if($ses_data){?>
 		
 		<?php }else{ ?>
-    	
 		<?php }?>
+		
     </div>
+    	<div id="divaid1" style="text-align:center;font-size:14px;font-weight:600">
+		<?php if($ses_data['user_type']==1){  ?> <span > Welcome <?php echo ucfirst($ses_data['name']); ?>,	outrach Coordinator</span><?php }?>
+		</div>
 </div>	

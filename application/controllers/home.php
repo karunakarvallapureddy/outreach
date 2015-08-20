@@ -135,7 +135,7 @@ $upload_attend_sheet=$_FILES["mou"]["name"];
 				 $this->load->library('email');
 				$this->email->to($postdata['email']);
 				$this->email->from('noreply@outreach.com');
-				$this->email->subject('Your Outreach  account Password');
+				$this->email->subject('Your Nodal  account Password');
 				$message = "Hi								
 					Your Nodal Coordinator Email-id is : ".$postdata['email']."
 					Your Nodal Coordinator  Password is : ".$postdata['password']."
@@ -144,6 +144,16 @@ $upload_attend_sheet=$_FILES["mou"]["name"];
 					 "; 
 				$this->email->message($message);
 				$this->email->send();
+				
+				
+				$to = $postdata['email'];
+$subject = "Your Nodal  account Password";
+//$txt = "Hello world!";
+//$headers = "From: webmaster@example.com" . "\r\n" .
+//"CC: somebodyelse@example.com";
+
+mail($to,$subject,$message);
+				
 				$page = ucfirst($this -> input -> post('las_name'))." has been added. ";
 				$notification = array('subject' => $page, 'type' => 'Staff', 'msg_type' => 'success');			
 				$this->session->set_flashdata('msg', 'Outreach Coordinator Added Successfully');

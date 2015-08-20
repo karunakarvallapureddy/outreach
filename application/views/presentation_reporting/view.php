@@ -65,7 +65,22 @@
 													<tr class="gradeX">
                                                     <td><?php echo $i;?></td>
 													<td><?php echo $row['document_name'];?></td>
-													<td><a target="_blank" href="<?php echo base_url()."uploads/presentation_reporting/".$row['document_path'];?>"><img src="<?php echo base_url();?>images/word.jpg"></img></a></td>
+													<td><a target="_blank" href="<?php echo base_url()."uploads/guidance_metirial/".$row['document_path'];
+													
+													?>">
+													<?PHP   $extension = pathinfo($row['document_path'], PATHINFO_EXTENSION); 
+													if($extension=="doc"){ ?>
+													<img src="<?php echo base_url();?>images/word.jpg"></img>
+													<?php }elseif($extension=="pdf"){?>
+													<img src="<?php echo base_url();?>images/pdf.jpg"></img>
+													<?php
+														//echo "PDF";
+													}elseif($extension=="docx"){ ?>
+													<img src="<?php echo base_url();?>images/notepad.png"></img>
+													<?php
+														//echo "JPEG";
+													} ?>
+													</a></td>
 													<td><?php echo date('M jS Y',strtotime($row['created_on']));?></td>
 													<td>
                           <!--  <a href="<?php //echo site_url('admin/presentation_reporting/detailview/'.base64_encode($row['document_id']));?>">

@@ -46,7 +46,7 @@
 													<label class="col-sm-4">Existing Password</label>
 													<div class="col-sm-8">
 													  <input type="password" style="
-    WIDTH: 175PX;
+    WIDTH: 95PX;
 " class="form-control" name="curr_password" id="curr_password" maxlength="12" value="<?php  echo set_value('curr_password');?>">
 														<?php echo "<span style='color:red'>".form_error('curr_password')."</span>"; ?>
 													</div>
@@ -57,8 +57,12 @@
 													<label class="col-sm-4">New Password</label>
 													<div class="col-sm-8">
 													  <input type="password"  style="
-    WIDTH: 175PX;
-"class="form-control"  name="new_password" id="new_password" maxlength="12" placeholder="Minimum 5 Characters" value="<?php  echo set_value('new_password');?>">
+    WIDTH: 95PX;
+"class="form-control"  name="new_password" id="new_password" maxlength="12"  value="<?php  echo set_value('new_password');?>"> <span style="
+    float: right;
+    margin-top: -27px;
+    margin-right: 51px;
+">Minimum 5 Characters</span>
 														<?php echo "<span style='color:red'>".form_error('new_password')."</span>"; ?>
 													</div>
 												  </div>
@@ -67,8 +71,8 @@
 													<label class="col-sm-4">Confirm Password</label>
 													<div class="col-sm-8">
 													  <input type="password"  style="
-    WIDTH: 175PX;
-"  maxlength="12" class="form-control" name="retype_password" id="retype_password" placeholder="Minimum 5 Characters"  value="<?php  echo set_value('retype_password');?>">
+    WIDTH: 95PX;
+"  maxlength="12" class="form-control" name="retype_password" id="retype_password"   value="<?php  echo set_value('retype_password');?>">
 														<?php echo "<span style='color:red'>".form_error('retype_password')."</span>"; ?>
 													</div>
 											  </div>	

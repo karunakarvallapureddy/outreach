@@ -231,8 +231,11 @@ tabs-below > .nav-tabs,
           <li><a href="#d" data-toggle="tab">Comments</a></li>
         </ul>
         <div class="tab-content">
-         <div class="tab-pane active" id="a"><div style="float: right; margin-right: 50%;  ">
-         	<img src="http://ideativedigital.com/outreach/uploads/attend_sheet/<?php echo $workshopdata['upload_attend_sheet']; ?>" width="250px" height="250px"></div>
+         <div class="tab-pane active" id="a"><div >
+		 	<object data="<?php echo base_url(); ?>uploads/attend_sheet/<?php echo $workshopdata['upload_attend_sheet']; ?>" type="application/pdf" width="50%" height="100%">
+  <p>Alternative text - include a link <a href="<?php echo base_url(); ?>uploads/attend_sheet/<?php echo $workshopdata['upload_attend_sheet']; ?>">to the PDF!</a></p>
+</object>
+  <!--<img src="http://ideativedigital.com/outreach/uploads/attend_sheet/<?php //echo $workshopdata['upload_attend_sheet']; ?>" width="250px" height="250px">--></div>
          	
          	<table>
 	<tr>
@@ -241,7 +244,7 @@ tabs-below > .nav-tabs,
 	</tr>
 	<tr>
 		<td>Total attendance matches the reported participants</td>
-		<td><input type="radio" name="signed" value="yes"><input type="radio" name="signed" value="no"></td>
+		<td><input type="radio" name="signed" value="yes">&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="signed" value="no"></td>
 	</tr>
 	
 </table>
@@ -250,8 +253,11 @@ tabs-below > .nav-tabs,
          	</div>
          	
          <div class="tab-pane" id="b">
-         	<div style="float: right; margin-right: 50%;  ">
-         		<img src="http://ideativedigital.com/outreach/uploads/college_report/<?php echo $workshopdata['upload_attend_sheet']; ?>"width="250px" height="250px"></div>
+         	<div >
+			<object data="<?php echo base_url(); ?>uploads/college_report/<?php echo $workshopdata['upload_attend_sheet']; ?>" type="application/pdf" width="50%" height="100%">
+  <p>Alternative text - include a link <a href="<?php echo base_url(); ?>uploads/college_report/<?php echo $workshopdata['upload_attend_sheet']; ?>">to the PDF!</a></p>
+</object>
+         		<!--<img src="http://ideativedigital.com/outreach/uploads/college_report/<?php echo $workshopdata['upload_attend_sheet']; ?>"width="250px" height="250px">--></div>
          		
 <table>
 	<tr>
@@ -260,19 +266,25 @@ tabs-below > .nav-tabs,
 	</tr>
 	<tr>
 		<td>Report is on the college letterhead</td>
-		<td><input type="radio" name="letterhead" value="yes"><input type="radio" name="letterhead" value="no"></td>
+		<td><input type="radio" name="letterhead" value="yes">&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="letterhead" value="no"></td>
 	</tr>
 	<tr>
 		<td>Report is signed by the college principal</td>
-		<td><input type="radio" name="signed" value="yes"><input type="radio" name="signed" value="no"></td>
+		<td><input type="radio" name="signed" value="yes">&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="signed" value="no"></td>
 	</tr>
 	<tr>
 		<td>Report has the college seal stamped</td>
-		<td><input type="radio" name="seal" value="yes"><input type="radio" name="seal" value="no"></td>
+		<td><input type="radio" name="seal" value="yes">&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="seal" value="no"></td>
 	</tr>
 </table>
          		</div>
-         <div class="tab-pane" id="c"><img src="http://ideativedigital.com/outreach/uploads/workshop_photos/<?php echo $workshopdata['upload_attend_sheet']; ?>" width="250px" height="250px"> </div>
+         <div class="tab-pane" id="c">
+		 <object data="<?php echo base_url(); ?>/uploads/workshop_photos/<?php echo $workshopdata['upload_attend_sheet']; ?>" type="application/pdf" width="50%" height="100%">
+  <p>Alternative text - include a link <a href="<?php echo base_url(); ?>uploads/college_report/<?php echo $workshopdata['upload_attend_sheet']; ?>">to the PDF!</a></p>
+</object>
+		 <!--<img src="<?php //echo base_url(); ?>/uploads/workshop_photos/<?php //echo $workshopdata['upload_attend_sheet']; ?>" width="250px" height="250px">-->
+
+		 </div>
          <div class="tab-pane" id="d"><span>comments positive</span></br><?php echo $workshopdata['comments_positive']; ?><span>
         </br> comments negative</br>	<?php echo $workshopdata['comments_negative']; ?>
          </span></div>
