@@ -122,7 +122,7 @@
 <div class=" col-md-12  label-class" style="padding-left: 23px;padding-top: 15px">
 <input type="submit" id="submit" class="btn btn-primary orange-btn" value="Submit">
 <!--<a class="margin-forgot" href="<?php echo base_url(); ?>Forgot-Password
-Forgot-Password">Forgot Password</a>-->
+Forgot-Password">Forgot Password</a>-->    
 </div>
 </div>
 
