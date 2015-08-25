@@ -102,7 +102,7 @@
 		if (empty($ses_data)){ ?>
 <div><h4 class="view-all-size portal-head">Portal Login </h4></div>
 
-<form action="http://testingserver.website/outreach/Login" id="student_login"class="form-horizontal" method="post" name="student_login">
+<form action="<?php echo  base_url(); ?>Login" id="student_login"class="form-horizontal" method="post" name="student_login">
 <div class="form-group margin-bottom-less">
 <div class="form-group margin-bottom-less">
 <label class="col-md-12  label-class">User Name:</label>
