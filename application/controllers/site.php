@@ -14,9 +14,9 @@ class Site extends CI_Controller {
 				$this->load->library('form_validation');
 		}
 /*
-	@method site Home Page Index (Login page for outreach coordinator)   If coordinator session exist redirecting to profile else Login Page
-	@param  Null 
-	@return object  if success Home page
+	* @method site Home Page Index (Login page for outreach coordinator)   If coordinator session exist redirecting to profile else Login Page
+	* @param  Null 
+	* @return object  if success Home page
  * */
 		public function index() {
 			$ses_data=$this->session->userdata('user_details');
@@ -27,9 +27,9 @@ class Site extends CI_Controller {
 	}
 		
 /*
-	@method  signin   Authenticating coordinator
-	@param   Post Values
-	@return object  if success coordinator Dashboard else Login View 
+	* @method  signin   Authenticating coordinator
+	* @param   Post Values
+	* @return object  if success coordinator Dashboard else Login View 
 */
 		public function signin() {
 		$this->load->view('site/header',$data);
@@ -67,9 +67,9 @@ class Site extends CI_Controller {
 			$this->load->view('site/footer');
 	}
 /*
-		@method  forgot password   
-		@param  Post of email
-		@return  object if success redirect to the view  with status
+		* @method  forgot password   
+		* @param  Post of email
+		* @return  object if success redirect to the view  with status
 */
 public function forgot_password() {
 		$this->load->view('site/header',$data);
@@ -134,9 +134,9 @@ public function forgot_password() {
 			$this->load->view('site/footer');
 	}
 /*
-	@method  logout   killing admin session data
-	@param  Null 
-	@return object  redirect to index method if session killing
+	* @method  logout   killing admin session data
+	* @param  Null 
+	* @return object  redirect to index method if session killing
  */	
 		public function logout(){
 			$this->session->unset_userdata('user_details');
@@ -144,9 +144,9 @@ public function forgot_password() {
 			redirect(base_url(),'refresh');
 		}
 /*
-	@method profile 
-	@param  Post Values 
-	@return object  if success redirect to profile page
+	* @method profile 
+	* @param  Post Values 
+	* @return object  if success redirect to profile page
 */
 	public function profile() {
 				$ses_data=$this->session->userdata('user_details');
@@ -159,9 +159,9 @@ public function forgot_password() {
 				$this->load->view('site/footer');
 		}
 /*
-	@method authentic_coordinator 
-	@param  Post Values 
-	@return object  if success profile page
+	* @method authentic_coordinator 
+	* @param  Post Values 
+	* @return object  if success profile page
 */
 	public function authentic_coordinator(){
 							$ses_data=$this->session->userdata('user_details');
@@ -201,9 +201,9 @@ public function forgot_password() {
 					}
 			}	
 /*
-	@method manage_workshop 
-	@param  Post Values 
-	@return object  if success redirecting to manage workshop  page
+	* @method manage_workshop 
+	* @param  Post Values 
+	* @return object  if success redirecting to manage workshop  page
 */		
 		public function manage_workshop(){
 			$ses_data=$this->session->userdata('user_details');
@@ -227,9 +227,9 @@ $data['getworkshopcreated']=$this->home_site_m->getworkshopcreated();
 				}
 		}
 /*
-	@method  addNodal   Create nodal Page
-	@param   Post Values
-	@return object  if success redirect to Nodal Listing View with Success Message else Create Nodal View 
+	* @method  addNodal   Create nodal Page
+	* @param   Post Values
+	* @return object  if success redirect to Nodal Listing View with Success Message else Create Nodal View 
  */
 	 	
 
@@ -240,9 +240,9 @@ $data['getworkshopcreated']=$this->home_site_m->getworkshopcreated();
 		
 	}
 /*
-	@method  nodalCoordinatorListing  
-	@param   
-	@return object  if success redirect to nodal coordinator Listing View
+	* @method  nodalCoordinatorListing  
+	* @param   
+	* @return object  if success redirect to nodal coordinator Listing View
  */	
 	public function nodalCoordinatorListing(){
 	$data['get_workshop']=$this->home_site_m->get_nodal();	
@@ -250,8 +250,5 @@ $data['getworkshopcreated']=$this->home_site_m->getworkshopcreated();
 									 $this->load->view('site/outreachcoordinator/outreachcoordinatorview',$data);
 						   			 $this->load->view('site/footer');
 	}
-	
-/* End of file welcome.php */
-/* Location: ./application/controllers/site.php */
-	
+
 }
