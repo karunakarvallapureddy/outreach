@@ -356,13 +356,7 @@ From the faculty and students of the participating institutes</span></div>
 													
 							<button name="submit" value="submit" class="btn btn-success clr-btn">Submit for Approval</button>
 							<button name="submit" value="save" class="btn btn-warning clr-btn-org">Save</button></div><div class="col-sm-3">
-					<a href="<?php echo base_url('nodal-coordinator')?>" style="
-    float: right;
-">	<button class="btn clr-btn-gray" style="
-    float: right;
-    background-color: #000;
-    color: #fff;
-">Cancel</button>	</a></div>
+					<a id="submitcancel-<?php echo $workshopdata["workshop_id"]; ?>" style="cursor: pointer;float: right; float: right; background-color: #000; color: #fff;padding: 5px;background-color: red;" >Cancel</a></div>
 						
 						</div>
 						<!-- /Save -->												
@@ -386,6 +380,7 @@ From the faculty and students of the participating institutes</span></div>
 		   $('#mew1-<?php echo $workshopdata["workshop_id"]; ?>').html("►");
 		}
 	});
+	
 </script>	
 <script type="text/javascript">
 	$("#feedback2-<?php echo $workshopdata["workshop_id"]; ?>").click(function(){
@@ -397,6 +392,10 @@ From the faculty and students of the participating institutes</span></div>
 		   
 		   $('#mew2-<?php echo $workshopdata["workshop_id"]; ?>').html("►");
 		}
+	});
+	$("#submitcancel-<?php echo $workshopdata["workshop_id"]; ?>").click(function(){
+		  $('#reportnew1-<?php echo $workshopdata["workshop_id"]; ?>').hide('slow');
+		  $('#mew2-<?php echo $workshopdata["workshop_id"]; ?>').html("►");
 	});
 </script>
 			<?php 
@@ -482,7 +481,15 @@ From the faculty and students of the participating institutes</span></div>
 													  <input type="text" name = "subject_of_session" id = "numberofsessions" class="required form-control no-radius" value="<?php echo set_value('numberofsessions');?>">
 													  <?php echo "<span style='color:red'>".form_error('numberofsessions')."</span>"; ?>
 													</div>
-												  </div><div class="form-group">
+												  </div>
+												  <div class="form-group">
+													<label class="col-sm-3 label-names">Faculty</label>
+													<div class="col-sm-6">
+													  <input type="text" name = "faculty" id = "numberofsessions" class="required form-control no-radius" value="<?php echo set_value('faculty');?>">
+													  <?php echo "<span style='color:red'>".form_error('faculty')."</span>"; ?>
+													</div>
+												  </div>
+												  <div class="form-group">
 													<label class="col-sm-3 label-names">Labs planned</label>
 													<div class="col-sm-6">
 													  <input type="text" name = "labs_plan" id = "labplanned" class="required form-control no-radius" value="<?php echo set_value('labplanned');?>">

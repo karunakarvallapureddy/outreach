@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 26, 2015 at 06:12 AM
+-- Generation Time: Aug 26, 2015 at 08:51 AM
 -- Server version: 5.5.42-cll-lve
 -- PHP Version: 5.4.23
 
@@ -41,18 +41,16 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('253fc8fa05884ff0ad5a415cb4852702', '49.206.0.78', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36', 1440583905, 'a:2:{s:9:"user_data";s:0:"";s:12:"user_details";a:16:{s:2:"id";s:2:"84";s:4:"name";s:9:"karunakar";s:5:"email";s:24:"karunakar.2093@gmail.com";s:13:"mobile_number";N;s:8:"password";s:32:"e10adc3949ba59abbe56e057f20f883e";s:9:"user_type";s:1:"2";s:6:"center";s:9:"hyderabad";s:6:"status";s:1:"1";s:11:"outreach_id";s:2:"63";s:8:"workshop";s:2:"25";s:12:"participants";s:3:"250";s:11:"experiments";s:2:"11";s:13:"profile_image";s:38:"531549_252669044836256_236359487_n.jpg";s:14:"createworkshop";s:1:"2";s:10:"created_on";s:19:"2015-07-27 16:29:27";s:13:"last_loggedin";s:19:"2015-08-26 09:54:01";}}'),
-('3800558e1e38f7d83c4643b2eb5be367', '49.206.0.78', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36', 1440501343, ''),
 ('4858abe902ed52ad7cb9a2f5c36d2ffe', '49.206.0.78', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36', 1440581364, ''),
-('70b3ee5babbeb66972b54e95c6b785a3', '49.206.0.78', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36', 1440501342, 'a:2:{s:9:"user_data";s:0:"";s:12:"user_details";a:16:{s:2:"id";s:2:"63";s:4:"name";s:9:"karunakar";s:5:"email";s:36:"karunakar.reddy@possibilliontech.com";s:13:"mobile_number";s:10:"7416542049";s:8:"password";s:32:"c33367701511b4f6020ec61ded352059";s:9:"user_type";s:1:"1";s:6:"center";N;s:6:"status";s:1:"1";s:11:"outreach_id";s:1:"0";s:8:"workshop";N;s:12:"participants";s:0:"";s:11:"experiments";N;s:13:"profile_image";s:13:"outreach2.jpg";s:14:"createworkshop";N;s:10:"created_on";s:19:"2015-07-19 06:22:38";s:13:"last_loggedin";s:19:"2015-08-25 09:03:01";}}'),
+('5e7acfd6fde2c3af4cf0760f14adfeb8', '122.175.89.226', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:40.0) Gecko/20100101 Firefox/40.0', 1440588605, 'a:1:{s:12:"user_details";a:16:{s:2:"id";s:2:"84";s:4:"name";s:9:"karunakar";s:5:"email";s:24:"karunakar.2093@gmail.com";s:13:"mobile_number";N;s:8:"password";s:32:"e10adc3949ba59abbe56e057f20f883e";s:9:"user_type";s:1:"2";s:6:"center";s:9:"hyderabad";s:6:"status";s:1:"1";s:11:"outreach_id";s:2:"63";s:8:"workshop";s:2:"25";s:12:"participants";s:3:"250";s:11:"experiments";s:2:"11";s:13:"profile_image";s:38:"531549_252669044836256_236359487_n.jpg";s:14:"createworkshop";s:1:"2";s:10:"created_on";s:19:"2015-07-27 16:29:27";s:13:"last_loggedin";s:19:"2015-08-26 10:11:42";}}'),
+('982befc6463da86d1e0f07904d4b436a', '49.206.0.78', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36', 1440584432, 'a:3:{s:9:"user_data";s:0:"";s:12:"user_details";a:16:{s:2:"id";s:2:"84";s:4:"name";s:9:"karunakar";s:5:"email";s:24:"karunakar.2093@gmail.com";s:13:"mobile_number";N;s:8:"password";s:32:"e10adc3949ba59abbe56e057f20f883e";s:9:"user_type";s:1:"2";s:6:"center";s:9:"hyderabad";s:6:"status";s:1:"1";s:11:"outreach_id";s:2:"63";s:8:"workshop";s:2:"25";s:12:"participants";s:3:"250";s:11:"experiments";s:2:"11";s:13:"profile_image";s:38:"531549_252669044836256_236359487_n.jpg";s:14:"createworkshop";s:1:"2";s:10:"created_on";s:19:"2015-07-27 16:29:27";s:13:"last_loggedin";s:19:"2015-08-26 09:54:01";}s:12:"adminDetails";a:5:{s:13:"permission_id";s:1:"1";s:8:"admin_id";s:1:"1";s:10:"first_name";s:8:"outreach";s:9:"last_name";s:5:"Admin";s:5:"image";s:18:"14376608481103.jpg";}}'),
 ('9967f31a1b2eb3127dd0c51f53f1dcfc', '49.206.0.78', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36', 1440580861, ''),
 ('b8811539da250d5e83060834dc25974e', '49.206.0.78', 'Mozilla/5.0 (Windows NT 6.1; rv:40.0) Gecko/20100101 Firefox/40.0', 1440505834, 'a:2:{s:9:"user_data";s:0:"";s:13:"flash:old:msg";s:29:"Invalid User Name or password";}'),
+('c1a8c7abe15b48ae50a7b092136d9479', '49.206.0.78', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36', 1440593365, 'a:1:{s:12:"user_details";a:16:{s:2:"id";s:2:"84";s:4:"name";s:9:"karunakar";s:5:"email";s:24:"karunakar.2093@gmail.com";s:13:"mobile_number";N;s:8:"password";s:32:"e10adc3949ba59abbe56e057f20f883e";s:9:"user_type";s:1:"2";s:6:"center";s:9:"hyderabad";s:6:"status";s:1:"1";s:11:"outreach_id";s:2:"63";s:8:"workshop";s:2:"25";s:12:"participants";s:3:"250";s:11:"experiments";s:2:"11";s:13:"profile_image";s:38:"531549_252669044836256_236359487_n.jpg";s:14:"createworkshop";s:1:"2";s:10:"created_on";s:19:"2015-07-27 16:29:27";s:13:"last_loggedin";s:19:"2015-08-26 11:56:18";}}'),
 ('cd893e33923b85f08a7a03b309277e65', '43.249.226.68', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36', 1440524753, ''),
 ('ce3c9bf4cfaa3120f045ba7c4fe2b784', '49.206.0.78', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36', 1440575795, 'a:1:{s:12:"adminDetails";a:5:{s:13:"permission_id";s:1:"1";s:8:"admin_id";s:1:"1";s:10:"first_name";s:8:"outreach";s:9:"last_name";s:5:"Admin";s:5:"image";s:18:"14376608481103.jpg";}}'),
 ('d3ae3ed0e024076daeafc285263d453e', '183.82.75.216', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.3', 1440578376, 'a:2:{s:9:"user_data";s:0:"";s:12:"user_details";a:16:{s:2:"id";s:2:"63";s:4:"name";s:9:"karunakar";s:5:"email";s:36:"karunakar.reddy@possibilliontech.com";s:13:"mobile_number";s:10:"7416542049";s:8:"password";s:32:"c33367701511b4f6020ec61ded352059";s:9:"user_type";s:1:"1";s:6:"center";N;s:6:"status";s:1:"1";s:11:"outreach_id";s:1:"0";s:8:"workshop";N;s:12:"participants";s:0:"";s:11:"experiments";N;s:13:"profile_image";s:13:"outreach2.jpg";s:14:"createworkshop";N;s:10:"created_on";s:19:"2015-07-19 06:22:38";s:13:"last_loggedin";s:19:"2015-08-24 06:46:17";}}'),
-('d4d5b1f12047b3fada9bf8e172d3a4a2', '49.206.0.78', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36', 1440565148, ''),
-('e4f9af776f1249fd00fe1c1390a2fb58', '49.206.0.78', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.0', 1440497711, 'a:2:{s:9:"user_data";s:0:"";s:12:"user_details";a:16:{s:2:"id";s:2:"84";s:4:"name";s:9:"karunakar";s:5:"email";s:24:"karunakar.2093@gmail.com";s:13:"mobile_number";N;s:8:"password";s:32:"e10adc3949ba59abbe56e057f20f883e";s:9:"user_type";s:1:"2";s:6:"center";s:9:"hyderabad";s:6:"status";s:1:"1";s:11:"outreach_id";s:2:"63";s:8:"workshop";s:2:"25";s:12:"participants";s:3:"250";s:11:"experiments";s:2:"11";s:13:"profile_image";s:38:"531549_252669044836256_236359487_n.jpg";s:14:"createworkshop";s:1:"2";s:10:"created_on";s:19:"2015-07-27 16:29:27";s:13:"last_loggedin";s:19:"2015-08-25 04:45:29";}}'),
-('eab67093db83bfdcff6f026b41ec21f7', '49.206.0.78', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36', 1440501342, '');
+('d4d5b1f12047b3fada9bf8e172d3a4a2', '49.206.0.78', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36', 1440565148, '');
 
 -- --------------------------------------------------------
 
@@ -836,12 +834,12 @@ CREATE TABLE IF NOT EXISTS `va_users` (
 --
 
 INSERT INTO `va_users` (`id`, `name`, `email`, `mobile_number`, `password`, `user_type`, `center`, `status`, `outreach_id`, `workshop`, `participants`, `experiments`, `profile_image`, `createworkshop`, `created_on`, `last_loggedin`) VALUES
-(63, 'karunakar', 'karunakar.reddy@possibilliontech.com', '7416542049', 'c33367701511b4f6020ec61ded352059', '1', NULL, 1, 0, NULL, '', NULL, 'outreach2.jpg', NULL, '2015-07-19 10:22:38', '2015-08-26 10:11:18'),
+(63, 'karunakar', 'karunakar.reddy@possibilliontech.com', '7416542049', 'c33367701511b4f6020ec61ded352059', '1', NULL, 1, 0, NULL, '', NULL, 'outreach2.jpg', NULL, '2015-07-19 10:22:38', '2015-08-26 11:59:52'),
 (82, 'Manjula', 'manjulasetty@gmail.com', NULL, 'e10adc3949ba59abbe56e057f20f883e', '1', NULL, 1, NULL, NULL, '', NULL, '09.jpg', NULL, '2015-07-27 13:10:13', '2015-08-21 08:25:57'),
 (83, 'manjula possibillion', 'manjula.gangisetty@possibilliontech.com', NULL, 'e10adc3949ba59abbe56e057f20f883e', '2', 'Possibillion', 1, 82, '20', '20', '20', '20150629021251 (4).jpg', 1, '2015-07-27 13:13:14', '2015-08-21 08:26:41'),
 (87, 'Geeta Bose', 'geetabose@gmail.com', NULL, 'aa23dd48fa0e118c2abbac4fb459445c', '2', 'IIIT-Hyd', 1, 82, '50', '2500', '25000', NULL, 0, '2015-07-28 13:44:47', NULL),
 (73, 'Susmita', 'susmita.chatterjee@possibilliontech.com', NULL, 'a7b5aef16bfff466afe93f124eb19af0', '1', NULL, 1, 0, NULL, '', NULL, NULL, NULL, '2015-07-20 18:06:43', NULL),
-(84, 'karunakar', 'karunakar.2093@gmail.com', NULL, 'e10adc3949ba59abbe56e057f20f883e', '2', 'hyderabad', 1, 63, '25', '250', '11', '531549_252669044836256_236359487_n.jpg', 2, '2015-07-27 20:29:27', '2015-08-26 10:11:42'),
+(84, 'karunakar', 'karunakar.2093@gmail.com', NULL, 'e10adc3949ba59abbe56e057f20f883e', '2', 'hyderabad', 1, 63, '25', '250', '11', '531549_252669044836256_236359487_n.jpg', 2, '2015-07-27 20:29:27', '2015-08-26 12:01:10'),
 (76, 'manjula', 'manjulasetty@gmail.com', NULL, '9270d2b541d8757adfd4229e84027666', '1', NULL, 3, 0, NULL, '', NULL, '', NULL, '2015-07-21 11:22:34', '2015-07-21 04:30:17'),
 (78, 'geeta', 'geeta@vlabs.ac.in', NULL, 'dfa24abfb7d21f3502dec8d9d3036264', '1', NULL, 1, 0, NULL, '', NULL, 'Chrysanthemum.jpg', NULL, '2015-07-21 12:44:47', '2015-07-21 05:48:52'),
 (79, 'sowjany', 'soujanya@vlabs.ac.in', NULL, '51577174c468611cb09672b287977e3b', '2', 'gnit', 1, 0, '2', '10', '45', NULL, NULL, '2015-07-21 12:50:40', NULL),
@@ -995,6 +993,7 @@ CREATE TABLE IF NOT EXISTS `workshop` (
   `address` text NOT NULL,
   `created_on` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_on` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `faculty` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`workshop_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
 
@@ -1002,16 +1001,16 @@ CREATE TABLE IF NOT EXISTS `workshop` (
 -- Dumping data for table `workshop`
 --
 
-INSERT INTO `workshop` (`workshop_id`, `name`, `location`, `participate_institute`, `date`, `number_of_participants`, `no_of_sessions`, `durationofsessions`, `subject_of_session`, `labs_plan`, `other_details`, `workshop_status`, `uid`, `outreach_id`, `report_id`, `latitude`, `longitude`, `address`, `created_on`, `updated_on`) VALUES
-(20, 'Ramesh Reddy', 'iiit pune', 'Jyothishmathi Institute of Technological Science,Sri Indu College of Engineering & Technology-An Autonomous Institution under UGC, NBA Accredited, NAAC\n', '2015-08-06 19:30:37', 250, '25', '1', '0', 'may be', 'TEST', 1, 83, 82, 38, '18.5840728', '73.73721269999999', ', P-14, Hinjewadi Rajiv Gandhi Infotech Park, Phase-1, Hinjawadi, Pune, Maharashtra 411057', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(19, 'Ramesh Reddy', 'GNIT Warangal', 'Jyothishmathi Institute of Technological Science,Sri Indu College of Engineering & Technology-An Autonomous Institution under UGC, NBA Accredited, NAAC\n', '2015-08-21 08:28:45', 250, '15', '1', '0', 'may be', 'test', 2, 83, 82, 39, '17.9884017', '79.53010029999996', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(18, 'Manjula', 'iit kanpur', 'Jyothishmathi Institute of Technological Science,Sri Indu College of Engineering & Technology-An Autonomous Institution under UGC, NBA Accredited, NAAC\n', '2015-08-07 10:09:36', 250, '25', '1', '0', 'may be', 'TEST', 2, 83, 82, 37, '26.5123388', '80.23289999999997', ',Address:\nIndian Institute of Technology\nKalyanpur\nKanpur-208016\nINDIA', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(17, 'Manjula ', 'iit kanpur', 'Jyothishmathi Institute of Technological Science,Sri Indu College of Engineering & Technology-An Autonomous Institution under UGC, NBA Accredited, NAAC\n', '2015-08-06 19:31:07', 250, '15', '1', '0', 'may be', 'no', 2, 83, 82, 36, '26.5123388', '80.23289999999997', 'Address:\nIndian Institute of Technology\nKalyanpur\nKanpur-208016\nINDIA', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(21, 'Ramesh Reddy', 'jntu hyderabad', 'Jyothishmathi Institute of Technological Science,Sri Indu College of Engineering & Technology-An Autonomous Institution under UGC, NBA Accredited, NAAC', '2015-11-22 05:00:00', 250, '25', '1', '1', 'may be', 'DEMO', 1, 83, 82, 0, '17.496402', '78.39412990000005', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(35, 'karuanakar reddy', 'III Hyderabad', 'BVRIT Warangal Sri Krishna College of Mgnt', '2015-08-25 07:09:49', 122, '3', '1.5 hour/session', 'Computer science   & engineering', 'Data Structures', 'Demo', 1, 84, 63, 55, '17.4968554', '78.3591609', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(34, 'Ramesh Reddy', 'GNIT, Warangal', 'BVRIT Warangal, Sri Krishna College of Technological Science', '2015-08-24 06:48:30', 250, '3 ', '1.5 hour/session', 'Computer science   & engineering', 'Data Structures', 'demo', 2, 84, 63, 50, '17.9805959', '79.5329481', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(33, 'Ramesh Reddy', 'IIIT Hyderabad', 'BVRIT Warangal, Sri Krishna College of Technological Science', '2015-08-29 04:00:00', 150, '3', '1.5 hour/session', 'Computer science   & engineering', 'Data Structures', 'yes', 1, 84, 63, 0, '17.4447918', '78.34830979999992', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(32, 'Ramesh Reddy', 'GNIT, Warangal', 'BVRIT Warangal, Sri Krishna College of Technological Science', '2015-08-23 23:43:56', 250, '3 ', '1.5 hour/session', 'Computer science   & engineering', 'Data Structures', 'demo', 2, 84, 63, 49, '17.9805959', '79.5329481', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `workshop` (`workshop_id`, `name`, `location`, `participate_institute`, `date`, `number_of_participants`, `no_of_sessions`, `durationofsessions`, `subject_of_session`, `labs_plan`, `other_details`, `workshop_status`, `uid`, `outreach_id`, `report_id`, `latitude`, `longitude`, `address`, `created_on`, `updated_on`, `faculty`) VALUES
+(20, 'Ramesh Reddy', 'iiit pune', 'Jyothishmathi Institute of Technological Science,Sri Indu College of Engineering & Technology-An Autonomous Institution under UGC, NBA Accredited, NAAC\n', '2015-08-06 19:30:37', 250, '25', '1', '0', 'may be', 'TEST', 1, 83, 82, 38, '18.5840728', '73.73721269999999', ', P-14, Hinjewadi Rajiv Gandhi Infotech Park, Phase-1, Hinjawadi, Pune, Maharashtra 411057', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL),
+(19, 'Ramesh Reddy', 'GNIT Warangal', 'Jyothishmathi Institute of Technological Science,Sri Indu College of Engineering & Technology-An Autonomous Institution under UGC, NBA Accredited, NAAC\n', '2015-08-21 08:28:45', 250, '15', '1', '0', 'may be', 'test', 2, 83, 82, 39, '17.9884017', '79.53010029999996', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL),
+(18, 'Manjula', 'iit kanpur', 'Jyothishmathi Institute of Technological Science,Sri Indu College of Engineering & Technology-An Autonomous Institution under UGC, NBA Accredited, NAAC\n', '2015-08-07 10:09:36', 250, '25', '1', '0', 'may be', 'TEST', 2, 83, 82, 37, '26.5123388', '80.23289999999997', ',Address:\nIndian Institute of Technology\nKalyanpur\nKanpur-208016\nINDIA', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL),
+(17, 'Manjula ', 'iit kanpur', 'Jyothishmathi Institute of Technological Science,Sri Indu College of Engineering & Technology-An Autonomous Institution under UGC, NBA Accredited, NAAC\n', '2015-08-06 19:31:07', 250, '15', '1', '0', 'may be', 'no', 2, 83, 82, 36, '26.5123388', '80.23289999999997', 'Address:\nIndian Institute of Technology\nKalyanpur\nKanpur-208016\nINDIA', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL),
+(21, 'Ramesh Reddy', 'jntu hyderabad', 'Jyothishmathi Institute of Technological Science,Sri Indu College of Engineering & Technology-An Autonomous Institution under UGC, NBA Accredited, NAAC', '2015-11-22 05:00:00', 250, '25', '1', '1', 'may be', 'DEMO', 1, 83, 82, 0, '17.496402', '78.39412990000005', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL),
+(35, 'karuanakar reddy', 'III Hyderabad', 'BVRIT Warangal Sri Krishna College of Mgnt', '2015-08-25 07:09:49', 122, '3', '1.5 hour/session', 'Computer science   & engineering', 'Data Structures', 'Demo', 1, 84, 63, 55, '17.4968554', '78.3591609', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL),
+(34, 'Ramesh Reddy', 'GNIT, Warangal', 'BVRIT Warangal, Sri Krishna College of Technological Science', '2015-08-24 06:48:30', 250, '3 ', '1.5 hour/session', 'Computer science   & engineering', 'Data Structures', 'demo', 2, 84, 63, 50, '17.9805959', '79.5329481', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL),
+(33, 'Ramesh Reddy', 'IIIT Hyderabad', 'BVRIT Warangal, Sri Krishna College of Technological Science', '2015-08-26 11:58:50', 150, '3', '1.5 hour/session', 'Computer science   & engineering', 'Data Structures', 'yes', 1, 84, 63, 56, '17.4447918', '78.34830979999992', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL),
+(32, 'Ramesh Reddy', 'GNIT, Warangal', 'BVRIT Warangal, Sri Krishna College of Technological Science', '2015-08-23 23:43:56', 250, '3 ', '1.5 hour/session', 'Computer science   & engineering', 'Data Structures', 'demo', 2, 84, 63, 49, '17.9805959', '79.5329481', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -1104,7 +1103,7 @@ CREATE TABLE IF NOT EXISTS `workshop_report` (
   `updated_on` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `status` int(11) DEFAULT NULL,
   PRIMARY KEY (`report_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=56 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=57 ;
 
 --
 -- Dumping data for table `workshop_report`
@@ -1142,7 +1141,8 @@ INSERT INTO `workshop_report` (`report_id`, `workshop_id`, `uid`, `participate_a
 (52, 0, 84, 122, 122, 'Outreach Schema.pdf', NULL, 'Outreach Schema.pdf', '04Gr Flr-Pooja Room 1.jpg', 0, 0, 0, 0, 0, 0, 0, 'DEMO', 'DEMO', '2015-08-25 06:58:20', '0000-00-00 00:00:00', 1),
 (53, 0, 84, 122, 122, 'Outreach Schema.pdf', NULL, 'Outreach Schema.pdf', '04Gr Flr-Pooja Room 1.jpg', 0, 0, 0, 0, 0, 0, 0, 'DEMO', 'demo', '2015-08-25 07:01:45', '0000-00-00 00:00:00', 1),
 (54, 0, 84, 122, 122, 'Outreach Schema.pdf', NULL, 'Outreach Schema.pdf', '04Gr Flr-Pooja Room 1.jpg', 0, 0, 0, 0, 0, 0, 0, 'DEMO', 'demo', '2015-08-25 07:02:31', '0000-00-00 00:00:00', 1),
-(55, 35, 84, 111, 11, 'Outreach Schema.pdf', NULL, 'Outreach Schema.pdf', 'Chrysanthemum.jpg', 0, 0, 0, 0, 0, 0, 0, 'DEMo', 'DEMO', '2015-08-25 07:09:49', '0000-00-00 00:00:00', 1);
+(55, 35, 84, 111, 11, 'Outreach Schema.pdf', NULL, 'Outreach Schema.pdf', 'Chrysanthemum.jpg', 0, 0, 0, 0, 0, 0, 0, 'DEMo', 'DEMO', '2015-08-25 07:09:49', '0000-00-00 00:00:00', 1),
+(56, 33, 84, 0, 0, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, '', '', '2015-08-26 11:58:50', '0000-00-00 00:00:00', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
