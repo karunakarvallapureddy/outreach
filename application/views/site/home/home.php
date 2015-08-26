@@ -7,7 +7,7 @@
         $('.counter').counterUp({
             delay: 10,
             time: 1000
-        });
+        });mail
     });
 </script>
 <script type="text/javascript">
@@ -32,7 +32,7 @@
 					<div class="icon-box-top">
 					<div class="value-disp">
 						<p align="left" class="value-list">
-							<span class="counter" style="display:inline-block; color:#fff;">150</span><span class="resu-top">WORKSHOPS RUN</span>
+							<span class="counter" style="display:inline-block; color:#fff;"><?php echo $nodalcenters; ?></span><span class="resu-top">WORKSHOPS RUN</span>
 						</p>
 						</div>
 					</div>
@@ -41,7 +41,7 @@
 					<div class="icon-box-top">
 						<div class="value-disp">
 						<p align="left" class="value-list">
-							<span class="counter" style="display: inline-block;color:#fff;">7,500</span><span class="resu-top">LABS TAKEN</span>
+							<span class="counter" style="display: inline-block;color:#fff;"><?php echo $labstakencount['labstaken']; ?></span><span class="resu-top">LABS TAKEN</span>
 						</p>
 					</div></div>
 				</div>
@@ -49,7 +49,7 @@
 					<div class="icon-box-top">
 						<div class="value-disp">
 						<p align="left" class="value-list">
-							<span class="counter" style="display: inline-block;color:#fff;">250</span><span class="resu-top">NODEL CENTERS
+							<span class="counter" style="display: inline-block;color:#fff;"><?php echo $workshoprun; ?></span><span class="resu-top">NODEL CENTERS
 
 </span>
 						</p>
@@ -102,7 +102,7 @@
 		if (empty($ses_data)){ ?>
 <div><h4 class="view-all-size portal-head">Portal Login </h4></div>
 
-<form action="<?php echo  base_url(); ?>Login" id="student_login"class="form-horizontal" method="post" name="student_login">
+<form action="<?php echo base_url(); ?>Login" id="student_login"class="form-horizontal" method="post" name="student_login">
 <div class="form-group margin-bottom-less">
 <div class="form-group margin-bottom-less">
 <label class="col-md-12  label-class">User Name:</label>
@@ -121,8 +121,8 @@
 <div class="form-group margin-bottom-less">
 <div class=" col-md-12  label-class" style="padding-left: 23px;padding-top: 15px">
 <input type="submit" id="submit" class="btn btn-primary orange-btn" value="Submit">
-<!--<a class="margin-forgot" href="<?php echo base_url(); ?>Forgot-Password
-Forgot-Password">Forgot Password</a>-->    
+<a class="margin-forgot" href="http://testingserver.website/outreach/
+Forgot-Password">.</a>
 </div>
 </div>
 

@@ -377,8 +377,6 @@ From the faculty and students of the participating institutes</span></div>
 		
  <script type="text/javascript">
 	$("#feedback1-<?php echo $workshopdata["workshop_id"]; ?>").click(function(){
-		//alert(1);
-		//$("#frn_rating").css('display','block');
 		if($('#reportnew-<?php echo $workshopdata["workshop_id"]; ?>').css('display') == 'none'){ 
 		   $('#reportnew-<?php echo $workshopdata["workshop_id"]; ?>').show('slow'); 
 		   $('#mew1-<?php echo $workshopdata["workshop_id"]; ?>').html("▼");
@@ -391,8 +389,6 @@ From the faculty and students of the participating institutes</span></div>
 </script>	
 <script type="text/javascript">
 	$("#feedback2-<?php echo $workshopdata["workshop_id"]; ?>").click(function(){
-		//alert(1);
-		//$("#frn_rating").css('display','block');
 		if($('#reportnew1-<?php echo $workshopdata["workshop_id"]; ?>').css('display') == 'none'){ 
 		   $('#reportnew1-<?php echo $workshopdata["workshop_id"]; ?>').show('slow'); 
 		   $('#mew2-<?php echo $workshopdata["workshop_id"]; ?>').html("▼");
@@ -545,19 +541,7 @@ From the faculty and students of the participating institutes</span></div>
 </div>
 	
 	
-										<!-- <div class="col-md-12 align-top-botm padding-top-tag">
-				
-				<div class="col-md-1">
-					Date			
-				</div>
-				
-				                <div class="col-md-2">Location</div>
-                <div class="col-md-1">Participants</div>
-                <div class="col-md-1">Experiments</div>
-                <div class="col-md-3 ">Participating Institutes</div>
-                <div class="col-md-2">Nodal Coordinator</div>
-				<div class="col-md-2">&nbsp;</div>
-			</div>-->
+							
 						<style>
 														
 tabs-below > .nav-tabs,
@@ -710,11 +694,10 @@ tabs-below > .nav-tabs,
           <li class="active"><a href="#a-<?php echo $workshopdata["workshop_id"]; ?>" data-toggle="tab" class="bgclr-nobg">Attendance sheets</a></li>
           <li ><a href="#b-<?php echo $workshopdata["workshop_id"]; ?>" data-toggle="tab" class="bgclr-nobg">College report</a></li>
           <li><a href="#c-<?php echo $workshopdata["workshop_id"]; ?>" data-toggle="tab" class="bgclr-nobg">Workshop Photos</a></li>
-          <!--<li><a href="#d" data-toggle="tab" class="bgclr-nobg">Comments</a></li>-->
         </ul>
         <div class="tab-content only-no-border">
          <div class="tab-pane active" id="a-<?php echo $workshopdata["workshop_id"]; ?>"><div style="float: right; margin-right: 50%;  ">
-         	<!--<img src="http://testingserver.website/outreach/uploads/attend_sheet/<?php //echo $workshopdata['upload_experiment_sheet']; ?>" width="250px" height="250px">--></div>
+			</div>
          	    	 
 <object data="<?php echo base_url(); ?>uploads/attend_sheet/<?php echo $workshopdata['upload_attend_sheet']; ?>" type="application/pdf" width="80%" height="250px">
   <p>Alternative text - include a link <a href="<?php echo base_url(); ?>uploads/attend_sheet/<?php echo $workshopdata['upload_experiment_sheet']; ?>">to the PDF!</a></p>
@@ -723,7 +706,7 @@ tabs-below > .nav-tabs,
          	
          <div class="tab-pane" id="b-<?php echo $workshopdata["workshop_id"]; ?>">
          	<div style="float: right; margin-right: 50%;  ">
-         		<!--<img src="http://testingserver.website/outreach/uploads/college_report/<?php echo $workshopdata['college_report']; ?>"width="250px" height="250px">--></div>
+				</div>
          		<object data="<?php echo base_url(); ?>uploads/college_report/<?php echo $workshopdata['college_report']; ?>" type="application/pdf" width="80%" height="250px">
   <p>Alternative text - include a link <a href="<?php echo base_url(); ?>uploads/college_report/<?php echo $workshopdata['college_report']; ?>">to the PDF!</a></p>
 </object>
@@ -742,7 +725,6 @@ tabs-below > .nav-tabs,
 			 
         <script type="text/javascript">
 	$("#feedback-<?php echo $workshopdata["workshop_id"]; ?>").click(function(){
-		//$("#frn_rating").css('display','block');
 		if($('#frn_comment-<?php echo $workshopdata["workshop_id"]; ?>').css('display') == 'none'){ 
 		   $('#frn_comment-<?php echo $workshopdata["workshop_id"]; ?>').show('slow'); 
 		   $('#mew-<?php echo $workshopdata["workshop_id"]; ?>').html("▼")

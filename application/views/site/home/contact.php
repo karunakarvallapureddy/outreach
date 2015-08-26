@@ -36,9 +36,7 @@
                                           <?php echo $recaptcha_html; ?> </div>
 										<input type="submit" id="submit" class="btn btn-primary" value="Submit">
 									</div>
-								</form>
-<!--
-								<span class="boxlink wowhideme "><a href=" " class="defaultbutton mainthemebgcolor"><i class="fa fa-link"></i></a></span>-->
+								</form>								<span class="boxlink wowhideme "><a href=" " class="defaultbutton mainthemebgcolor"><i class="fa fa-link"></i></a></span>-->
 							</div>
 						</div>
 						<div class="col-md-6">

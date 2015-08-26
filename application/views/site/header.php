@@ -19,7 +19,6 @@
 <link href="<?php echo base_url();?>site/media-query.css" rel="stylesheet">
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,500,600,700,700italic&amp;subset=latin,greek-ext,cyrillic,latin-ext,greek,cyrillic-ext,vietnamese' rel='stylesheet' type='text/css'/>
 
-<!--<link href='http://fonts.googleapis.com/css?family=Raleway:400,900,800,700,500,300,600,200,100' rel='stylesheet' type='text/css'/>-->
 <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
 
    <script type='text/javascript' src='<?php echo base_url();?>site/js/jquery.js'></script>
@@ -36,9 +35,7 @@
 		<div class="fixedmenu">
 			<div class="container">
 				<div class="row">
-					<a class="navbar-brand" href="<?php echo base_url();?>"><img src="<?php echo base_url();?>site/img/logo.png" alt="" width="124%" style="width: 150px;"></a>
-                   <!-- <h5 class="title-height1 blink" style="  text-align: left;  padding-right: 15px;"><a href="<?php echo base_url();?>Placements"><i>Companies are hiring now!</i></a></h5>-->
-					
+					<a class="navbar-brand" href="<?php echo base_url();?>"><img src="<?php echo base_url();?>site/img/logo.png" alt="" width="124%" style="width: 150px;"></a>					
                    <div class="col-md-10 less-padding login-widht align-right" align="right"><!-- nav-margin-top  -->
                    		
 						
@@ -50,10 +47,6 @@
 							
 		?>
 		<style>
-			
-
-
-<!--------------Krishna 20-07-2015--------------------->
 
 		</style>
 		
@@ -62,21 +55,19 @@
 		<li class="dropdown user"  id="header-user" style="list-style:none; float: right;">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							
-							
-							<img alt="" style="widht:40px;height:40px;" src="<?php echo base_url();?>images/outreach-profile-images/<?php echo $ses_data['profile_image']; ?>"  style="border-radius: 50%;">
-							
-							
-							
-							
 							<span class="username"><?php echo ucfirst($ses_data['name']); ?> </span>
 							<i class="fa fa-angle-down"></i>
+							<img alt="" style="widht:40px;height:40px;border-radius: 50px;"src="<?php echo base_url();?>images/outreach-profile-images/<?php echo $ses_data['profile_image']; ?>"  style="border-radius: 50%;">
+							
+							
+							
+							
+							
 						</a></br><?php if($ses_data['user_type']==1){ ?>
-						<!--<a  href="<?php echo base_url();?>nodal-coordinator-listing" style="font-size: 15px;">Manage Nodal Centers</a>	-->
 						<?php } ?>
 						
 		<ul class="dropdown-menu">
-							<!--<li><a href="<?php echo base_url();?>site/editProfile"><i class="fa fa-user"></i> My Profile</a></li>
-							<li><a href="<?php echo base_url();?>site/editProfile"><i class="fa fa-cog"></i> Account Settings</a></li>-->
+							
 							<li><a href="<?php echo base_url();?>Logout"><i class="fa fa-power-off"></i> Log Out</a></li>
 						</ul>
 						</li></div>
@@ -90,10 +81,7 @@
 					<div class="nav-top collapse navbar-collapse">
 						<ul id="main-menu" class="nav navbar-nav">
 					
-                            
-							
-                            <!--<li ><a data-target="#" href="<?php echo base_url();?>Contact">Contact</a></li>	-->						
-                          </ul>
+                                          </ul>
 					</div>
                     </nav>
 						
@@ -122,6 +110,6 @@
 		
     </div>
     	<div id="divaid1" style="text-align:center;font-size:14px;font-weight:600">
-		<?php if($ses_data['user_type']==1){  ?> <span > Welcome <?php echo ucfirst($ses_data['name']); ?>,	outrach Coordinator</span><?php }?>
+		<?php if($ses_data['user_type']==1){  ?> <span > Welcome <?php echo ucfirst($ses_data['name']); ?>, Outreach Coordinators</span><?php }?>
 		</div>
 </div>	

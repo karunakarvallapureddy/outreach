@@ -13,23 +13,11 @@ class Site extends CI_Controller {
 				$this->load->model('site/home_site_m');
 				$this->load->library('form_validation');
 		}
+
 /*
-	* @method site Home Page Index (Login page for outreach coordinator)   If coordinator session exist redirecting to profile else Login Page
-	* @param  Null 
-	* @return object  if success Home page
- * */
-		public function index() {
-			$ses_data=$this->session->userdata('user_details');
-			$this->load->view('site/header',$data);
-			$this->load->view('site/home/home',$data);
-			$this->load->view('site/footer',$data);
-					
-	}
-		
-/*
-	* @method  signin   Authenticating coordinator
-	* @param   Post Values
-	* @return object  if success coordinator Dashboard else Login View 
+	@method  signin   Authenticating coordinator
+	@param   Post Values
+	@return object  if success coordinator Dashboard else Login View 
 */
 		public function signin() {
 		$this->load->view('site/header',$data);
@@ -37,7 +25,7 @@ class Site extends CI_Controller {
 	    $this->form_validation->set_rules('password', 'Password', 'required|xss_clean');
 		if ($this->form_validation->run() == FALSE )
 		{
-			 $this->load->view('site/site/signin',$data);
+			 $this->load->view('site/home/signin',$data);
 		}
 		else if ($this -> input ->post())
 		{
@@ -45,7 +33,7 @@ class Site extends CI_Controller {
 		$res=$this->home_site_m->signin($postdata);
 		if($res==0){
 		$this->session->set_flashdata('msg', 'Invalid User Name or password');
-	     $this->load->view('site/site/signin',$data);
+	     $this->load->view('site/home/signin',$data);
 		}
 		else if($res==1){
 		$this->session->set_flashdata('msg', 'Please verify Your Email address for activation');
@@ -67,16 +55,16 @@ class Site extends CI_Controller {
 			$this->load->view('site/footer');
 	}
 /*
-		* @method  forgot password   
-		* @param  Post of email
-		* @return  object if success redirect to the view  with status
+		@method  forgot password   
+		@param  Post of email
+		@return  object if success redirect to the view  with status
 */
 public function forgot_password() {
 		$this->load->view('site/header',$data);
 	    $this->form_validation->set_rules('email', 'User Name', 'required|xss_clean');
 		if ($this->form_validation->run() == FALSE )
 		{
-			 $this->load->view('site/site/forgot_password',$data);
+			 $this->load->view('site/home/forgot_password',$data);
 		}
 		else if ($this -> input ->post())
 		{
@@ -84,7 +72,7 @@ public function forgot_password() {
 		$res=$this->home_site_m->check_email($email);
 		if($res==0){
 		$this->session->set_flashdata('msg', 'Invalid User Name');
-	     $this->load->view('site/site/forgot_password',$data);
+	     $this->load->view('site/home/forgot_password',$data);
 		}
 		else{
 		$pwd=rand(000000,999999);
@@ -118,52 +106,39 @@ public function forgot_password() {
 						$this->amazon_ses->message($message);//exit;
 					if($this->amazon_ses->send()){
 		$this->session->set_flashdata('msg', 'Please check Your Email to receive Password');
-	     $this->load->view('site/site/signin',$data);
+	     $this->load->view('site/home/signin',$data);
 		}
 		else{
 		$this->session->set_flashdata('msg', 'Your Request Failed.Please Re-Try.');
-	     $this->load->view('site/site/forgot_password',$data);
+	     $this->load->view('site/home/forgot_password',$data);
 		}
 		}
 		else{
 		$this->session->set_flashdata('msg', 'Your Request Failed.Please Re-Try.');
-	     $this->load->view('site/site/forgot_password',$data);
+	     $this->load->view('site/home/forgot_password',$data);
 		}
 		}
 	}
 			$this->load->view('site/footer');
 	}
 /*
-	* @method  logout   killing admin session data
-	* @param  Null 
-	* @return object  redirect to index method if session killing
+	@method  logout   killing admin session data
+	@param  Null 
+	@return object  redirect to index method if session killing
  */	
 		public function logout(){
 			$this->session->unset_userdata('user_details');
 			$this->session->sess_destroy();
+			// $this->bootstrap->unsetUserCookie();
 			redirect(base_url(),'refresh');
 		}
 /*
-	* @method profile 
-	* @param  Post Values 
-	* @return object  if success redirect to profile page
-*/
-	public function profile() {
-				$ses_data=$this->session->userdata('user_details');
-				if (empty($ses_data)){
-				redirect('Login');
-				}
-				$data['student_details']=$ses_data;
-				$this->load->view('site/header',$data);
-			    $this->load->view('site/site/change_profile',$data);
-				$this->load->view('site/footer');
-		}
-/*
-	* @method authentic_coordinator 
-	* @param  Post Values 
-	* @return object  if success profile page
+	@method authentic_coordinator 
+	@param  Post Values 
+	@return object  if success profile page
 */
 	public function authentic_coordinator(){
+		
 							$ses_data=$this->session->userdata('user_details');
 							 if (empty($ses_data)){
 							redirect('Login');
@@ -192,6 +167,7 @@ public function forgot_password() {
 										$demoa = $data['get_workshop_history']=$this->home_site_m->getWorkshopHistoryNodal();
 									
 														$data['get_workshop_upcoming1']=$this->home_site_m->getupcomingWorkshop();
+														//$data['get_workshop_upcoming12']=$this->home_site_m->getupcomingWorkshop1();
 										$this->load->view('site/header',$data);
 							$this->load->view('site/nodal-coordinator/nodal_workshop.php',$data);
 						    $this->load->view('site/footer');	
@@ -201,9 +177,9 @@ public function forgot_password() {
 					}
 			}	
 /*
-	* @method manage_workshop 
-	* @param  Post Values 
-	* @return object  if success redirecting to manage workshop  page
+	@method manage_workshop 
+	@param  Post Values 
+	@return object  if success redirecting to manage workshop  page
 */		
 		public function manage_workshop(){
 			$ses_data=$this->session->userdata('user_details');
@@ -216,7 +192,9 @@ public function forgot_password() {
 $data['get_name']=$this->home_site_m->getnames();
 $data['get_getworkshopgr']=$this->home_site_m->getworkshopgr();
 $data['getworkshopcreated']=$this->home_site_m->getworkshopcreated();
-	$data['get_workshop1']=$this->home_site_m->get_nodal();	
+	$data['get_workshop1']=$this->home_site_m->get_nodal();
+$data['view_reports']=$this->home_site_m->getViewReport($inputdata);	
+/* $data['nodalcentercountmanage']=$this->home_site_m->nodalcentercountmanage($inputdata);	 */
 			//echo "<pre>";print_r($data['get_workshop_history']);exit;
 			$postdata=$this -> input ->post();
 				$res=$this->home_site_m->profileedit($postdata);
@@ -227,28 +205,39 @@ $data['getworkshopcreated']=$this->home_site_m->getworkshopcreated();
 				}
 		}
 /*
-	* @method  addNodal   Create nodal Page
-	* @param   Post Values
-	* @return object  if success redirect to Nodal Listing View with Success Message else Create Nodal View 
+	@method  addNodal   Create nodal Page
+	@param   Post Values
+	@return object  if success redirect to Nodal Listing View with Success Message else Create Nodal View 
  */
 	 	
 
 	public function addNodal(){
+		$ses_data=$this->session->userdata('user_details');
+				if (empty($ses_data)){
+				redirect('Login');
+				}
 		$this->load->view('site/header',$data);
 		$this->load->view('site/outreachcoordinator/addnodlcenter',$data);
 	    $this->load->view('site/footer');
 		
 	}
 /*
-	* @method  nodalCoordinatorListing  
-	* @param   
-	* @return object  if success redirect to nodal coordinator Listing View
+	@method  nodalCoordinatorListing  
+	@param   
+	@return object  if success redirect to nodal coordinator Listing View
  */	
 	public function nodalCoordinatorListing(){
+		$ses_data=$this->session->userdata('user_details');
+				if (empty($ses_data)){
+				redirect('Login');
+				}
 	$data['get_workshop']=$this->home_site_m->get_nodal();	
 									 $this->load->view('site/header',$data);
 									 $this->load->view('site/outreachcoordinator/outreachcoordinatorview',$data);
 						   			 $this->load->view('site/footer');
 	}
-
+	
+/* End of file welcome.php */
+/* Location: ./application/controllers/site.php */
+	
 }

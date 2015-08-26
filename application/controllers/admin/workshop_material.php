@@ -57,7 +57,7 @@ class Workshop_material extends CI_Controller
         
         $workshop_materialData['workshop_material_details']=$this->workshop_material_m->getworkshop_material($id="",$limit,$offset);
         $workshop_materialData['pagination'] = $this->my_pagination->create_links();
-		$this->layout->view('workshop_material/view',$workshop_materialData);
+		$this->layout->view('admin/workshop_material/view',$workshop_materialData);
 	}
 	/*
 		@method  add   Create workshop material Page
@@ -72,7 +72,7 @@ class Workshop_material extends CI_Controller
 		$this->form_validation->set_error_delimiters('<span class="error">', '</span>');
 		if ($this->form_validation->run() == FALSE )
 		{
-			$this->layout->view('workshop_material/add',$workshop_materialData);
+			$this->layout->view('admin/workshop_material/add',$workshop_materialData);
 		}
 		else if ($this -> input ->post())
 		{
@@ -102,12 +102,12 @@ class Workshop_material extends CI_Controller
 					}
 					else{
 		$this->session->set_flashdata('msg', 'Please upload Valid Format');
-		$this->layout->view('workshop_material/add',$workshop_materialData);
+		$this->layout->view('admin/workshop_material/add',$workshop_materialData);
 		}
 					}
 					else{
 		$this->session->set_flashdata('msg', 'Please upload document');
-		$this->layout->view('workshop_material/add',$workshop_materialData);
+		$this->layout->view('admin/workshop_material/add',$workshop_materialData);
 		}
 
 			}
@@ -147,7 +147,7 @@ class Workshop_material extends CI_Controller
 					}
 					else{
 					$this->session->set_flashdata('msg', 'Please upload Valid Format');
-		    $this->layout->view('workshop_material/edit',$workshop_materialData);
+		    $this->layout->view('admin/workshop_material/edit',$workshop_materialData);
 					}
 			}
 					else{
@@ -178,7 +178,7 @@ public function detailview() {
 	$id=base64_decode($this->uri->segment(4));
 	$workshop_materialData['menu'] = "documents";
 		$workshop_materialData['workshop_material']=$this->workshop_material_m->getworkshop_material($id);
-			$this->layout->view('workshop_material/detailview',$workshop_materialData);
+			$this->layout->view('admin/workshop_material/detailview',$workshop_materialData);
 			}
 			
 		

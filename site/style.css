@@ -4813,6 +4813,7 @@ border-top-right-radius: 8px;
 	color:#3969ff;
 	font-size:14px;
 	text-decoration:underline;
+	cursor: pointer;
 	}
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover{
 	border-left: 1px solid #eee;

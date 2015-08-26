@@ -56,7 +56,7 @@ class Guidance_metirial extends CI_Controller
         
         $guidance_metirialData['guidance_metirial_details']=$this->guidance_metirial_m->getguidance_metirial($id="",$limit,$offset);
         $guidance_metirialData['pagination'] = $this->my_pagination->create_links();
-		$this->layout->view('guidance_metirial/view',$guidance_metirialData);
+		$this->layout->view('admin/guidance_metirial/view',$guidance_metirialData);
 	}
 	/*
 		@method  add   Create guidance material Page
@@ -71,7 +71,7 @@ class Guidance_metirial extends CI_Controller
 		$this->form_validation->set_error_delimiters('<span class="error">', '</span>');
 		if ($this->form_validation->run() == FALSE )
 		{
-			$this->layout->view('guidance_metirial/add',$guidance_metirialData);
+			$this->layout->view('admin/guidance_metirial/add',$guidance_metirialData);
 		}
 		else if ($this -> input ->post())
 		{
@@ -101,12 +101,12 @@ class Guidance_metirial extends CI_Controller
 					}
 					else{
 		$this->session->set_flashdata('msg', 'Please upload Valid Format');
-		$this->layout->view('guidance_metirial/add',$guidance_metirialData);
+		$this->layout->view('admin/guidance_metirial/add',$guidance_metirialData);
 		}
 					}
 					else{
 		$this->session->set_flashdata('msg', 'Please upload document');
-		$this->layout->view('guidance_metirial/add',$guidance_metirialData);
+		$this->layout->view('admin/guidance_metirial/add',$guidance_metirialData);
 		}
 
 			}
@@ -127,7 +127,7 @@ class Guidance_metirial extends CI_Controller
 		$this->form_validation->set_error_delimiters('<span class="error">', '</span>');
 		if ($this->form_validation->run() == FALSE )
 		{
-			$this->layout->view('guidance_metirial/edit',$guidance_metirialData);
+			$this->layout->view('admin/guidance_metirial/edit',$guidance_metirialData);
 		}
 		else if ($this -> input ->post())
 		{
@@ -146,7 +146,7 @@ class Guidance_metirial extends CI_Controller
 					}
 					else{
 					$this->session->set_flashdata('msg', 'Please upload Valid Format');
-		    $this->layout->view('guidance_metirial/edit',$guidance_metirialData);
+		    $this->layout->view('admin/guidance_metirial/edit',$guidance_metirialData);
 					}
 			}
 					else{
@@ -177,7 +177,7 @@ public function detailview() {
 	$id=base64_decode($this->uri->segment(4));
 	$guidance_metirialData['menu'] = "documents";
 		$guidance_metirialData['guidance_metirial']=$this->guidance_metirial_m->getguidance_metirial($id);
-			$this->layout->view('guidance_metirial/detailview',$guidance_metirialData);
+			$this->layout->view('admin/guidance_metirial/detailview',$guidance_metirialData);
 			}
 			
 			/*

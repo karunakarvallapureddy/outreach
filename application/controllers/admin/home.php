@@ -23,7 +23,7 @@ class home extends CI_Controller {
 	
 		if ( $logged === FALSE)
 		{
-			$this->load->view('home/login_v');
+			$this->load->view('admin/home/login_v');
 		}
 		else
 		{
@@ -46,7 +46,7 @@ class home extends CI_Controller {
 		else
 		{
 			$result['msg'] = 'The E-mail or Password you entered is incorrect';
-			$this->load->view('home/login_v',$result);
+			$this->load->view('admin/home/login_v',$result);
 		}
 	}
 
@@ -64,7 +64,7 @@ class home extends CI_Controller {
 			$home_page_data['msg']=$this->session->flashdata('msg');
 		}
 		$home_page_data['profile_details'] = element(0,$this->homemodel->getAdmin($session_data['admin_id']));
-		$this->layout->view('home/profile_v',$home_page_data);
+		$this->layout->view('admin/home/profile_v',$home_page_data);
 	}
 	/*
 		@method  editProfile   Updating outreach admin Profile
@@ -101,7 +101,7 @@ class home extends CI_Controller {
 		$home_page_data['profile_details'] = element(0,$this->homemodel->getAdmin($session_data['admin_id'],$session_data['permission_id']));
 	   if($this->form_validation->run() == FALSE)
 	   { 
-			$this->layout->view('home/editProfile',$home_page_data);
+			$this->layout->view('admin/home/editProfile',$home_page_data);
 	   }
 	   else
 	   {
@@ -137,13 +137,13 @@ class home extends CI_Controller {
 					else
 					{
 						$home_page_data['msg'] = "Sorry try again";
-						$this->layout->view('home/editProfile',$home_page_data);
+						$this->layout->view('admin/home/editProfile',$home_page_data);
 					}
 				}
 				else
 				{
 					$home_page_data['msg'] = "File type not allowed";
-					$this->layout->view('home/editProfile',$home_page_data);
+					$this->layout->view('admin/home/editProfile',$home_page_data);
 				}
 			}
 			else
@@ -157,7 +157,7 @@ class home extends CI_Controller {
 				else
 				{
 					$home_page_data['msg'] = "Sorry try again";
-					$this->layout->view('home/editProfile',$home_page_data);
+					$this->layout->view('admin/home/editProfile',$home_page_data);
 				} 
 			}
 	   }
@@ -199,7 +199,7 @@ class home extends CI_Controller {
 		$profile_details = element(0,$this->homemodel->getAdmin($session_data['admin_id']));
 	   if($this->form_validation->run() == FALSE)
 	   { 
-			$this->layout->view('home/change_password_v',$home_page_data);
+			$this->layout->view('admin/home/change_password_v',$home_page_data);
 	   }
 	   else
 	   {
@@ -208,12 +208,12 @@ class home extends CI_Controller {
 			if($curr_password == $new_password)
 			{
 				$home_page_data['msg'] = "Existing password and New Password is not be the same";
-				$this->layout->view('home/change_password_v',$home_page_data);
+				$this->layout->view('admin/home/change_password_v',$home_page_data);
 			}
 			if($curr_password != $profile_details['password'])
 			{
 				$home_page_data['msg'] = "Existing password is wrong";
-				$this->layout->view('home/change_password_v',$home_page_data);
+				$this->layout->view('admin/home/change_password_v',$home_page_data);
 			}
 			else
 			{
@@ -233,7 +233,7 @@ class home extends CI_Controller {
 				else
 				{
 					$home_page_data['msg'] = "Sorry try again";
-					$this->layout->view('home/change_password_v',$home_page_data);
+					$this->layout->view('admin/home/change_password_v',$home_page_data);
 				} 
 			}
 	   
@@ -256,7 +256,7 @@ class home extends CI_Controller {
 		 if($this->session->flashdata('msg')){
 			$home_page_data['msg']=$this->session->flashdata('msg');
 		}
-  		 $this->layout->view('home/dashboard_v', $home_page_data);
+  		 $this->layout->view('admin/home/dashboard_v', $home_page_data);
 	}
 	
 	/* 
@@ -285,7 +285,7 @@ class home extends CI_Controller {
 				}
 		}
 		$this->load->library('my_pagination');
-		$config['base_url'] = base_url().'home/coordinator';
+		$config['base_url'] = base_url().'admin/home/coordinator';
 		$config['total_rows'] = count($this->homemodel->getCoordinator());
 		$config['per_page'] = 10;
 		$config['full_tag_open'] = '<div id = "datatable2_paginate" class="dataTables_paginate paging_bs_full "><ul class="pagination">';
@@ -306,7 +306,7 @@ class home extends CI_Controller {
 		$home_page_data['coordinatorList']=$this->homemodel->getcoordinator($id="",$limit,$offset);
 		$home_page_data['pagination'] = $this->my_pagination->create_links();
 		
-		$this->layout->view('coordinator/coordinatorList',$home_page_data);
+		$this->layout->view('admin/coordinator/coordinatorList',$home_page_data);
 	}
 
 	/*
@@ -323,7 +323,7 @@ class home extends CI_Controller {
 		
 		if ($this->form_validation->run() == FALSE )				//if validates,  adding.
 		{
-			$this->layout->view('coordinator/addCoordinator',$home_page_data);
+			$this->layout->view('admin/coordinator/addCoordinator',$home_page_data);
 		}
 		else
 		{
@@ -398,7 +398,7 @@ mail($to,$subject,$message);
 		$home_page_data['coordinatorList'] = element(0,$this->homemodel->getcoordinator($hidden_coordinator_id));
 		if ($this->form_validation->run() == FALSE )				
 		{
-			$this->layout->view('coordinator/editCoordinator',$home_page_data);
+			$this->layout->view('admin/coordinator/editCoordinator',$home_page_data);
 		}
 		else
 		{

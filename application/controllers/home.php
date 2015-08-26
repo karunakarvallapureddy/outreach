@@ -13,34 +13,28 @@ class Home extends CI_Controller
 		$this->load->library(array('form_validation','session','Layout'));
 		$this->load->helper(array('url','html','form')); 
 	}
-	
-	
-	 /**
-      * index method
-      *
-      * @param Null.
-      *
-      * @return object if success  redirect to  Homepage
-      */
-
+/*
+	@method   Index (outreach home page)  
+	@param   Null 
+	@return  object if success  redirect to  Homepage
+*/
 	public function index() {
+		//echo "ima here";
 		$data['get_workshop_upcoming']=$this->home_site_m->getHomeWorkshop();
+		$data['nodalcenters']=$this->home_site_m->nodalcenterscount();
+		$data['workshoprun']=$this->home_site_m->workshopruncount();
+		$data['labstakencount']=$this->home_site_m->labstakencount();
 		 $data['mapaa']=$this->home_site_m->displayMap();
 		$this->load->view('site/header',$data);
 			$this->load->view('site/home/home',$data);
 			$this->load->view('site/footer',$data);
 					
 	}
-	
-	 /**
-      * This method sets a description.
-      *
-      * @param Post Values.
-      *
-      * @return object if success  redirect to  contact page
-      */
-
-
+/*
+	@method   contact 
+	@param    Post Values 
+	@return  object if success  redirect to  contact page
+*/	
 	public function contact() {
 	 $this->load->library('recaptcha');
 	 $data['recaptcha_html'] = $this->recaptcha->recaptcha_get_html();
@@ -79,14 +73,11 @@ class Home extends CI_Controller
                         }
 	$this->load->view('site/footer',$data);	
 	}
-	/**
-      * this is the cms method.
-      *
-      * @param Null.
-      *
-      * @return object if success  redirect to  about outreach page
-      */
-
+/*
+	@method   cms 
+	@param   Null
+	@return  object if success  redirect to  about outreach page
+*/		
 	public function cms($id)
 	{
 		$id=str_replace("_","-",str_replace("-"," ",$id));
@@ -98,17 +89,17 @@ class Home extends CI_Controller
 			$this->load->view('site/footer',$data);
 		
 	}
-	/**
-      *  addWorkshop 
-      *
-      * @param Post Values.
-      *
-      * @return object  if success redirect to addWorkshop Listing View with Success Message else Create addWorkshop View
-      */
-
-		
+/*
+	@method  addWorkshop   
+	@param   Post Values
+	@return object  if success redirect to addWorkshop Listing View with Success Message else Create addWorkshop View 
+*/	
 		public function addWorkshop()
 	{	
+	$ses_data=$this->session->userdata('user_details');
+				if (empty($ses_data)){
+				redirect('Login');
+				}
 	$inputdata = $this->input->post();	
 			$res=$this->home_site_m->addWorkshop1($inputdata);
 				if($res){
@@ -116,17 +107,17 @@ class Home extends CI_Controller
 					redirect('nodal-coordinator',"refresh");
 					}			
 	}
-	
-	/**
-      *  addNodal 
-      *
-      * @param Post Values.
-      *
-      * @return object  if success redirect to Create addNodal View 
-      */
-	
+/*
+	@method  addNodal   
+	@param   Post Values
+	@return object  if success redirect to Create addNodal View 
+*/		
 		 public function addNodal($value='')
 	{
+		$ses_data=$this->session->userdata('user_details');
+				if (empty($ses_data)){
+				redirect('Login');
+				}
 		$inputdata = $this->input->post();
 		$res=$this->home_site_m->addNodal($inputdata);
 		if($res){
@@ -134,16 +125,17 @@ class Home extends CI_Controller
 		}
 			
 	}
-		/**
-      *  addNodal 
-      *
-      * @param Post Values.
-      *
-      * @return object  if success redirect to addNodal Listing View with Success Message else Create addNodal View  
-      */
-		
+/*
+	@method  addNodal   
+	@param   Post Values
+	@return object  if success redirect to addNodal Listing View with Success Message else Create addNodal View 
+*/		
 	public function addNodalcenter()
 	{
+		$ses_data=$this->session->userdata('user_details');
+				if (empty($ses_data)){
+				redirect('Login');
+				}
 			$postdata = $this->input->post();
 			
 					$target_dir = 'uploads/mou/';
@@ -158,22 +150,41 @@ $upload_attend_sheet=$_FILES["mou"]["name"];
 			{
 				 $this->load->library('email');
 				$this->email->to($postdata['email']);
-				$this->email->from('noreply* @outreach.com');
+				$this->email->from('noreply@outreach.com');
 				$this->email->subject('Your Nodal  account Password');
-				$message = "Hi								
-					Your Nodal Coordinator Email-id is : ".$postdata['email']."
-					Your Nodal Coordinator  Password is : ".$postdata['password']."
-					Thanks & Regards ,
-					Outreach Team
-					 "; 
-					 $headers = "From: admin@outreach.com";
+				$message= "<html><head><META http-equiv='Content-Type' content='text/html; charset=utf-8'>
+                                   </head><body>
+                                      <div style='margin:0;padding:0'>
+ 	                                <table border='0' cellspacing='0' cellpadding='0'>
+    	                           <tbody>
+								   <tr>
+				                        <td valign='top'><p> Hi Nodal Coordinator,</p></td>
+		                           </tr>
+		                           <tr>
+				                        <td valign='top'><p> Your   follow the below details to login</p></td>
+		                           </tr>
+		                          <tr>
+				                       <td valign='top'><p><strong>User Name :</strong> ".$postdata['email']."</p></td>
+		                          </tr>
+								  <tr>
+				                       <td valign='top'><p><strong>Password :</strong> ".$postdata['password']."</p></td>
+		                          </tr>
+		                    </tbody>
+	                    </table>  
+                     </div>
+                    </body></html>";
 				$this->email->message($message);
 				$this->email->send();
-				
+				//$headers = "From: admin@outreach.com";
 				
 				$to = $postdata['email'];
 $subject = "Your Nodal  account Password";
+//$txt = "Hello world!";
+//$headers = "From: webmaster@example.com" . "\r\n" .
+//"CC: somebodyelse@example.com";
 
+$headers  = 'MIME-Version: 1.0' . "\r\n";
+$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 mail($to,$subject,$message,$headers);
 				
 				$page = ucfirst($this -> input -> post('las_name'))." has been added. ";
@@ -187,37 +198,39 @@ mail($to,$subject,$message,$headers);
 				redirect('nodal-coordinator-listing', 'refresh'); // on failure   				
 			}
 	}
-	/**
-      *  editWorkshop   Updating edit Workshop Page 
-      *
-      * @param workshop material Page Id.
-      *
-      * @return object  if success redirect to editWorkshop View   
-      */
-
+/*
+		@method  editWorkshop   Updating edit Workshop Page
+		@param  workshop material Page Id 
+		@return object  if success redirect to editWorkshop View 
+*/	
 	 public function editWorkshop($value='')
 	{
+		$ses_data=$this->session->userdata('user_details');
+				if (empty($ses_data)){
+				redirect('Login');
+				}
 	 $inputdata = $this->uri->segment(3); 
 	 $data['editWorkshop1']= $this->home_site_m->editWorkshop($inputdata);
 		if($data){
 					$this->load->view('site/header',$data);
-		$this->load->view('site/home/editWorkshop',$data);
+		$this->load->view('site/nodal-coordinator/editWorkshop',$data);
 	    $this->load->view('site/footer');
 		}else{
 			redirect('nodal-coordinator',"refresh");
 		}
 			
 	}
-	/**
-      *  updateWorkshop 
-      *
-      * @param Post Values
-      *
-      * @return object  if success redirect to Workshop  Listing View with Success Message else editWorkshop View  
-      */
-
+/*
+	@method  updateWorkshop   
+	@param    Post Values
+	@return object  if success redirect to Workshop  Listing View with Success Message else editWorkshop View 
+*/	
 	public function updateWorkshop($value='')
 	{
+		$ses_data=$this->session->userdata('user_details');
+				if (empty($ses_data)){
+				redirect('Login');
+				}
 		$inputdata = $this->input->post();
 		$res=$this->home_site_m->updateWorkshop($inputdata);
 		if($res){
@@ -225,35 +238,34 @@ mail($to,$subject,$message,$headers);
 			redirect('nodal-coordinator',"refresh");
 		}
 	}
-	/**
-      *   deleteWorkshop  (changing status) 
-      *
-      * @param Workshop id 
-      *
-      * @return object  if success redirect to Workshop  Listing View listing  
-      */
-
-	
+/*
+	@method  deleteWorkshop  (changing status)
+	@param  Workshop id 
+	@return object  if success redirect to Workshop  Listing View listing
+ */	
 	public function deleteWorkshop($value='')
 	{
+		$ses_data=$this->session->userdata('user_details');
+				if (empty($ses_data)){
+				redirect('Login');
+				}
 		$inputdata = $this->uri->segment(3); 
 		$res=$this->home_site_m->deleteWorkshop($inputdata);
 		if($res){
 			redirect('nodal-coordinator',"refresh");
 		}
 	}
-	/**
-      *   activeworkshop  (changing status)
-      *
-      * @param  Workshop id 
-      *
-      * @return object  if success redirect to Workshop  Listing View listing 
-      */
-
-
-
+/*
+	@method  activeworkshop  (changing status)
+	@param  Workshop id 
+	@return object  if success redirect to Workshop  Listing View listing
+ */	
 	public function activeworkshop($value='')
 	{
+		$ses_data=$this->session->userdata('user_details');
+				if (empty($ses_data)){
+				redirect('Login');
+				}
 		 $inputdata = $this->uri->segment(3); 
 		// echo $inputdata;exit;
 		$res=$this->home_site_m->activeworkshop($inputdata);
@@ -261,52 +273,49 @@ mail($to,$subject,$message,$headers);
 			redirect('manage-workshop',"refresh");
 		}
 	}
-	
-	/**
-      *   viewReport    If user session exist redirecting to detail view page else Login Page
-      *
-      * @param  Post Values
-      *
-      * @return object detail view  Listing   else Login View  
-      */
-
+/*
+		@method  viewReport    If user session exist redirecting to detail view page else Login Page
+		@param  Post Values
+		@return object detail view  Listing   else Login View 
+ */
 	public function viewReport(){
+		$ses_data=$this->session->userdata('user_details');
+				if (empty($ses_data)){
+				redirect('Login');
+				}
 		$inputdata = $this->uri->segment(3); 
 		$data['view_reports']=$this->home_site_m->getViewReport($inputdata);
 		$this->load->view('site/header',$data);
 		$this->load->view('site/outreachcoordinator/viewReport',$data);
 	    $this->load->view('site/footer');
 	}
-	
-		/**
-      *   hostoryViewReport    If user session exist redirecting to history View Report  page else Login Page
-      *
-      * @param  Post Values
-      *
-      * @return object detail view  Listing   else Login View   
-      */
-
-
+/*
+		@method  hostoryViewReport    If user session exist redirecting to history View Report  page else Login Page
+		@param  Post Values
+		@return object detail view  Listing   else Login View 
+ */
 	public function hostoryViewReport(){
+		$ses_data=$this->session->userdata('user_details');
+				if (empty($ses_data)){
+				redirect('Login');
+				}
 		$inputdata = $this->uri->segment(3); 
 		$data['view_reports']=$this->home_site_m->getViewReport($inputdata);
 		$this->load->view('site/header',$data);
 		$this->load->view('site/outreachcoordinator/hostoryViewReport',$data);
 	    $this->load->view('site/footer');
 }
-
-
-		/**
-      *   deleteNodalcenter   deleting Nodalcenter (changing status)
-      *
-      * @param  deleteNodalcenter id 
-      *
-      * @return object  if success redirect to workshop  listing   
-      */
-
-
+/*
+		@method  deleteNodalcenter   deleting Nodalcenter (changing status)
+		@param  deleteNodalcenter id 
+		@return object  if success redirect to workshop  listing
+ */
 	public function deleteNodalcenter()
 	{
+		$ses_data=$this->session->userdata('user_details');
+				if (empty($ses_data)){
+				redirect('Login');
+				}
 		$staff_id = base64_decode($this->uri->segment(3)); 
 		$result = $this->home_site_m->deleteNodalcenter($staff_id);
 		if($result > 0)			
@@ -322,17 +331,18 @@ mail($to,$subject,$message,$headers);
 			redirect('nodal-coordinator', 'refresh');			
 		}
 	}
-	/**
-      *   submitReports  
-      *
-      * @param  workshop id
-      *
-      * @return object  if success redirect to submit Reports  page   
-      */
-
+/*
+		@method  submitReports   
+		@param   workshop id
+		@return object  if success redirect to submit Reports  page
+ */	
 
 	 public function submitReports()
 	{
+		$ses_data=$this->session->userdata('user_details');
+				if (empty($ses_data)){
+				redirect('Login');
+				}
 	 $inputdata = $this->uri->segment(3); 
 	 $data['editWorkshop1']= $this->home_site_m->editWorkshop($inputdata);
 		if($data['editWorkshop1']){
@@ -352,17 +362,18 @@ mail($to,$subject,$message,$headers);
 		}
 		
 	}
-	/**
-      *   submitReport   (changing workshop status)
-      *
-      * @param  Post Values
-      *
-      * @return object  if success redirect to workshop page else submit Reports  page 
-      */
-
-
+/*
+		@method  submitReport   (changing workshop status)
+		@param   Post Values
+		@return object  if success redirect to workshop page else submit Reports  page
+ */	
  public function submitReport()
  {
+	 $ses_data=$this->session->userdata('user_details');
+				if (empty($ses_data)){
+				redirect('Login');
+				}
+	 
  	$inputdata = $this->input->post();
 	$report_data=$this->session->userdata('report_data');	
 	$uploads_dir = '/images/attend-files';
@@ -416,18 +427,16 @@ $upload_attend_sheet=$_FILES["upload_attend_sheet"]["name"];
 	
      
  }
- 
- 
- /**
-      *  approverepost   (changing workshop status)
-      *
-      * @param  Post Values
-      *
-      * @return object  if success redirect to workshop page 
-      */
-
-
+  /*
+		@method  approverepost   (changing workshop status)
+		@param   Post Values
+		@return object  if success redirect to workshop page 
+ */	
 public function approverepost(){
+	$ses_data=$this->session->userdata('user_details');
+				if (empty($ses_data)){
+				redirect('Login');
+				}
 $inputdata = $this->input->post();
 	$res=$this->home_site_m->approverepost_m($inputdata);
 		if($res){
@@ -438,4 +447,6 @@ $inputdata = $this->input->post();
 	
 }
 
+/* End of file home.php */
+/* Location: ./application/controllers/home.php */
 ?>

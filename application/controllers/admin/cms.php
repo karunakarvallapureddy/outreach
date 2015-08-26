@@ -61,7 +61,7 @@ class cms extends CI_Controller
         $cmsData['pagination'] = $this->my_pagination->create_links();
        
 		$cmsData['menu'] = "cms";
-		$this->layout->view('cms/cmsView',$cmsData);
+		$this->layout->view('admin/cms/cmsView',$cmsData);
 	}
 	
 	/*
@@ -83,7 +83,7 @@ class cms extends CI_Controller
 		
 		if ($this->form_validation->run() == FALSE )                //if validates,  adding.
         {
-        		$this->layout->view('cms/createCmsView',$cmsData);
+        		$this->layout->view('admin/cms/createCmsView',$cmsData);
         }
 		else
 		if(!empty($_POST)) { 
@@ -141,7 +141,7 @@ class cms extends CI_Controller
 
 		if ($this->form_validation->run() == FALSE ) {
 				$cmsData['cms_details']=$this->cmsmodel->cmsGetUpd($id);
-        		$this->layout->view('cms/updateCmsView',$cmsData);
+        		$this->layout->view('admin/cms/updateCmsView',$cmsData);
         } else {
 			if(!empty($_POST)) {
 			$post_data=$this->input->post();

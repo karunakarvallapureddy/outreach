@@ -1,5 +1,4 @@
 <!-- BEGIN FOOTER -->
-		<!--<div class="beforefooter"></div>-->
 		<footer id="colophon" class="site-footer " role="contentinfo">
 		<div class="footer">
 			<div class="container">
@@ -21,7 +20,7 @@
 								 <li class="right-infom footer-left"><a data-target="#" href="http://ideativedigital.com/outreach/Contact">Contact</a></li>
 							</ul>
 						</div>
-						<!--<div class="clearfix"></div>-->
+						
 					</div>
 					<!-- end col right -->                    
                     
@@ -183,7 +182,6 @@
 	background-position:top center; background-attachment:fixed;-webkit-background-size: cover;  -moz-background-size: cover;  -o-background-size: cover;  background-size: cover;background-repeat:no-repeat;}
 	body.boxed .fixedmenu {max-width:90%;}
 	</style>
-<script type='text/javascript' src='<?php echo base_url();?>site/demo/switcher2e46.js?ver=3.9.2'></script>
 </body>
 
 </html>

@@ -49,14 +49,7 @@
 
 				</div>
 
-				<div class="col-md-3  cms-gap">
-
-					<?php $this->load->view('site/side_bar'); ?>
-
-
-					<!-- #secondary -->
-
-				</div>
+				
 
 				<!-- .col-md-3 -->
 

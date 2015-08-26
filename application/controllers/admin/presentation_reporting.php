@@ -50,7 +50,7 @@ class presentation_reporting extends CI_Controller
         
         $presentation_reportingData['presentation_reporting_details']=$this->presentation_reporting_m->getpresentation_reporting($id="",$limit,$offset);
         $presentation_reportingData['pagination'] = $this->my_pagination->create_links();
-		$this->layout->view('presentation_reporting/view',$presentation_reportingData);
+		$this->layout->view('admin/presentation_reporting/view',$presentation_reportingData);
 	}
 	public function add() {
 		$presentation_reportingData['menu'] = "documents";
@@ -58,7 +58,7 @@ class presentation_reporting extends CI_Controller
 		$this->form_validation->set_error_delimiters('<span class="error">', '</span>');
 		if ($this->form_validation->run() == FALSE )
 		{
-			$this->layout->view('presentation_reporting/add',$presentation_reportingData);
+			$this->layout->view('admin/presentation_reporting/add',$presentation_reportingData);
 		}
 		else if ($this -> input ->post())
 		{
@@ -88,12 +88,12 @@ class presentation_reporting extends CI_Controller
 					}
 					else{
 		$this->session->set_flashdata('msg', 'Please upload Valid Format');
-		$this->layout->view('presentation_reporting/add',$presentation_reportingData);
+		$this->layout->view('admin/presentation_reporting/add',$presentation_reportingData);
 		}
 					}
 					else{
 		$this->session->set_flashdata('msg', 'Please upload document');
-		$this->layout->view('presentation_reporting/add',$presentation_reportingData);
+		$this->layout->view('admin/presentation_reporting/add',$presentation_reportingData);
 		}
 
 			}
@@ -109,7 +109,7 @@ class presentation_reporting extends CI_Controller
 		$this->form_validation->set_error_delimiters('<span class="error">', '</span>');
 		if ($this->form_validation->run() == FALSE )
 		{
-			$this->layout->view('presentation_reporting/edit',$presentation_reportingData);
+			$this->layout->view('admin/presentation_reporting/edit',$presentation_reportingData);
 		}
 		else if ($this -> input ->post())
 		{
@@ -128,7 +128,7 @@ class presentation_reporting extends CI_Controller
 					}
 					else{
 					$this->session->set_flashdata('msg', 'Please upload Valid Format');
-		    $this->layout->view('presentation_reporting/edit',$presentation_reportingData);
+		    $this->layout->view('admin/presentation_reporting/edit',$presentation_reportingData);
 					}
 			}
 					else{
@@ -154,7 +154,7 @@ public function detailview() {
 	$id=base64_decode($this->uri->segment(4));
 	$presentation_reportingData['menu'] = "documents";
 		$presentation_reportingData['presentation_reporting']=$this->presentation_reporting_m->getpresentation_reporting($id);
-			$this->layout->view('presentation_reporting/detailview',$presentation_reportingData);
+			$this->layout->view('admin/presentation_reporting/detailview',$presentation_reportingData);
 			}
 			
 			

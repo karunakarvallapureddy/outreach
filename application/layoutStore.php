@@ -99,9 +99,7 @@
 				<!-- BEGIN TOP NAVIGATION MENU -->					
 				<ul class="nav navbar-nav pull-right">
 					<!-- BEGIN USER LOGIN DROPDOWN -->
-					<!--<li class="dropdown" id="header-notification"></li>
-					<li class="dropdown" id="header-message"></li>
-					<li class="dropdown" id="header-tasks"></li> -->
+					
 					<li class="dropdown user" style="float:right" id="header-user">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							<?php $storeDetails = $this->session->userdata('storeDetails');?>
@@ -128,16 +126,7 @@
 <!-- SIDEBAR -->
 				<div id="sidebar" class="sidebar">
 					<div class="sidebar-menu nav-collapse">
-						<!--<div class="divide-20"></div>-->
-						<!-- SEARCH BAR -->
-							<!--<div id="search-bar">
-							<input class="search" type="text" placeholder="Search"><i class="fa fa-search search-icon"></i>
-						</div>-->
-						<!-- /SEARCH BAR -->
 						
-						<!-- SIDEBAR QUICK-LAUNCH -->
-						<!-- <div id="quicklaunch">
-						<!-- /SIDEBAR QUICK-LAUNCH -->
 						
 						<!-- SIDEBAR MENU -->
 						<ul>

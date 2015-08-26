@@ -403,7 +403,27 @@ public function getWorkshopMetirial()
 	 return  $query->result_array();
 	
 }
+public function workshopruncount(){
+	$query = $this->db->get_where('workshop',array('workshop_status'=>1)); 
+	return $query->num_rows();
+}
+public function nodalcenterscount(){
+	$query = $this->db->get_where('va_users',array('user_type'=>2)); 
+	return $query->num_rows();
+}
 
-
+public function labstakencount(){
+	$this->db->select('(SELECT SUM(va_users.experiments ) FROM va_users WHERE va_users.user_type=2) AS labstaken'); 
+	$query = $this->db->get('va_users');
+	return $query->row_array();
+	
+}
+/* public function nodalcentercountmanage(){
+	$ses_data=$this->session->userdata('user_details');
+	$this->db->select('(SELECT SUM(va_users.experiments ) FROM workshop WHERE va_users.user_type=2 and outreach_id=.'$ses_data['id']') AS labstaken'); 
+	$query = $this->db->get('va_users');
+	return $query->row_array();
+	
+} */
 }
 ?>

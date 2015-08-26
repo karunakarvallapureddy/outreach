@@ -41,7 +41,7 @@ class LogController extends CI_Controller {
 		$records=$this->logmodel->listAll($limit,$offset);	
 		$logdata['records']=$records->result_array();	
 		$logdata['pagination'] = $this->my_pagination->create_links();
-		$this->layout->view('log/logView',$logdata); 
+		$this->layout->view('admin/log/logView',$logdata); 
 		
 	}
 	
@@ -50,7 +50,7 @@ class LogController extends CI_Controller {
 	{
 		$logdata=array();	
 		$logdata['menu'] = "log";
-		$this->layout->view('log/add',$logdata); 
+		$this->layout->view('admin/log/add',$logdata); 
 		
 	}
 	
@@ -62,7 +62,7 @@ class LogController extends CI_Controller {
 			'content' => 'Content should go here; it is updated.'	
 		);
 		$logdata['menu'] = "log";
-		$this->layout->view('log/edit',$logdata);
+		$this->layout->view('admin/log/edit',$logdata);
 	}
 	
 	

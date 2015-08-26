@@ -254,8 +254,8 @@ tabs-below > .nav-tabs,
          	
          <div class="tab-pane" id="b">
          	<div >
-			<object data="<?php echo base_url(); ?>uploads/college_report/<?php echo $workshopdata['upload_attend_sheet']; ?>" type="application/pdf" width="50%" height="100%">
-  <p>Alternative text - include a link <a href="<?php echo base_url(); ?>uploads/college_report/<?php echo $workshopdata['upload_attend_sheet']; ?>">to the PDF!</a></p>
+			<object data="<?php echo base_url(); ?>uploads/college_report/<?php echo $workshopdata['college_report']; ?>" type="application/pdf" width="50%" height="100%">
+  <p>Alternative text - include a link <a href="<?php echo base_url(); ?>uploads/college_report/<?php echo $workshopdata['college_report']; ?>">to the PDF!</a></p>
 </object>
          		<!--<img src="http://ideativedigital.com/outreach/uploads/college_report/<?php echo $workshopdata['upload_attend_sheet']; ?>"width="250px" height="250px">--></div>
          		
@@ -279,10 +279,10 @@ tabs-below > .nav-tabs,
 </table>
          		</div>
          <div class="tab-pane" id="c">
-		 <object data="<?php echo base_url(); ?>/uploads/workshop_photos/<?php echo $workshopdata['upload_attend_sheet']; ?>" type="application/pdf" width="50%" height="100%">
+		<!-- <object data="<?php echo base_url(); ?>/uploads/workshop_photos/<?php echo $workshopdata['upload_attend_sheet']; ?>" type="application/pdf" width="50%" height="100%">
   <p>Alternative text - include a link <a href="<?php echo base_url(); ?>uploads/college_report/<?php echo $workshopdata['upload_attend_sheet']; ?>">to the PDF!</a></p>
-</object>
-		 <!--<img src="<?php //echo base_url(); ?>/uploads/workshop_photos/<?php //echo $workshopdata['upload_attend_sheet']; ?>" width="250px" height="250px">-->
+</object>-->
+		 <img src="<?php echo base_url(); ?>/uploads/workshop_photos/<?php echo $workshopdata['workshop_photos']; ?>" width="250px" height="250px">
 
 		 </div>
          <div class="tab-pane" id="d"><span>comments positive</span></br><?php echo $workshopdata['comments_positive']; ?><span>

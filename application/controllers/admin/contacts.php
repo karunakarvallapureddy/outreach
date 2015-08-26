@@ -99,7 +99,7 @@ class Contacts extends CI_Controller
         $contacts['contact_details']=$this->contacts_m->getcontacts($id="",$limit,$offset);
 
         $contacts['pagination'] = $this->my_pagination->create_links();
-		$this->layout->view('contacts/view',$contacts);
+		$this->layout->view('admin/contacts/view',$contacts);
 
 	}
 /*
@@ -115,7 +115,7 @@ public function detailview() {
 
 		$contactsData['contacts']=$this->contacts_m->getcontacts($id);
 
-			$this->layout->view('contacts/detailview',$contactsData);
+			$this->layout->view('admin/contacts/detailview',$contactsData);
 
 			}
 
