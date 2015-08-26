@@ -13,8 +13,16 @@ class presentation_reporting extends CI_Controller
 		$this->load->library(array('form_validation','session','Layout'));
 		$this->load->helper(array('url','html','form'));  // load url,html,form helpers optional
 		$this->load->model(array('presentation_reporting_m'));
-	}			
-	public function index() { 
+	}		
+/**
+     * presentation_reporting index   Listing presentation reporting
+     * @param string $presentation_reportingData
+     * @param string $id
+     * @param string $limit
+     * @param string $offset
+     * @return object presentation reporting Listing View 
+     */	
+	public function index($id="",$limit,$offset,$presentation_reportingData="") { 
 	
 		$presentation_reportingData['menu'] = "documents";
         $this->load->library('my_pagination');
@@ -52,7 +60,13 @@ class presentation_reporting extends CI_Controller
         $presentation_reportingData['pagination'] = $this->my_pagination->create_links();
 		$this->layout->view('admin/presentation_reporting/view',$presentation_reportingData);
 	}
-	public function add() {
+	/**
+     * add   Create presentation reporting page
+     * @param string $presentation_reportingData
+     * @param string $postdata
+     * @return object  if success redirect to presentation reporting  Listing View with Success Message else Create presentation reporting page View
+     */	
+	public function add($presentation_reportingData="",) {
 		$presentation_reportingData['menu'] = "documents";
 		$this->form_validation->set_rules('document_name', 'Name', 'required|xss_clean');
 		$this->form_validation->set_error_delimiters('<span class="error">', '</span>');
@@ -99,8 +113,13 @@ class presentation_reporting extends CI_Controller
 			}
 		}
 		
-		
-		public function edit() {
+			/**
+     *  edit   Updating presentation reporting page
+     * @param string $presentation_reportingData
+     * @param string $id,$postdata
+     * @return object  if success redirect to presentation reporting  Listing View with Success Message else Update presentation reporting View 
+     */	
+		public function edit($presentation_reportingData,$id,$postdata) {
 	$id=base64_decode($this->uri->segment(4));
 	$presentation_reportingData['menu'] = "documents";
 		$presentation_reportingData['certification']=$this->presentation_reporting_m->getpresentation_reporting($id);
@@ -149,6 +168,11 @@ class presentation_reporting extends CI_Controller
 
 			}
 }
+/**
+     *  detailview    If Admin session exist redirecting to presentation reporting  detail view page else Login Page
+     * @param string $presentation_reportingData
+     * @return  object detail view presentation reporting  Listing   else Login View 
+     */	
 public function detailview() {
 	error_reporting(0);
 	$id=base64_decode($this->uri->segment(4));
@@ -157,7 +181,11 @@ public function detailview() {
 			$this->layout->view('admin/presentation_reporting/detailview',$presentation_reportingData);
 			}
 			
-			
+				/**
+     *  Delete   deleting presentation reporting (changing status)
+     * @param string $id
+     * @return object  if success redirect to presentation reporting listing
+     */	
 public function Delete() {
 	$id=base64_decode($this->uri->segment(4));
 	$presentation_reportingData['menu'] = "documents";
@@ -172,6 +200,11 @@ public function Delete() {
 					redirect('admin/presentation_reporting/index');
 					}
 			}
+			/**
+     * loggedIn   check if admin session exists or not
+     * @param Null
+     * @return  object  redirect to index method if session not exits
+     */	
 	public function loggedIn()
 	{
 	   $logged = $this->session->userdata('adminDetails');

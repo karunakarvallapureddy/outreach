@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "home";
+$route['default_controller'] = "homeSite";
 
 $route['404_override'] = '';
 /*site*/
@@ -51,8 +51,8 @@ $route['Forgot-Password'] = "site/forgot_password";
 $route['Change-Password'] = "site/change_password";
 $route['Change-Password/(:any)'] = "site/change_password/$1";
 $route['Profile'] = "site/profile";
-$route['Contact'] = "home/contact";
-$route['Cms/(:any)'] = "home/cms/$1";
+$route['Contact'] = "homeSite/contact";
+$route['Cms/(:any)'] = "homeSite/cms/$1";
 /* End here */
 
 

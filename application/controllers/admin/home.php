@@ -12,11 +12,11 @@ class home extends CI_Controller {
 		$this->load->model(array('homemodel','logmodel'));
 		$this->load->library('form_validation');
 	}
-	 /*
-		@method  Home Page Index (Login page for outreach Admin)   If Admin session exist redirecting to dashboard else Login Page
-		@param  Null 
-		@return object  if success Dashboard else Login View 
-	 */
+	/**
+     * Home Page Index (Login page for outreach Admin)   If Admin session exist redirecting to dashboard else Login Page
+     * @param Null
+     * @return object  if success Dashboard else Login View 
+     */
 	public function index()
 	{
 		$logged = $this->session->userdata('adminDetails');
@@ -30,12 +30,13 @@ class home extends CI_Controller {
 			redirect("admin/home/dashboard");
 		}
 	}
-	 /*
-		@method  checkLogin   Authenticating Admin
-		@param   Post Values
-		@return object  if success Dashboard else Login View 
-	 */
-	public function check_login()
+		/**
+     * checkLogin   Authenticating Admin
+     * @param string $home_page_data
+     * @param string $result
+     * @return object  if success Dashboard else Login View 
+     */	
+	public function check_login($home_page_data="",$result="")
 	{
 		$home_page_data=$this->homemodel->login($this->input->post('email'),$this->input->post('password'));
         if($home_page_data!=0)
@@ -50,11 +51,12 @@ class home extends CI_Controller {
 		}
 	}
 
-	 /*
-		@method  profile   outreach admin Profile
-		@param   Null and Session admin id
-		@return  object Listing Admin Profile Details 
-	 */
+		/**
+     *  profile   outreach admin Profile
+     * @param string $home_page_data
+     * @return object Listing Admin Profile Details 
+     */	
+	
 	public function profile()
 	{
 		$this->loggedIn();
@@ -66,12 +68,14 @@ class home extends CI_Controller {
 		$home_page_data['profile_details'] = element(0,$this->homemodel->getAdmin($session_data['admin_id']));
 		$this->layout->view('admin/home/profile_v',$home_page_data);
 	}
-	/*
-		@method  editProfile   Updating outreach admin Profile
-		@param  Null and Session admin id
-		@return object if no Post values View page if post values exits and if it success redirect to Profile Page 
-	 */
-	public function editProfile()
+		/**
+     * editProfile   Updating outreach admin Profile
+     * @param string $home_page_data
+     * @param string $notification
+     * @return object if no Post values View page if post values exits and if it success redirect to Profile Page 
+     */	
+	
+	public function editProfile($home_page_data="",$notification="")
 	{
 		
 		$this->loggedIn();
@@ -162,14 +166,15 @@ class home extends CI_Controller {
 			}
 	   }
 	}
-	
-	/*
-		@method  changePassword   Changing Admin Password
-		@param   Null,Session Admin id and Password Post data
-		@return object  if success Dashboard else Change Password View 
-	 */
+	/**
+     * changePassword   Changing Admin Password
+     * @param string $home_page_data
+     * @param string $postdata
+     * @param string $notification
+     * @return object  if success Dashboard else Change Password View 
+     */	
 
-	public function changePassword()
+	public function changePassword($home_page_data="",$postdata="",$notification="")
 	{
 		
 		$this->loggedIn();
@@ -240,14 +245,12 @@ class home extends CI_Controller {
 	   }
 	
 	}
-	
-
-	 /*
-		@method  dashboard   outreach admin Dashboard after success login
-		@param  Null 
-		@return object Dashboard Page 
-	 */
-	public function dashboard()
+	/**
+     * dashboard   outreach admin Dashboard after success login
+     * @param string $home_page_data
+     * @return bject Dashboard Page
+     */	
+	public function dashboard($home_page_data="")
 	{
 		 $this->loggedIn();
 		 $home_page_data['menu'] = "dashboard";
@@ -258,13 +261,12 @@ class home extends CI_Controller {
 		}
   		 $this->layout->view('admin/home/dashboard_v', $home_page_data);
 	}
-	
-	/* 
-		@method  outreach coordinator  
-		@param  Null 
-		@return  object outreach coordinator Listing View
-	 */
-	public function coordinator()
+	/**
+     * dashboard   outreach coordinator 
+     * @param string $staff_filter_data
+     * @return  object outreach coordinator Listing View
+     */	
+	public function coordinator($staff_filter_data="")
 	{
 
 		$this->loggedIn();
@@ -308,13 +310,13 @@ class home extends CI_Controller {
 		
 		$this->layout->view('admin/coordinator/coordinatorList',$home_page_data);
 	}
-
-	/*
-		@method  addCoordinator   
-		@param   Post Values
-		@return object  if success redirect to outreach coordinator Listing  else add outreach coordinator View 
-	 */ 
-	public function addCoordinator()
+/**
+     * addCoordinator   
+     * @param string $home_page_data
+     * @param string $postdata
+     * @return  object  if success redirect to outreach coordinator Listing  else add outreach coordinator View 
+     */	
+	public function addCoordinator($message="",$home_page_data="",$postdata="")
 	{
 		$home_page_data['menu'] = "Coordinator";
 		//$home_page_data['superadminPermissionList'] =$this->homemodel->getPermissions();
@@ -375,12 +377,14 @@ mail($to,$subject,$message);
 			}
 		}
 	}
-	/*
-		@method  edit outreach Coordinator   Updating coordinator Data
-		@param  Coordinator id and  Post Values
-		@return object  if success redirect to outreach coordinator listing else outreach coordinator Edit View 
-	 */
-	public function editCoordinator()
+	/**
+     * edit outreach Coordinator   Updating coordinator Data   
+     * @param string $hidden_coordinator_id
+     * @param string $postdata
+     * @return  object  if success redirect to outreach coordinator listing else outreach coordinator Edit View
+     */	
+	
+	public function editCoordinator($hidden_coordinator_id="",$postdata="")
 	{
 		$this->loggedIn();
 		$home_page_data['menu'] = "staff";
@@ -423,12 +427,13 @@ mail($to,$subject,$message);
 			}
 		}
 	}
-	/*
-		@method  deleteCoordinator  deleting Coordinator (changing status)
-		@param  Coordinator id 
-		@return object  if success redirect to Coordinator listing
-	 */
-	public function deleteCoordinator()
+	/**
+     * deleteCoordinator  deleting Coordinator (changing status)
+     * @param string $staff_id
+     * @param string $admin_id
+     * @return  object  if success redirect to Coordinator listing
+     */	
+	public function deleteCoordinator($staff_id,$admin_id)
 	{
 		$this->loggedIn();
 		$staff_id = base64_decode($this->uri->segment(4));
@@ -451,12 +456,12 @@ mail($to,$subject,$message);
 			redirect('admin/home/coordinator', 'refresh'); // on failure   				
 		}
 	}
-	
-	/*
-		@method  loggedIn   check if admin session exists or not
-		@param  Null 
-		@return object  redirect to index method if session not exits
-	 */
+	/**
+     * loggedIn   check if admin session exists or not
+     * @param Null
+     * @return  object  redirect to index method if session not exits
+     */	
+
 	public function loggedIn()
 	{
 	   $logged = $this->session->userdata('adminDetails');
@@ -465,11 +470,6 @@ mail($to,$subject,$message);
 				redirect("admin", 'refresh');
 			}
 	}
-	/*
-		@method  logout   killing admin session data
-		@param  Null 
-		@return object  redirect to index method if session killing
-	 */
 	function logout()
 	{
 		$this->loggedIn();

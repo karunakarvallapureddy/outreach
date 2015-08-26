@@ -3,11 +3,10 @@
 	/**
 	* Login Controller for End users.
 	**/
-	 error_reporting(0);
-class Home extends CI_Controller 
+class homeSite extends CI_Controller 
 {
 	function __construct()
-	{
+	{ error_reporting(0);
 		parent::__construct();
 		$this->load->model('site/home_site_m');
 		$this->load->library(array('form_validation','session','Layout'));

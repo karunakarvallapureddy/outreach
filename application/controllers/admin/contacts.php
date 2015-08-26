@@ -26,13 +26,17 @@ class Contacts extends CI_Controller
 
 		$this->load->model(array('contacts_m','logmodel'));
 
-	}			
-/*
-		@method  Contacts Page Index    If Admin session exist redirecting to Contacts page else Login Page
-		@param  Null 
-		@return object outreach Contacts Listing View  else Login View 
- */
-	public function index() { 
+	}	
+/**
+     * Contacts Page Index    If Admin session exist redirecting to Contacts page else Login Page
+     * @param string $contacts
+     * @param string $id
+     * @param string $limit
+     * @param string $offset
+     * @param string $company_filter_data
+     * @return object outreach Contacts Listing View  else Login View
+     */
+	public function index($contacts="",$company_filter_data="",$id="",$limit="",$offset="") { 
 
 		$contacts['menu'] = "branch";
 
@@ -102,12 +106,14 @@ class Contacts extends CI_Controller
 		$this->layout->view('admin/contacts/view',$contacts);
 
 	}
-/*
-		@method  detailview    If Admin session exist redirecting to Contacts detail view page else Login Page
-		@param  Post Values
-		@return object detail view Contacts Listing   else Login View 
- */
-public function detailview() {
+/**
+     * detailview    If Admin session exist redirecting to Contacts detail view page else Login Page
+     * @param string $id
+     * @param string $contactsData
+     * @return object detail view Contacts Listing   else Login View
+     */	
+
+public function detailview($contactsData="",$id="") {
 
 	$id=base64_decode($this->uri->segment(4));
 
@@ -118,15 +124,14 @@ public function detailview() {
 			$this->layout->view('admin/contacts/detailview',$contactsData);
 
 			}
+			/**
+     *  Delete   deleting Contact (changing status)
+     * @param string $notification
+     * @param string $id
+     * @return object detail view Contacts Listing   else Login View
+     */	
 
- 
- /*
-		@method  Delete   deleting Contact (changing status)
-		@param  Contact id 
-		@return object  if success redirect to Contact listing
-	 */
-
-			public function Delete() {
+			public function Delete($id="",$notification="") {
 
 	$id=base64_decode($this->uri->segment(4));
 
@@ -159,7 +164,11 @@ public function detailview() {
 					}
 
 			}
-
+ /**
+     * loggedIn   check if admin session exists or not  
+     * @param  Null 
+     * @return object  redirect to index method if session not exits
+     */
 	public function loggedIn()
 
 	{

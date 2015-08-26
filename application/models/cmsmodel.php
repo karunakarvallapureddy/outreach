@@ -1,11 +1,23 @@
 <?php 
-	
 class Cmsmodel extends CI_Model
-{
+{/*
+  * Cmsmodel
+  * method 
+  * 
+  *
+  * 
+  */
 	function __construct() {
         parent::__construct();
     	}
-	
+		/**
+  * signin method:  Authenticating coordinator 
+  * Submits an HTTP POST method to server
+  * @param   $id 
+  * @param   $limit
+  * @param   $offset
+  * @return array  value
+  */
 	public function getCms($id="",$limit="",$offset="") {
 		if ($this->session->userdata('cms_filter_data') !== FALSE) {
 			   $filters=$this->session->userdata('cms_filter_data');
@@ -33,7 +45,6 @@ class Cmsmodel extends CI_Model
 						  ->from('va_cms')
 						  ->order_by('cms_id','desc')
 						  ->get();
-		//  echo $this->db->last_query();
 		return $query->result_array();
 	}
 	

@@ -15,14 +15,14 @@ class cms extends CI_Controller
 		$this->load->helper(array('url','html','form'));  // load url,html,form helpers optional
 		$this->load->model(array('cmsmodel'));
 	}	
-
-	/*
-		@method  CMS index   Listing outreach CMS
-		@param  URI Segment (@ pagination) 
-		@return object CMS Listing View 
-	 */
+ /**
+     * CMS index   Listing outreach CMS
+     * @param string $cmsData
+     * @param string $cms_filter_data
+     * @return object if success  redirect to  Homepage
+     */
 	 		
-	public function index() { 
+	public function index($cmsData="",$cms_filter_data="") { 
 	
 		$cmsData['menu'] = "cms";
 		//print_r($cmsData['menu']);exit;
@@ -63,15 +63,13 @@ class cms extends CI_Controller
 		$cmsData['menu'] = "cms";
 		$this->layout->view('admin/cms/cmsView',$cmsData);
 	}
-	
-	/*
-		@method  createCms   Create CMS Page
-		@param   Post Values
-		@return object  if success redirect to CMS Listing View with Success Message else Create CMS View 
-	 */
-	 	
-	
-	public function createCms() {
+	 /**
+     * createCms   Create CMS Page  
+     * @param string $cmsPostData
+     * @return object  if success redirect to CMS Listing View with Success Message else Create CMS View
+     */
+
+	public function createCms($cmsPostData="") {
 		$this->form_validation->set_rules('title', 'Title', 'trim|xss_clean|required');
 		$this->form_validation->set_rules('description', 'Description', 'trim|xss_clean|required');
 		$this->form_validation->set_rules('seo_title', 'SEO Title', 'trim|xss_clean|required');
@@ -119,14 +117,13 @@ class cms extends CI_Controller
 					}
 		}
 	}
-	
-	/*
-		@method  updateCms   Updating CMS Page
-		@param  CMS Page Id and  Post Values
-		@return object  if success redirect to CMS Listing View with Success Message else Update CMS View 
-	 */	
-	
-		public function updateCms() {
+	 /**
+     * updateCms   Updating CMS Page
+     * @param string $cmsData
+     * @param numeric $$id
+     * @return  object  if success redirect to CMS Listing View with Success Message else Update CMS View 
+     */
+	public function updateCms($id="",$cmsData="") {
 			
 		$id=base64_decode($this->uri->segment(4));
 		$this->form_validation->set_rules('title', 'Title', 'trim|xss_clean|required');
@@ -177,27 +174,26 @@ class cms extends CI_Controller
 			}
 		}
 	}
+	 /**
+     *  cms_name_check   Call back function while adding CMS to check duplicates of name
+     * @param string $cms_name
+     * @return  boolean  TRUE if sucess else FALSE
+     */
 	
-	/*
-		@method  cms_name_check   Call back function while adding CMS to check duplicates of name
-		@param  cms Name  
-		@return boolean  TRUE if sucess else FALSE
-	 */
-	
-	public function cms_name_check($cms_name) {	
+	public function cms_name_check($cms_name="") {	
 		if($this->cmsmodel->getCmsName($cms_name) > 0 ) { 
 			$this->form_validation->set_message('cms_name_check', 'CMS "'.$cms_name.'" already Created');
 			return false;
 			} else return true;
 		}
 		
-	/*
-		@method  cmsStatus   Activating and Inactivating CMS Page status (changing status)
-		@param  CMS Page id 
-		@return object  if success redirect to CMS listing
-	 */ 
-	 
-	public function cmsStatus() {
+		 /**
+     * cmsStatus   Activating and Inactivating CMS Page status (changing status)
+     * @param numeric $st_val
+     * @return object  if success redirect to CMS listing
+     */
+	
+	public function cmsStatus($st_val="") {
 		if(isset($_POST['status_bus_id'])) {
 			$status_id=$this->cmsmodel->cmsGetUpd($_POST['status_bus_id']);
 			if($status_id->status==1)
@@ -205,38 +201,32 @@ class cms extends CI_Controller
 			else 
 			$st_val=1;
 				$status_update=$this->cmsmodel->cmsUpdStatus($_POST['status_bus_id'],$st_val);
-				
-				/* Add Logs */
 				$page = " has been toggled. ";
 				$notification = array('subject' => $page, 'type' => 'CMS', 'msg_type' => 'success');
-				
-				/* End Logs */
-				echo $status_update; //echo for ajax respond
+				echo $status_update;
 		}
 	}
 	
-	/*
-		@method  cmsDelete   deleting CMS (changing status)
-		@param  CMS id 
-		@return object  if success redirect to CMS listing
-	 */
-	 
-	public function cmsDelete() {
+	 /**
+     * cmsDelete   deleting CMS (changing status)
+     * @param string $id
+     * @param string $st_val
+     * @return object  if success redirect to CMS listing
+     */
+	public function cmsDelete($id="",$st_val="") {
 			$id=base64_decode($this->uri->segment(4));
-			$st_val=3; //set status = 3 for delete
+			$st_val=3; 
 			$status_delete=$this->cmsmodel->cmsUpdStatus($id,$st_val);
 			if($status_delete >=0) {
 			$this->session->set_flashdata('msg', 'CMS deleted Successfully');
-				redirect('admin/cms/index', 'refresh');	//on success, redirect to view page.
+				redirect('admin/cms/index', 'refresh');	
 			}
 		}
-	
-	/*
-		@method  loggedIn   check if admin session exists or not
-		@param  Null 
-		@return object  redirect to index method if session not exits
-	 */
-	
+		 /**
+     * loggedIn   check if admin session exists or not  
+     * @param  Null 
+     * @return object  redirect to index method if session not exits
+     */
 	public function loggedIn()
 	{
 	   $logged = $this->session->userdata('adminDetails');

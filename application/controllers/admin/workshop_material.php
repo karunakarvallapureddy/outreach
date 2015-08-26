@@ -14,14 +14,17 @@ class Workshop_material extends CI_Controller
 		$this->load->helper(array('url','html','form'));  // load url,html,form helpers optional
 		$this->load->model(array('workshop_material_m'));
 	}	
+	/**
+     * workshop_material index  Listing outreach workshop material
+     * @param string $workshop_materialData
+     * @param string $id
+     * @param string $limit
+     * @param string $offset
+     * @return object workshop material Listing View
+     */	
 	
-	/*
-		@method  workshop_material index   Listing outreach workshop material
-		@param  URI Segment (@ pagination) 
-		@return object workshop material Listing View 
-	 */
 			
-	public function index() { 
+	public function index($id="",$limit,$offset,$workshop_materialData) { 
 	
 		$workshop_materialData['menu'] = "documents";
         $this->load->library('my_pagination');
@@ -59,14 +62,15 @@ class Workshop_material extends CI_Controller
         $workshop_materialData['pagination'] = $this->my_pagination->create_links();
 		$this->layout->view('admin/workshop_material/view',$workshop_materialData);
 	}
-	/*
-		@method  add   Create workshop material Page
-		@param   Post Values
-		@return object  if success redirect to workshop material Listing View with Success Message else Create workshop material View 
-	 */
-	 	
 	
-	public function add() {
+	/**
+     * add   Create workshop material Page
+     * @param string $postdata
+     * @param string $workshop_materialData
+     * @return object workshop material Listing View
+     */		
+	
+	public function add($postdata="",$workshop_materialData="") {
 		$workshop_materialData['menu'] = "documents";
 		$this->form_validation->set_rules('document_name', 'Name', 'required|xss_clean');
 		$this->form_validation->set_error_delimiters('<span class="error">', '</span>');
@@ -112,14 +116,15 @@ class Workshop_material extends CI_Controller
 
 			}
 		}
-		
-/*
-		@method  edit   Updating workshop material Page
-		@param  workshop material Page Id and  Post Values
-		@return object  if success redirect to workshop material Listing View with Success Message else Update workshop material View 
-	 */	
+			/**
+     *  edit   Updating workshop material Page
+     * @param string $workshop_materialData
+     * @param string $id,$postdata
+     * @return object  if success redirect to workshop material Listing View with Success Message else Update workshop material View 
+     */	
+	
 			
-		public function edit() {
+		public function edit($workshop_materialData="",$id,$postdata) {
 	$id=base64_decode($this->uri->segment(4));
 	$workshop_materialData['menu'] = "documents";
 		$workshop_materialData['certification']=$this->workshop_material_m->getworkshop_material($id);
@@ -168,11 +173,14 @@ class Workshop_material extends CI_Controller
 
 			}
 }
-/*
-		@method  detailview    If Admin session exist redirecting to workshop material detail view page else Login Page
-		@param  Post Values
-		@return object detail view workshop material Listing   else Login View 
- */
+
+/**
+     *  detailview    If Admin session exist redirecting to workshop material detail view page else Login Page
+     * @param string $workshop_materialData
+     * @param string $id
+     * @return  object detail view workshop material Listing   else Login View 
+     */	
+
 public function detailview() {
 	error_reporting(0);
 	$id=base64_decode($this->uri->segment(4));
@@ -181,12 +189,12 @@ public function detailview() {
 			$this->layout->view('admin/workshop_material/detailview',$workshop_materialData);
 			}
 			
+				/**
+     * Delete   deleting workshop material (changing status)
+     * @param string $id
+     * @return object  if success redirect to workshop material listing
+     */	
 		
-	/*
-		@method  Delete   deleting workshop material (changing status)
-		@param  workshop material id 
-		@return object  if success redirect to workshop material listing
-	 */		
 public function Delete() {
 	$id=base64_decode($this->uri->segment(4));
 	$workshop_materialData['menu'] = "documents";

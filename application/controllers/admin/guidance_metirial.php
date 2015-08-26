@@ -2,6 +2,7 @@
 
 	/**
 	 * guidance_metirial Controller
+	 * index Method
 	 **/
 
 class Guidance_metirial extends CI_Controller
@@ -14,13 +15,18 @@ class Guidance_metirial extends CI_Controller
 		$this->load->helper(array('url','html','form'));  // load url,html,form helpers optional
 		$this->load->model(array('guidance_metirial_m'));
 	}
-		/*
-		@method  guidance_metirial index   Listing outreach guidance material
-		@param  URI Segment (@ pagination) 
-		@return object guidance material Listing View 
-	 */
-						
-	public function index() { 
+	/**
+     * guidance_metirial index   Listing outreach guidance material
+     * @param string $guidance_metirial_filter_data
+     * @param string $id
+     * @param string $limit
+     * @param string $offset
+     * @param string $guidance_metirialData
+     * @return object guidance material Listing View 
+     */
+	
+					
+	public function index($guidance_metirial_filter_data="",$id="",$limit="",$offset="",$guidance_metirialData="") { 
 	
 		$guidance_metirialData['menu'] = "documents";
         $this->load->library('my_pagination');
@@ -58,14 +64,13 @@ class Guidance_metirial extends CI_Controller
         $guidance_metirialData['pagination'] = $this->my_pagination->create_links();
 		$this->layout->view('admin/guidance_metirial/view',$guidance_metirialData);
 	}
-	/*
-		@method  add   Create guidance material Page
-		@param   Post Values
-		@return object  if success redirect to guidance material Listing View with Success Message else Create guidance material View 
-	 */
-	 	
-	
-	public function add() {
+	/**
+     * add   Create guidance material Page
+     * @param string $guidance_metirialData
+     * @param string $postdata
+     * @return object  if success redirect to guidance material Listing View with Success Message else Create guidance material View
+     */	
+	public function add($guidance_metirialData="",$postdata="") {
 		$guidance_metirialData['menu'] = "documents";
 		$this->form_validation->set_rules('document_name', 'Name', 'required|xss_clean');
 		$this->form_validation->set_error_delimiters('<span class="error">', '</span>');
@@ -111,14 +116,13 @@ class Guidance_metirial extends CI_Controller
 
 			}
 		}
-		
-		/*
-		@method  edit   Updating guidance material Page
-		@param  workshop material Page Id and  Post Values
-		@return object  if success redirect to guidance material Listing View with Success Message else Update guidance material View 
-	 */	
-		
-		public function edit() {
+			/**
+     *  edit   Updating guidance material Page
+     * @param string $guidance_metirialData
+     * @param string $id,$postdata
+     * @return object  if success redirect to guidance material Listing View with Success Message else Update guidance material View 
+     */	
+		public function edit($id,$postdat,$guidance_metirialData) {
 	$id=base64_decode($this->uri->segment(4));
 	$guidance_metirialData['menu'] = "documents";
 		$guidance_metirialData['certification']=$this->guidance_metirial_m->getguidance_metirial($id);
@@ -167,11 +171,13 @@ class Guidance_metirial extends CI_Controller
 
 			}
 }
-/*
-		@method  detailview    If Admin session exist redirecting to guidance material detail view page else Login Page
-		@param  Post Values
-		@return object detail view guidance material Listing   else Login View 
- */
+	/**
+     *  detailview    If Admin session exist redirecting to guidance material detail view page else Login Page
+     * @param string $guidance_metirialData
+     * @param string $id
+     * @return  object detail view guidance material Listing   else Login View 
+     */	
+
 public function detailview() {
 	error_reporting(0);
 	$id=base64_decode($this->uri->segment(4));
@@ -179,12 +185,12 @@ public function detailview() {
 		$guidance_metirialData['guidance_metirial']=$this->guidance_metirial_m->getguidance_metirial($id);
 			$this->layout->view('admin/guidance_metirial/detailview',$guidance_metirialData);
 			}
-			
-			/*
-		@method  Delete   deleting guidance material (changing status)
-		@param  guidance material id 
-		@return object  if success redirect to guidance material listing
-	 */	
+			/**
+     *  Delete   deleting guidance material (changing status)
+     * @param string $id
+     * @return object  if success redirect to guidance material listing
+     */	
+
 public function Delete() {
 	$id=base64_decode($this->uri->segment(4));
 	$guidance_metirialData['menu'] = "documents";
@@ -199,6 +205,13 @@ public function Delete() {
 					redirect('admin/guidance_metirial/index');
 					}
 			}
+			 /**
+     * loggedIn   check if admin session exists or not  
+     * @param  Null 
+     * @return object  redirect to index method if session not exits
+     */
+			
+			
 	public function loggedIn()
 	{
 	   $logged = $this->session->userdata('adminDetails');
