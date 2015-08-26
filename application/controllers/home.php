@@ -19,7 +19,7 @@ class Home extends CI_Controller
      * @return object if success  redirect to  Homepage
      */
 
-	public function index() {
+	public function index($data="") {
 		$data['get_workshop_upcoming']=$this->home_site_m->getHomeWorkshop();
 		$data['nodalcenters']=$this->home_site_m->nodalcenterscount();
 		$data['workshoprun']=$this->home_site_m->workshopruncount();
@@ -37,7 +37,7 @@ class Home extends CI_Controller
      * @return object if success  redirect to  contact page
      */
 
-	public function contact() {
+	public function contact($data="",$postdata="") {
 	 $this->load->library('recaptcha');
 	 $data['recaptcha_html'] = $this->recaptcha->recaptcha_get_html();
 		$this->load->view('site/header',$data);
@@ -82,7 +82,7 @@ class Home extends CI_Controller
      * @return object if success  redirect to  about outreach page
      */
 	
-	public function cms($id)
+	public function cms($id="",,$data="")
 	{
 		$id=str_replace("_","-",str_replace("-"," ",$id));
 		$data['content'] = $this->home_site_m->get_cms($id);
@@ -98,7 +98,7 @@ class Home extends CI_Controller
      * @param string $inputdata
      * @return object  if success redirect to addWorkshop Listing View with Success Message else Create addWorkshop View 
      */
-	public function addWorkshop()
+	public function addWorkshop($inputdata="")
 	{	
 	$ses_data=$this->session->userdata('user_details');
 				if (empty($ses_data)){
@@ -116,7 +116,7 @@ class Home extends CI_Controller
      * @param string $inputdata
      * @return object  if success redirect to Create addNodal View 
      */	
-		 public function addNodal($value='')
+		 public function addNodal($inputdata='')
 	{
 		$ses_data=$this->session->userdata('user_details');
 				if (empty($ses_data)){
@@ -137,7 +137,7 @@ class Home extends CI_Controller
      * @param string $message,$headers
      * @return object  if success redirect to addNodal Listing View with Success Message else Create addNodal View 
      */	
-	public function addNodalcenter()
+	public function addNodalcenter($postdata="",$to,$subject,$message,$headers)
 	{
 		$ses_data=$this->session->userdata('user_details');
 				if (empty($ses_data)){
@@ -205,7 +205,7 @@ mail($to,$subject,$message,$headers);
      * @param string $data
      * @return object  if success redirect to editWorkshop View
      */	
-	 public function editWorkshop($value='')
+	 public function editWorkshop($inputdata,$data)
 	{
 		$ses_data=$this->session->userdata('user_details');
 				if (empty($ses_data)){
@@ -228,7 +228,7 @@ mail($to,$subject,$message,$headers);
      * @return object  if success redirect to Workshop  Listing View with Success Message else editWorkshop View 
      */
 
-	public function updateWorkshop($value='')
+	public function updateWorkshop($inputdata='')
 	{
 		$ses_data=$this->session->userdata('user_details');
 				if (empty($ses_data)){
@@ -248,7 +248,7 @@ mail($to,$subject,$message,$headers);
      * @return object  if success redirect to Workshop  Listing View listing
      */
 
-	public function deleteWorkshop($value='')
+	public function deleteWorkshop($inputdata='')
 	{
 		$ses_data=$this->session->userdata('user_details');
 				if (empty($ses_data)){
@@ -265,7 +265,7 @@ mail($to,$subject,$message,$headers);
      * @param string $inputdata
      * @return object  if success redirect to Workshop  Listing View listing
      */
-	public function activeworkshop($value='')
+	public function activeworkshop($inputdata='')
 	{
 		$ses_data=$this->session->userdata('user_details');
 				if (empty($ses_data)){
@@ -283,7 +283,7 @@ mail($to,$subject,$message,$headers);
      * @param string $data
      * @return object detail view  Listing   else Login View
      */
-	public function viewReport(){
+	public function viewReport($inputdata="",$data=""){
 		$ses_data=$this->session->userdata('user_details');
 				if (empty($ses_data)){
 				redirect('Login');
@@ -301,7 +301,7 @@ mail($to,$subject,$message,$headers);
      * @return object detail view  Listing   else Login View 
      */
 
-	public function hostoryViewReport(){
+	public function hostoryViewReport($inputdata="",$data=""){
 		$ses_data=$this->session->userdata('user_details');
 				if (empty($ses_data)){
 				redirect('Login');
@@ -317,7 +317,7 @@ mail($to,$subject,$message,$headers);
      * @param string $nodal_id
      * @return object  if success redirect to workshop  listing
      */
-	public function deleteNodalcenter()
+	public function deleteNodalcenter($nodal_id="")
 	{
 		$ses_data=$this->session->userdata('user_details');
 				if (empty($ses_data)){
@@ -344,7 +344,7 @@ mail($to,$subject,$message,$headers);
      * @param string $data
      * @return object  if success redirect to submit Reports  page
      */
-	 public function submitReports()
+	 public function submitReports($inputdata="",$data="")
 	{
 		$ses_data=$this->session->userdata('user_details');
 				if (empty($ses_data)){
@@ -373,7 +373,7 @@ mail($to,$subject,$message,$headers);
      * @param string $inputdata
      * @return object  if success redirect to workshop page else submit Reports  page
      */
- public function submitReport()
+ public function submitReport($filea="")
  {
 			 $ses_data=$this->session->userdata('user_details');
 						if (empty($ses_data)){
@@ -439,7 +439,7 @@ mail($to,$subject,$message,$headers);
      * @return object  if success redirect to workshop page 
      */
 
-public function approverepost(){
+public function approverepost($inputdata=""){
 		$ses_data=$this->session->userdata('user_details');
 				if (empty($ses_data)){
 				redirect('Login');

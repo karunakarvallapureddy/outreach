@@ -21,7 +21,7 @@ class Site extends CI_Controller {
   * @param   $postdata $data Values
   * @return object  if success coordinator Dashboard else Login View
   */
-		public function signin() {
+		public function signin($data="",$postdata="") {
 		$this->load->view('site/header',$data);
 	    $this->form_validation->set_rules('email', 'E-Mail', 'required|xss_clean');
 	    $this->form_validation->set_rules('password', 'Password', 'required|xss_clean');
@@ -68,7 +68,7 @@ class Site extends CI_Controller {
      */
 
 
-public function forgot_password() {
+public function forgot_password($data="",$email="",$message="") {
 		$this->load->view('site/header',$data);
 	    $this->form_validation->set_rules('email', 'User Name', 'required|xss_clean');
 		if ($this->form_validation->run() == FALSE )
@@ -146,7 +146,7 @@ public function forgot_password() {
      * @param string $data
      * @return object  if success profile page
      */
-	public function authentic_coordinator(){
+	public function authentic_coordinator($postdata="",$data=""){
 		
 							$ses_data=$this->session->userdata('user_details');
 							 if (empty($ses_data)){
@@ -190,7 +190,7 @@ public function forgot_password() {
      * @return  object  if success redirecting to manage workshop  page
      */
 	
-		public function manage_workshop(){
+		public function manage_workshop($inputdata="",$data=""){
 			$ses_data=$this->session->userdata('user_details');
 			if (empty($ses_data)){
 			redirect('Login');
@@ -217,7 +217,7 @@ $data['view_reports']=$this->home_site_m->getViewReport($inputdata);
      * @param string $data
      * @return object  if success redirect to Nodal Listing View with Success Message else Create Nodal View
      */
-	public function addNodal(){
+	public function addNodal($data=""){
 		$ses_data=$this->session->userdata('user_details');
 				if (empty($ses_data)){
 				redirect('Login');
@@ -232,7 +232,7 @@ $data['view_reports']=$this->home_site_m->getViewReport($inputdata);
      * @param string $data
      * @return object  if success redirect to nodal coordinator Listing View
      */
-	public function nodalCoordinatorListing(){
+	public function nodalCoordinatorListing($data=""){
 		$ses_data=$this->session->userdata('user_details');
 				if (empty($ses_data)){
 				redirect('Login');
