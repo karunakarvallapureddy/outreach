@@ -284,14 +284,14 @@ foreach($workshopdataa as $workshopdataget){
 												  <div class="form-group">
 													<label class="col-sm-3 label-names">Number of participants attended:<span style="color:red">*</span></label>
 													<div class="col-sm-6">
-													  <input type="number" onkeypress="return onlyAlphabets(event,this);"name = "participate_attend" id = "participate_attend" class="required form-control no-radius required-width" >													
+													  <input type="number" onkeypress="return onlyAlphabets(event,this);"name = "participate_attend" required id = "participate_attend" class="required form-control no-radius required-width" >													
 													    <?php echo "<span style='color:red'>".form_error('participate_attend')."</span>"; ?>
 													</div>
 												  </div>
 												    <div class="form-group">
 													<label class="col-sm-3 label-names">Number of experiments conducted:<span style="color:red">*</span></label>
 													<div class="col-sm-6">
-													  <input type="number" onkeypress="return onlyAlphabets(event,this);" name = "participate_experiment" id = "participate_experiment" class=" form-control no-radius required-width" >
+													  <input required type="number" onkeypress="return onlyAlphabets(event,this);" name = "participate_experiment" id = "participate_experiment" class=" form-control no-radius required-width" >
 													  <?php echo "<span style='color:red'>".form_error('participate_experiment')."</span>"; ?>
 													</div>
 												  </div>
@@ -300,19 +300,19 @@ foreach($workshopdataa as $workshopdataget){
 												  <div class="form-group">
 													<label class="col-sm-3 label-names">Attendance sheet<span style="color:red">*</span></label>
 													<div class="col-sm-6">
-													  <input type="file" name = "upload_attend_sheet" id = "upload_attend_sheet" class="required form-control no-radius" >
+													  <input required type="file" name = "upload_attend_sheet" id = "upload_attend_sheet" class="required form-control no-radius" >
 													  <?php echo "<span style='color:red'>".form_error('upload_attend_sheet')."</span>"; ?>
 													</div>
 												  </div><div class="form-group">
 													<label class="col-sm-3 label-names">College report<span style="color:red">*</span></label>
 													<div class="col-sm-6">
-													  <input type="file"  name = "college_report" id = "college_report" class="required form-control no-radius" >
+													  <input required type="file"  name = "college_report" id = "college_report" class="required form-control no-radius" >
 													  <?php echo "<span style='color:red'>".form_error('college_report')."</span>"; ?>
 													</div>
 												  </div><div class="form-group">
 													<label class="col-sm-3 label-names">Workshop photos<span style="color:red">*</span></label>
 													<div class="col-sm-6">
-													  <input type="file" class="form-control no-radius" name="workshop_photos">
+													  <input required type="file" class="form-control no-radius" name="workshop_photos">
 													  <?php echo "<span style='color:red'>".form_error('workshop_photos')."</span>"; ?>
 													</div>
 												  </div>	
@@ -320,7 +320,7 @@ foreach($workshopdataa as $workshopdataget){
 													<label class="col-sm-3 label-names">Comments and Feedback </br> 
 													Positive<span style="color:red">*</span></label>
 													<div class="col-sm-6">
-													  <textarea class="form-control no-radius" rows="3" name="comments_positive"></textarea>
+													  <textarea  required class="form-control no-radius" rows="3" name="comments_positive"></textarea>
 													  <?php echo "<span style='color:red'>".form_error('other_details')."</span>"; ?>
 													</div><div class="col-sm-3"><span> Based on your experience in planning & conducting the workshop
 
@@ -329,7 +329,7 @@ From the faculty and students of the participating institutes</span></div>
 												   <div class="form-group">
 													<label class="col-sm-3 label-names">Negative<span style="color:red">*</span></label>
 													<div class="col-sm-6">
-													  <textarea  class="form-control no-radius" rows="3" name="comments_negative"></textarea>
+													  <textarea required  class="form-control no-radius" rows="3" name="comments_negative"></textarea>
 													  <?php echo "<span style='color:red'>".form_error('comments_negative')."</span>"; ?>
 													</div>
 												  </div>									  
