@@ -32,7 +32,7 @@
 					<div class="icon-box-top">
 					<div class="value-disp">
 						<p align="left" class="value-list">
-							<span class="counter" style="display:inline-block; color:#fff;"><?php echo $nodalcenters; ?></span><span class="resu-top">WORKSHOPS RUN</span>
+							<span class="counter" style="display:inline-block; color:#fff;"><?php echo $workshoprun; ?></span><span class="resu-top">WORKSHOPS RUN</span>
 						</p>
 						</div>
 					</div>
@@ -49,7 +49,7 @@
 					<div class="icon-box-top">
 						<div class="value-disp">
 						<p align="left" class="value-list">
-							<span class="counter" style="display: inline-block;color:#fff;"><?php echo $workshoprun; ?></span><span class="resu-top">NODEL CENTERS
+							<span class="counter" style="display: inline-block;color:#fff;"><?php echo $nodalcenters; ?></span><span class="resu-top">NODEL CENTERS
 
 </span>
 						</p>
