@@ -1,11 +1,20 @@
 <?php 
 	
 class Usermodel extends CI_Model
-{
+{/*
+  * user model
+  * method 
+  */
 	function __construct() {
         parent::__construct();
     	}
-	
+	/**
+  * getUser method:  fatch the get  get Users  data 
+  * @param integer  $id 
+  * @param  integer $limit
+  * @param  integer $offset
+  * @return array  value
+  */
 	public function getUser($id="",$limit="",$offset="") {
 		if ($this->session->userdata('user_filter_data') !== FALSE) {
 			   $filters=$this->session->userdata('user_filter_data');
@@ -40,7 +49,11 @@ class Usermodel extends CI_Model
 		  $row=0;
 		}
 		return $row;
-	}
+	}/**
+  * getUserCount method:  count the number of records in User Count 
+  * @param integer  $status 
+  * @return integer  value
+  */
 	public function getUserCount() {
 		if ($this->session->userdata('user_filter_data') !== FALSE) {
 			   $filters=$this->session->userdata('user_filter_data');

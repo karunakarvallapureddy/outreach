@@ -2,10 +2,23 @@
 	
 class presentation_reporting_m extends CI_Model
 {
+	/*
+  * presentation_reporting_m model
+  * method 
+  * 
+  *
+  * 
+  */
 	function __construct() {
         parent::__construct();
     	}
-	
+		/**
+  * getpresentation_reporting method:  fatch the get  presentation & reporting  data 
+  * @param integer  $id 
+  * @param  integer $limit
+  * @param  integer $offset
+  * @return array  value
+  */
 	public function getpresentation_reporting($id="",$limit="",$offset="") {
 		if ($this->session->userdata('presentation_reporting_filter_data') !== FALSE) {
 			   $filters=$this->session->userdata('presentation_reporting_filter_data');
@@ -36,17 +49,32 @@ class presentation_reporting_m extends CI_Model
 		//  echo $this->db->last_query();
 		return $query->result_array();
 	}
+	/**
+  * presentation_reporting_Count method:  count the number of records in presentation & reporting 
+  * @param integer  $status 
+  * @return integer  value
+  */
 	public function  presentation_reporting_Count() {
 			$this->db->where('status != 3');
         	$query = $this->db->get('presentation_reporting_documents');
 		return $query->num_rows();
 		}
-		
+		/**
+  * presentation_reporting_add method:  insert the  presentation & reporting 
+  * @param integer  $date 
+  * @return object
+  */	
 		public function  presentation_reporting_add($data) {
 				$this->db->insert('presentation_reporting_documents',$data);
 				return   1;
 		}
-		
+			/**
+  * presentation_reportingUpdStatus method:  update documents in  presentation & reporting
+  * @param string  $corporate_reg_id 
+  * @param integer  $st_val 
+  * @param integer  $date 
+  * @return object
+  */
 	public function presentation_reportingUpdStatus($corporate_reg_id,$st_val)	{
 			$this->db->where('document_id', $corporate_reg_id);
 			$this->db->set('status', $st_val);
@@ -54,7 +82,12 @@ class presentation_reporting_m extends CI_Model
 			$this->db->update('presentation_reporting_documents');
 			return $this->db->affected_rows();
 		}
-		
+		/**
+  * delete method:  delete records in  presentation & reporting
+  * @param integer  $status 
+  * @param integer  $id 
+  * @return integer  value
+  */
 		public function delete($id)	{
 			$this->db->where('document_id', $id);
 			$this->db->set('status', 3);
@@ -62,7 +95,13 @@ class presentation_reporting_m extends CI_Model
 			$this->db->update('presentation_reporting_documents');
 			return $this->db->affected_rows();
 		}
-		
+		/**
+  * edit method:  update records in  presentation & reporting
+  * @param string  $postdata 
+  * @param integer  $id 
+  * @param integer  $status 
+  * @return object
+  */
 		public function edit($id,$postdata){
 			$this->db->where('document_id', $id);
 			$this->db->set('document_name',$postdata['document_name']);
