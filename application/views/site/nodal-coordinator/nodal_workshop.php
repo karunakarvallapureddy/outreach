@@ -674,6 +674,17 @@ tabs-below > .nav-tabs,
 	::-webkit-calendar-picker-indicator { background: orange; }
     
 }											</style>
+ <div class="col-md-12 align-top-botm">
+				
+				<div class="col-md-1">
+					Date			
+				</div>
+				
+				<div class="col-md-2">Location</div>
+                <div class="col-md-2 ">Participants </div>
+                <div class="col-md-3">Experiments</div>
+				<div class="col-md-3"></div>
+			</div>
 												<?php
 												
 											foreach($get_workshop_history as $workshopdata){

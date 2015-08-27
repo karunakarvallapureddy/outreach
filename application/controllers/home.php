@@ -3,7 +3,7 @@
 	/**
 	* Login Controller for End users.
 	**/
-class homeSite extends CI_Controller 
+class home extends CI_Controller 
 {
 	function __construct()
 	{ error_reporting(0);
