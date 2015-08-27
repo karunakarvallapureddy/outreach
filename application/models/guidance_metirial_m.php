@@ -2,6 +2,13 @@
 	
 class guidance_metirial_m extends CI_Model
 {
+	/*
+  * guidance_metirial_m model
+  * method 
+  * 
+  *
+  * 
+  */
 	function __construct() {
         parent::__construct();
     	}

@@ -1,7 +1,8 @@
 <?php 
 class Cmsmodel extends CI_Model
-{/*
-  * Cmsmodel
+{
+/*
+  * Cmsmodel model
   * method 
   * 
   *
@@ -11,11 +12,10 @@ class Cmsmodel extends CI_Model
         parent::__construct();
     	}
 		/**
-  * signin method:  Authenticating coordinator 
-  * Submits an HTTP POST method to server
-  * @param   $id 
-  * @param   $limit
-  * @param   $offset
+  * signin method:  fatch the cms data  
+  * @param integer  $id 
+  * @param  integer $limit
+  * @param  integer $offset
   * @return array  value
   */
 	public function getCms($id="",$limit="",$offset="") {
@@ -48,6 +48,11 @@ class Cmsmodel extends CI_Model
 		return $query->result_array();
 	}
 	
+			/**
+  * createCms method:  insert the data in to table
+  * @param  integer $reg
+  * @return integer value
+  */
 	public function createCms($reg) {
 			$cms_det=array(
 						
@@ -62,35 +67,56 @@ class Cmsmodel extends CI_Model
 			 $this->db->insert('va_cms', $cms_det);
 			 return $this->db->affected_rows();
 	}
-	
+				/**
+  * cmsCount method:  count the number of records in cms 
+  * @param integer $status
+  * @return integer value
+  */
 	public function  cmsCount() {
 			$this->db->where('status != 3');
         	$query = $this->db->get('va_cms');
 		return $query->num_rows();
 		}
-		
+						/**
+  * cmsGetUpd method:  fatch the cms data  
+  * @param  integer $id
+  * @return object 
+  */
 	public function  cmsGetUpd($id) {
 				$this->db->where('cms_id',$id);
 				$query = $this->db->get('va_cms');
 				return   $query->row();
 		}
-		
+								/**
+  * cmsUpdStatus method: update the cms data 
+  * @param   integer $cms_id
+  * @param   integer $st_val
+  * @return integer value 
+  */
 	public function cmsUpdStatus($cms_id,$st_val)	{
 			$this->db->where('cms_id', $cms_id);
 			$this->db->set('status', $st_val);
 			$this->db->set('edited_on',date('Y-m-d H:i:s'));
 			$this->db->update('va_cms');
-			//echo $this->db->last_query();
 			return $this->db->affected_rows();
 		}
-	
+								/**
+  * getCmsName method: fatch the cms name 
+  * @param   string $cms_name
+  * @return integer value 
+  */
 	public function  getCmsName($cms_name)	{
 				$this->db->where('title',$cms_name);
 				$this->db->where('status !=3');
 				$query = $this->db->get('va_cms');
 				return  $query->num_rows();
 		}	
-	
+								/**
+  * cmsUpdate method: fatch the cms name 
+  * @param   string $cms
+  * @param   integer $id
+  * @return integer value 
+  */
 	public function cmsUpdate($id,$cms)	{
 			$cms['edited_on']=date('Y-m-d H:i:s');
 			$this->db->where('cms_id', $id);

@@ -1,9 +1,23 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+	/*
+  * Home_site_m Model
+  * method 
+  * 
+  *
+  * 
+  */
 class Home_site_m extends CI_Model{
     function __construct(){
         parent::__construct();
     }
-	function get_cms($id){
+		/**
+  * get_cms method
+  * @param  integer $id 
+  * @param   integer $limit
+  * @param  integer $offset
+  * @return array  value
+  */
+	function get_cms($id=""){
 	$query = $this->db->get_where('va_cms', array('title' =>$id));	
 	if($query->num_rows() > 0){	 
 	return  $query->row_array();
@@ -12,6 +26,10 @@ class Home_site_m extends CI_Model{
 	return 0;	
 	}
 	}
+		/**
+  * get_cms_title method fatch the cms data form database
+  * @return array  value
+  */
 	function get_cms_title(){
 	$query = $this->db->get('va_cms');	
 	if($query->num_rows() > 0){	 
@@ -21,9 +39,13 @@ class Home_site_m extends CI_Model{
 	return 0;	
 	}
 	}
-	
+		/**
+  * va_contacts method: insert the post values in va_contacts table 
+  * @param   string $data
+  * @return integer insert id
+  */
 	 
-	 function save_contact($data){
+	 function save_contact($data=""){
 	 		$data = array(
 					'name'=>$data['name'],
 					'email'=>$data['email'],
@@ -32,7 +54,14 @@ class Home_site_m extends CI_Model{
 	$this->db->insert('va_contacts',$data);
 	 return  $this->db->insert_id();
 	 }	
-	 function signin($postdata){
+	 /**
+  * signin method: check user availability
+  * @param   string $postdata
+  * @param   string $data
+  * @return arry value
+  */
+	 
+	 function signin($postdata="",$data=""){
         $names = array('1', '2');	
 		$this->db->where_in("status",$names);
 		$this->db->where(array("email"=>$postdata['email'],"password"=>md5($postdata['password'])));
@@ -47,8 +76,13 @@ class Home_site_m extends CI_Model{
 		}
 		return $row;
 	}
-	
-	public function verifyemail($id) {
+	 /**
+  * verifyemail method: check user availability
+  * @param   integer $id
+  * @return integer 
+  */
+	 
+	public function verifyemail($id="") {
 			 $this->db->where('va_users.id',$id);
 			 $qry=$this->db->get('va_users')->row_array();
 			 if($qry['status']==0){
@@ -60,7 +94,12 @@ class Home_site_m extends CI_Model{
 			 return 0;
 			 }
 	}
-	
+	/**
+  * check_email method: check user email availability
+  * @param   string $email
+  * @return boolean  
+  */
+	 
 	public function check_email($email) {
 			 $this->db->where('va_users.email',$email);
 			 $qry=$this->db->get('va_users')->row_array();
@@ -71,7 +110,12 @@ class Home_site_m extends CI_Model{
 			 return 0;
 			 }
 	}
-	
+	/**
+  * forgot_password method: change password
+  * @param   string $data
+  * @return boolean  
+  */
+	 
 	public function forgot_password($data) {
 			 $this->db->where('va_users.email',$data['email']);
 			 $this->db->update('va_users', array('password'=>$data['password']));
@@ -82,8 +126,14 @@ class Home_site_m extends CI_Model{
 			 return 0;
 			 }
 	}
+	/**
+  * change_password method: change password
+  * @param   string $data
+  * @param   integer $id
+  * @return boolean  
+  */
 	
-	public function change_password($id,$data) {
+	public function change_password($id="",$data="") {
 			 $this->db->where('va_users.id',$id);
 			 $this->db->update('va_users', array('password'=>md5($data['password'])));
 			 if($this->db->affected_rows()>0){
@@ -93,6 +143,13 @@ class Home_site_m extends CI_Model{
 			 return 0;
 			 }
 	}
+	/**
+  * profileedit method: update the user profile information
+  * @param   string $postdata
+  * @param   integer $data
+  * @return boolean  
+  */
+	
 public function profileedit($postdata){
 $data = array(
                'password' => md5($postdata['password']),
@@ -109,7 +166,12 @@ $this->db->update('va_users', $data);
 			 return 0;
 			 }
 }	
-
+/**
+  * updatelogin method: user last login information
+  * @param   string $user_id
+  * @param   integer $data
+  * @return boolean  
+  */
 	public function updatelogin($user_id)
 	{
 		$data = array(
@@ -125,7 +187,10 @@ $this->db->update('va_users', $data);
 		}
 	}
 	
-	
+	/**addNodal method: add the nodal center
+  * @param   string $inputdata
+  * @return integer insert id  
+  */
 	
 	public function addNodal($inputdata='')
 	{
@@ -134,6 +199,11 @@ $this->db->update('va_users', $data);
 		else
 		return 0;
 	}
+	/**get_nodal method fatch the nodal center information
+  * @param   string $value
+  * @return array values
+  */
+	
 	public function get_nodal($value='')
 	{
 			$ses_data= $this->session->userdata("user_details"); 
@@ -143,7 +213,11 @@ $this->db->update('va_users', $data);
 		 return  $query->result_array(); 
 	 	
 	}
-	public function addNodalcenter_m($postdata)
+	/**addNodalcenter_m method  insert  the nodal center information in table
+  * @param   string $postdata
+  * @return integer insert id
+  */
+	public function addNodalcenter_m($postdata="")
 	{
 		if(!empty($postdata['permission_id'])) {
 			$permission_id=$postdata['permission_id'];
@@ -177,49 +251,70 @@ $this->db->update('va_users', $data);
 		}
 		return $insert_id;
 	}
-	
-	public function deleteNodalcenter($staff_id)
+	/**deleteNodalcenter method  delete Nodal center
+  * @param   integer $nodalid
+  * @return integer insert id
+  */
+	public function deleteNodalcenter($nodalid)
 	{
 		$data = array('status'=>3);
-		$this->db->where('id',$staff_id);
+		$this->db->where('id',$nodalid);
 		$this->db->update('va_users',$data);
 		return $this->db->affected_rows();
 	}
+	/**editWorkshop method  facth the workshop data where workshop id
+  * @param   integer $value
+  * @return array value
+  */
 public function editWorkshop($value='')
 	{
 	 $query = $this->db->get_where('workshop',array('workshop_id'=>$value));	
 	 return  $query->result_array();
 	 	
 	}
+	/**addWorkshop1 method  insert the workshop data
+  * @param   string $value
+  * @return array value
+  */
 public function addWorkshop1($value)
 	{
 $this->db->insert('workshop',$value);
 return $submitreportid= $this->db->insert_id();
 	}
-
+/**displayMap method  fatch the workshop data related to map
+  * @param   integer $id
+  * @return array value
+  */
 	public function displayMap(){
 		$this->db->select("name,location,address,latitude,longitude,workshop_id");
 		$query = $this->db->get_where('workshop',array('workshop_status'=>1));	
 		return  $query->result_array();
 	}
-	
+	/**get_report method  fatch the workshop report_data
+  * @param   integer $value
+  * @return array values
+  */
 	public function get_report($value='')
 	{
 	$ses_data=$this->session->userdata('user_details');
 	 $query = $this->db->get_where('workshop_report',array('workshop_id'=>$value,'uid'=>$ses_data['id']));	
 	 return  $query->result_array();
 	}
-	
+	/**getWorkshop method  fatch the workshop detail data
+  * @param   integer $value
+  * @return array values
+  */
 	public function getWorkshop($value='')
 	{
 		$ses_data=$this->session->userdata('user_details'); 
 		 $query = $this->db->get_where('workshop',array('outreach_id'=>$ses_data['id'],'workshop_status'=>1));	
 	 return  $query->result_array();
-		 
-	
-	 	
+
 	}
-	
+	/**getWorkshop_m method  individual user workshop data
+  * @param   integer $value
+  * @return array values
+  */
 	public function getWorkshop_m($value='')
 	{ 
 	 	$ses_data=$this->session->userdata('user_details'); 
@@ -230,20 +325,22 @@ $this->db->where('workshop.outreach_id',$ses_data['id']);
 $this->db->where('workshop.workshop_status',1);
 $query = $this->db->get();
 return $query->result_array();	 
-	} 
+	}
+/**getWorkshopHistory method  fatch the  all workshops history
+  * @param   integer $value
+  * @return array values
+  */	
 public function getWorkshopHistory(){
 		$ses_data=$this->session->userdata('user_details');
-echo "iam in modal";
 		echo $ses_data['id'];		
 		 $query = $this->db->get_where('workshop',array('outreach_id'=>$ses_data['id'],'workshop_status'=>2));	
 	 return  $query->result_array();
 }
-
-
-public function getWorkshopHistoryOutreach(){
-		
-	 
-	 
+/**getWorkshopHistoryOutreach method  fatch the    workshops history for Outreach  individual user
+  * @param   integer $ses_dataid
+  * @return array values
+  */
+public function getWorkshopHistoryOutreach(){ 
 	 $ses_data=$this->session->userdata('user_details'); 
 	 $this->db->select('workshop.*,workshop_report.*');
 $this->db->from('workshop');
@@ -251,16 +348,13 @@ $this->db->join('workshop_report', 'workshop.workshop_id = workshop_report.works
 $this->db->where('workshop.outreach_id',$ses_data['id']);
 $this->db->where('workshop.workshop_status',2);
 $query = $this->db->get();
-return $query->result_array();
-	 
-	 
+return $query->result_array(); 
 }
-
-
+/**getWorkshopHistoryNodal method  fatch the    workshops history for nodal  individual user
+  * @param   integer $ses_dataid
+  * @return array values
+  */
 public function getWorkshopHistoryNodal(){
-		
-	 
-	 
 	 $ses_data=$this->session->userdata('user_details'); 
 	 $this->db->select('workshop.*,workshop_report.*');
 $this->db->from('workshop');
@@ -268,30 +362,42 @@ $this->db->join('workshop_report', 'workshop.workshop_id = workshop_report.works
 $this->db->where('workshop.uid',$ses_data['id']);
 $this->db->where('workshop.workshop_status',2);
 $query = $this->db->get();
-return $query->result_array();
-	 
-	 
+return $query->result_array(); 
 }
-
+/**getworkshopgr method  fatch the workshops data for Outreach  individual user
+  * @param   integer $ses_dataid
+  * @return array values
+  */
 public function getworkshopgr(){
 		$ses_data=$this->session->userdata('user_details'); 
  $this->db->select('workshop as value');
 		 $query = $this->db->get_where('va_users',array('outreach_id'=>$ses_data['id']));	
 	 return  $query->result_array();
 }
+/**getworkshopcreated method  fatch the workshops data for Outreach  individual user
+  * @param   integer $ses_dataid
+  * @return array values
+  */
 public function getworkshopcreated(){
 		$ses_data=$this->session->userdata('user_details'); 
  $this->db->select('createworkshop as value');
 		 $query = $this->db->get_where('va_users',array('outreach_id'=>$ses_data['id']));	
 	 return  $query->result_array();
 }
+/**getnames method  fatch the usernaem 
+  * @param   integer $ses_dataid
+  * @return array values
+  */
 public function getnames(){
 		$ses_data=$this->session->userdata('user_details'); 
  $this->db->select('name');
 $query = $this->db->get_where('va_users',array('outreach_id'=>$ses_data['id']));	
 	 return  $query->result_array();
 }
-
+/**getupcomingWorkshop method  fatch the upcoming workshops 
+  * @param   integer $ses_dataid
+  * @return array values
+  */
 	public function getupcomingWorkshop($value='')
 	{ 
 	$ses_data=$this->session->userdata('user_details');
@@ -299,28 +405,48 @@ $query = $this->db->get_where('va_users',array('outreach_id'=>$ses_data['id']));
 	 return  $query->result_array();
 	
 	}
+	/**getHomeWorkshop method  fatch the all upcoming workshops for home page 
+  * @param   Null
+  * @return array values
+  */
 public function getHomeWorkshop($value='')
 {
 	 $query = $this->db->get_where('workshop',array('workshop_status'=>1));	
 	 return  $query->result_array();
 	
 }
+/**updateWorkshop method  update the workshops
+  * @param   string $value
+  * @return integer values
+  */
 	public function updateWorkshop($value='')
 	{
 		 $this->db->where('workshop.workshop_id',$value['workshop_id']);
 			 $this->db->update('workshop', $value);
 			 return $this->db->affected_rows();
 	}
+	/**editProfile method  update the user profile
+  * @param   string $value
+  * @return integer values
+  */
 	public function editProfile($value='')
 	{
 		 $this->db->where('va_users.id',$value['id']);
 			 $this->db->update('va_users', $value);
 			 return $this->db->affected_rows();
 	}
+	/**deleteWorkshop method  delete the workshop 
+  * @param   string $value
+  * @return integer values
+  */
 	public function deleteWorkshop($value=''){
 		$this->db->delete('workshop', array('workshop_id' => $value)); 
 		return $this->db->affected_rows();
 	}
+	/**activeworkshop method  
+  * @param   string $value
+  * @return integer values
+  */
 	public function activeworkshop($value1=''){
 		$value =array(
 						'report_status'=>1
@@ -329,6 +455,10 @@ public function getHomeWorkshop($value='')
 			 $this->db->update('workshop_report', $value);
 			 return $this->db->affected_rows();
 	}
+	/**submitReport_m method  
+  * @param   string $inputdata
+  * @return integer values
+  */
 	public function submitReport_m($inputdata=''){	
 	$ses_data=$this->session->userdata('user_details'); 
 	$report_data=$this->session->userdata('report_data');	
@@ -350,6 +480,10 @@ $this->db->where('workshop.workshop_id',$inputdata['workshop_id']);
 			 $this->db->update('workshop', $value);
 			 return $this->db->affected_rows();
 	}
+	/**editReport_m method  
+  * @param   string $inputdata
+  * @return integer values
+  */
 	public function editReport_m($inputdata=''){ 
 	$ses_data=$this->session->userdata('user_details'); 
 	$report_data=$this->session->userdata('report_data');	
@@ -365,7 +499,10 @@ if($this->db->insert('workshop_report',$inputdata))
  return $this->db->insert_id();
 	}
 	}
-
+/**getViewReport method  facth the workshop reports 
+  * @param   string $value1
+  * @return array values
+  */
 	public  function getViewReport($value1=''){
 			 $this->db->select('workshop.*,workshop_report.*');
 			 $this->db->from('workshop');
@@ -374,6 +511,10 @@ if($this->db->insert('workshop_report',$inputdata))
 		 	 $query = $this->db->get();
 			 return $query->result_array();	 
  		}
+		/**approverepost_m method  facth the workshop reports 
+  * @param   string $value1
+  * @return array values
+  */
 	public function approverepost_m($value1=""){
 	    $value = array(
 			'workshop_status'=>2
@@ -382,48 +523,62 @@ if($this->db->insert('workshop_report',$inputdata))
 			 $this->db->update('workshop', $value);
 			 return $this->db->affected_rows();
 			}
-			//29-07-15
+			/**getGuidesMaterial method  facth the workshop Guides & Material 
+  * @param  integer $status
+  * @return array values
+  */
 			public function getGuidesMaterial()
 {
 	 $query = $this->db->get_where('workshop_documents',array('status'=>1));	
 	 return  $query->result_array();
 	
 }
-
+	/**getPresentationReporting method  facth the workshop Presentation Reporting 
+  * @param  integer $status
+  * @return array values
+  */
 public function getPresentationReporting()
 {
 	 $query = $this->db->get_where('presentation_reporting_documents',array('status'=>1));	
 	 return  $query->result_array();
 	
 }
-
+/**getWorkshopMetirial method  facth the workshop Workshop Metirial 
+  * @param  integer $status
+  * @return array values
+  */
 public function getWorkshopMetirial()
 {
 	 $query = $this->db->get_where('workshop_metirial_documents',array('status'=>1));	
 	 return  $query->result_array();
 	
 }
+/**workshopruncount method  facth the workshop run count 
+  * @param  integer $status
+  * @return integer values
+  */
 public function workshopruncount(){
 	$query = $this->db->get_where('workshop',array('workshop_status'=>1)); 
 	return $query->num_rows();
 }
+/**nodalcenterscount method  facth the nodal centers count
+  * @param  integer $status
+  * @return integer values
+  */
 public function nodalcenterscount(){
 	$query = $this->db->get_where('va_users',array('user_type'=>2)); 
 	return $query->num_rows();
 }
-
+/**labstakencount method  facth the labs taken count
+  * @param  integer $status
+  * @return array values
+  */
 public function labstakencount(){
 	$this->db->select('(SELECT SUM(va_users.experiments ) FROM va_users WHERE va_users.user_type=2) AS labstaken'); 
 	$query = $this->db->get('va_users');
 	return $query->row_array();
 	
 }
-/* public function nodalcentercountmanage(){
-	$ses_data=$this->session->userdata('user_details');
-	$this->db->select('(SELECT SUM(va_users.experiments ) FROM workshop WHERE va_users.user_type=2 and outreach_id=.'$ses_data['id']') AS labstaken'); 
-	$query = $this->db->get('va_users');
-	return $query->row_array();
-	
-} */
+
 }
 ?>
