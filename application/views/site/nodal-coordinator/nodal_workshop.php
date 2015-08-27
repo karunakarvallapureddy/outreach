@@ -35,7 +35,7 @@
 					<div class="icon-box-top">
 					<div class="value-disp">
 						<p align="left" class="value-list">
-							<span class="counternew" style="display:inline-block; color:#fff;">0/150</span><span class="resu-top">WORKSHOPS RUN</span>
+							<span class="counternew" style="display:inline-block; color:#fff;"><?php echo $workshoprun; ?>/<?php echo $workshoprunall['workshop']; ?></span><span class="resu-top">WORKSHOPS RUN</span>
 						</p>
 						</div>
 					</div>
@@ -44,7 +44,7 @@
 					<div class="icon-box-top">
 						<div class="value-disp">
 						<p align="left" class="value-list">
-							<span class="counternew" style="display: inline-block;color:#fff;">0/7,500</span><span class="resu-top">PARTICIPANTS</span>
+							<span class="counternew" style="display: inline-block;color:#fff;"><?php echo $participatecount['participate']; ?>/<?php echo $participantsall['participants']; ?></span><span class="resu-top">PARTICIPANTS</span>
 						</p>
 					</div></div>
 				</div>
@@ -52,7 +52,7 @@
 					<div class="icon-box-top">
 						<div class="value-disp">
 						<p align="left" class="value-list">
-							<span class="counternew" style="display: inline-block;color:#fff;">0/250</span><span class="resu-top">EXPERIMENTS
+							<span class="counternew" style="display: inline-block;color:#fff;"><?php echo $experimentcount['experiment']; ?>/<?php echo $experimentsall['experiments']; ?></span><span class="resu-top">EXPERIMENTS
 
 </span>
 						</p>
@@ -677,12 +677,12 @@ tabs-below > .nav-tabs,
  <div class="col-md-12 align-top-botm">
 				
 				<div class="col-md-1">
-					Date			
+					<b>Date</b>			
 				</div>
 				
-				<div class="col-md-2">Location</div>
-                <div class="col-md-2 ">Participants </div>
-                <div class="col-md-3">Experiments</div>
+				<div class="col-md-2"><b>Location</b></div>
+                <div class="col-md-2 "><b>Participants</b> </div>
+                <div class="col-md-3"><b>Experiments</b></div>
 				<div class="col-md-3"></div>
 			</div>
 												<?php
@@ -702,9 +702,9 @@ tabs-below > .nav-tabs,
 				</div>
 				
 				 <div class="col-md-2"><?php echo $workshopdata['location']; ?></div>
-                <div class="col-md-2"><?php echo $workshopdata['number_of_participants'];  ?>participants</div>
-                <div class="col-md-2"><?php echo $workshopdata['number_of_participants'];  ?>experiments</div>
-				                 <div class="col-md-2"> <a href="#" id='feedback-<?php echo $workshopdata["workshop_id"]; ?>'><span id="mew-<?php echo $workshopdata["workshop_id"]; ?>" >► </span> viewReport</a></div>
+               <div class="col-md-2"><?php if($workshopdata['reason']){ ?><span  style="color: #CACACA;"><?php echo $workshopdata['number_of_participants'];  ?></span> <?php }else{ ?><?php echo $workshopdata['number_of_participants'];  ?>participants<?php } ?></div>
+                <div class="col-md-2"><?php if($workshopdata['reason']){ ?><span  style="color: #CACACA;"><?php echo $workshopdata['number_of_participants'];  ?></span><?php }else{ ?><?php echo $workshopdata['number_of_participants'];  ?> experiments<?php  } ?></div>
+				                 <div class="col-md-2"> <a href="#" id='feedback-<?php echo $workshopdata["workshop_id"]; ?>'><span id="mew-<?php echo $workshopdata["workshop_id"]; ?>" >► </span> viewReport</a></div><?php if($workshopdata['reason']){ echo "Workshop Cancelled";} ?>
 
              <div style='display:none' id="frn_comment-<?php echo $workshopdata["workshop_id"]; ?>"></br></br></br>
 			<div class="tabbable tabs-left">

@@ -172,7 +172,15 @@ public function forgot_password($data="",$email="",$message="") {
 										$data['getPresentationReporting']=$this->home_site_m->getPresentationReporting();
 										$data['getGuidesMaterial']=$this->home_site_m->getGuidesMaterial();
 										$data['getWorkshopMetirial']=$this->home_site_m->getWorkshopMetirial();
-										$demoa = $data['get_workshop_history']=$this->home_site_m->getWorkshopHistoryNodal();
+										//$data['get_workshop_history']=$this->home_site_m->getWorkshopHistory();
+										$data['get_workshop_history']=$this->home_site_m->getWorkshopHistoryNodal();
+										$data['workshoprun']=$this->home_site_m->workshopruncountalllogin();
+										$data['workshoprunall']=$this->home_site_m-> workshopallcountlogin();
+										$data['experimentsall']=$this->home_site_m->experimentscountlogin();
+										$data['participantsall']=$this->home_site_m->participantscountlogin();
+										$data['experimentcount']=$this->home_site_m->experimentcount();
+										$data['participatecount']=$this->home_site_m->participatecount();
+										
 														$data['get_workshop_upcoming1']=$this->home_site_m->getupcomingWorkshop();
 										$this->load->view('site/header',$data);
 							$this->load->view('site/nodal-coordinator/nodal_workshop.php',$data);

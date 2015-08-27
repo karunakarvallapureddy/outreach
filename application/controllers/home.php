@@ -81,7 +81,7 @@ class home extends CI_Controller
      * @return object if success  redirect to  about outreach page
      */
 	
-	public function cms($id="",,$data="")
+	public function cms($id="",$data="")
 	{
 		$id=str_replace("_","-",str_replace("-"," ",$id));
 		$data['content'] = $this->home_site_m->get_cms($id);
@@ -450,6 +450,24 @@ public function approverepost($inputdata=""){
 					redirect('manage-workshop',"refresh");
 				}
 		}
+		 /**
+     * cancelworkshop   (changing workshop status)
+     * @param string $inputdata
+     * @return object  if success redirect to workshop page 
+     */
+
+public function cancelworkshop($postval=""){
+	$ses_data=$this->session->userdata('user_details');
+				if (empty($ses_data)){
+				redirect('Login');
+				}
+				$inputdata = $this->input->post();
+				$res=$this->home_site_m->cancelworkshop_m($inputdata);
+				if($res){
+					$this->session->set_flashdata('msg', 'cancel workshopp Successfully ');
+					redirect('nodal-coordinator',"refresh");
+				}
+}
 	
 }
 

@@ -2,7 +2,9 @@
 foreach ($editWorkshop1 as $editWorkshop) {
 
 ?>
-<div role="tabpanel" class="tab-pane container" id="messages">
+<div role="tabpanel" class="tab-pane container" id="messages" style="
+    margin-top: 70px;
+">
 	<!-- FORMS -->
 						<div class="row">
 							<div class="col-md-12">
@@ -114,6 +116,36 @@ foreach ($editWorkshop1 as $editWorkshop) {
 							<button class="btn btn-success">Add  Nodal Center</button></form>
 					<a href="<?php echo base_url('')?>">	<button class="btn btn-warning">Cancel</button>	</a>
 						</p>
+						<a>
+						<!-- Button trigger modal -->
+<button type="button" class="btn btn pull-right" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Cancel Workshop</button>
+
+<div class="modal fade" data-backdrop="" id="exampleModal"  role="dialog" >
+  <div class="modal-dialog" style="
+    margin-top: 120px;
+" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Cancel Workshop</h4>
+      </div>
+      <div class="modal-body">
+        <form method="post" name="addStaff" id="addStaff" action="<?php echo site_url('home/cancelworkshop');?>">
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">* Reason to cancel the workshop:</label>
+            <input type="text" class="form-control" id="recipient-name" name="reason" required >
+            <input type="hidden" class="form-control" id="recipient-name" name="workshop_id" value="<?php echo  $editWorkshop['workshop_id'];  ?> ">
+          </div> <div class="modal-footer">
+          <input type="submit" name="submit" value="Confirm Cancellation" class="btn pull-left">
+       </div>  </form>
+      </div>
+     
+
+       
+     
+    </div>
+  </div>
+</div>
 						<!-- /Save -->												
 						</form>
 	</div>

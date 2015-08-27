@@ -360,7 +360,7 @@ public function getWorkshopHistoryNodal(){
 $this->db->from('workshop');
 $this->db->join('workshop_report', 'workshop.workshop_id = workshop_report.workshop_id', 'left'); 
 $this->db->where('workshop.uid',$ses_data['id']);
-$this->db->where('workshop.workshop_status',2);
+$this->db->where('workshop.workshop_status !=',1);
 $query = $this->db->get();
 return $query->result_array(); 
 }
@@ -579,6 +579,58 @@ public function labstakencount(){
 	return $query->row_array();
 	
 }
+public function cancelworkshop_m($inputdata=""){
+	 $value = array(
+			'workshop_status'=>3,
+			'reason'=>$inputdata['reason']		
+			);
+			$this->db->where('workshop.workshop_id',$inputdata['workshop_id']);
+			 $this->db->update('workshop', $value);
+			 return $this->db->affected_rows();
+	
+}
 
+public function experimentcount(){
+$ses_data=$this->session->userdata('user_details'); 
+//echo $ses_data['id']; die();
+	$query = $this->db->query("SELECT SUM(participate_experiment) as experiment FROM workshop_report WHERE uid=".$ses_data['id']); 
+	return $query->row_array();
+}
+public function participatecount(){
+$ses_data=$this->session->userdata('user_details'); 
+	$query = $this->db->query("SELECT SUM(participate_attend) as participate FROM workshop_report WHERE uid=".$ses_data['id']); 
+	return $query->row_array();
+}
+public function workshopallcountlogin(){
+	$ses_data=$this->session->userdata('user_details'); 
+	$this->db->select('workshop'); 
+	$query = $this->db->get_where('va_users',array('id'=>$ses_data['id']));
+	return $query->row_array();
+	
+}
+public function workshopruncountlogin(){
+	$ses_data=$this->session->userdata('user_details'); 
+	$query = $this->db->get_where('workshop',array('workshop_status'=>1,'uid'=>$ses_data['id'])); 
+	return $query->num_rows();
+}
+public function workshopruncountalllogin(){
+	$ses_data=$this->session->userdata('user_details'); 
+	$query = $this->db->get_where('workshop',array('uid'=>$ses_data['id'])); 
+	return $query->num_rows();
+}
+public function experimentscountlogin(){
+	$ses_data=$this->session->userdata('user_details'); 
+	$this->db->select('experiments'); 
+	$query = $this->db->get_where('va_users',array('id'=>$ses_data['id']));
+	return $query->row_array();
+	
+}
+public function participantscountlogin(){
+	$ses_data=$this->session->userdata('user_details'); 
+	$this->db->select('participants'); 
+	$query = $this->db->get_where('va_users',array('id'=>$ses_data['id']));
+	return $query->row_array();
+	
+}
 }
 ?>
