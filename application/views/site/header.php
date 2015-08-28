@@ -110,6 +110,6 @@
 		
     </div>
     	<div id="divaid1" style="text-align:center;font-size:14px;font-weight:600">
-		<?php if($ses_data['user_type']==1){  ?> <span > Welcome <?php echo ucfirst($ses_data['name']); ?>, Outreach Coordinators</span><?php }?>
+		<?php if($ses_data['user_type']==1){  ?> <span > Welcome <?php echo ucfirst($ses_data['name']); ?>, Outreach Coordinator</span><?php }?>
 		</div>
 </div>	

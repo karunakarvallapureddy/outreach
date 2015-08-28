@@ -27,7 +27,7 @@
 </script>
 <style>
 .counter1{
-    font-size: 23px;
+    font-size: 19px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     line-height: 0px;
@@ -44,7 +44,7 @@
 					<div class="icon-box-top">
 					<div class="value-disp">
 						<p align="left" class="value-list">
-							<span class="counter1" style="display:inline-block; color:#fff;">0/150</span><span class="resu-top">EXPERIMENTS</span>
+							<span class="counter1" style="display:inline-block; color:#fff;"><?php echo $nodalcoordinatorcounthistroy[0]['participants']; ?>/<?php echo  $nodalcoordinatorworkshop['experiments']; ?></span><span class="resu-top">EXPERIMENTS</span>
 						</p>
 						</div>
 					</div>
@@ -53,7 +53,7 @@
 					<div class="icon-box-top">
 						<div class="value-disp">
 						<p align="left" class="value-list">
-							<span class="counter1" style="display: inline-block;color:#fff;">0/7,500</span><span class="resu-top">PARTICIPANTS</span>
+							<span class="counter1" style="display: inline-block;color:#fff;"><?php echo $nodalcoordinatorcounthistroy[0]['experiments']; ?>/<?php echo  $nodalcoordinatorworkshop['participants']; ?></span><span class="resu-top">PARTICIPANTS</span>
 						</p>
 					</div></div>
 				</div>
@@ -61,7 +61,7 @@
 					<div class="icon-box-top">
 					<div class="value-disp">
 						<p align="left" class="value-list">
-							<span class="counter1" style="display:inline-block; color:#fff;">0/150</span><span class="resu-top">WORKSHOPS</span>
+							<span class="counter1" style="display:inline-block; color:#fff;"><?php echo $nodalcoordinatorworkshopcount; ?>/<?php echo  $nodalcoordinatorworkshop['workshop']; ?></span><span class="resu-top">WORKSHOPS</span>
 						</p>
 						</div>
 					</div>
@@ -71,7 +71,7 @@
 					<div class="icon-box-top">
 						<div class="value-disp">
 						<p align="left" class="value-list">
-							<span class="counter1" style="display: inline-block;color:#fff;">6/250</span><span class="resu-top">NODEL CENTERS
+							<span class="counter1" style="display: inline-block;color:#fff;"><?php echo $nodalcoordinatorcount; ?></span><span class="resu-top">NODEL CENTERS
 
 </span>
 						</p>
@@ -111,12 +111,12 @@
  
  
  <div>
-<h2 class="head-events">Upcoming Workshops</h2>
+<!--<h2 class="head-events">Upcoming Workshops</h2>-->
 </div>
 
  <div class="col-md-12 align-top-botm">
 				
-				<div class="col-md-1">
+				<div class="col-md-2">
 					Date			
 				</div>
 				
@@ -137,7 +137,7 @@
 												
 			<div class="col-md-12 align-top-botm">
 				
-				<div class="col-md-1">
+				<div class="col-md-2">
 					<div class="month-box"><span><?php echo $newDated; ?> <?php echo $newDate; ?><br/><?php echo $newyear; ?></span></div>				
 				</div>
 				
@@ -266,7 +266,7 @@ foreach($workshopdataa as $workshopdataget){
 													
 												</tr>
 											</thead>
-											asdfasfsaf
+											
 												<?php
 												
 											foreach($view_reports as $workshopdata){
@@ -431,7 +431,7 @@ tabs-below > .nav-tabs,
          	
          <div class="tab-pane" id="b">
          	<div >
-			<object data="<?php echo base_url(); ?>uploads/college_report/<?php echo $workshopdata['college_report']; ?>" type="application/pdf" width="50%" height="100%">
+			<object data="<?php echo base_url(); ?>uploads/college_report/<?php echo $workshopdata['college_report']; ?>" type="application/pdf" width="100%" height="100%">
   <p>Alternative text - include a link <a href="<?php echo base_url(); ?>uploads/college_report/<?php echo $workshopdata['college_report']; ?>">to the PDF!</a></p>
 </object>
 				
@@ -665,8 +665,8 @@ tabs-below > .nav-tabs,
 				</div>
 				
 				 <div class="col-md-1"><?php echo $workshopdata['location']; ?></div>
-                <div class="col-md-2"><?php echo $workshopdata['number_of_participants'];  ?>Participants</div>
-                <div class="col-md-2"><?php echo $workshopdata['number_of_participants'];  ?>Experiments</div>
+                <div class="col-md-2"><?php echo $workshopdata['participate_attend'];  ?>Participants</div>
+                <div class="col-md-2"><?php echo $workshopdata['participate_experiment'];  ?>Experiments</div>
                 <div class="col-md-3 "><p style="font-size: 12px;line-height: 20px;text-align: justify;"><?php 
 $workshopdataa = explode(",", $workshopdata['participate_institute']);
 foreach($workshopdataa as $workshopdataget){
@@ -747,21 +747,188 @@ foreach($workshopdataa as $workshopdataget){
 
 	</div>
     <div role="tabpanel" class="tab-pane" id="settings">
-										<table id="datatable2" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered table-hover">
+	<div class="col-md-12 align-top-botm">
+				
+				<div class="col-md-1">
+					Date			
+				</div>
+				
+				
+                <div class="col-md-2 ">Participants </div>
+                <div class="col-md-2 ">Experiments</div>
+				
+			</div>
+			<?php
+												
+											foreach($training as $trainingdisplay){
+												$newDate = strtoupper(date("M", strtotime($trainingdisplay['created_on'])));												
+												$newDated = date("d", strtotime($trainingdisplay['created_on']));	
+												$newyear = date("Y", strtotime($trainingdisplay['created_on']));	
+												?>
+                                                
+                                                
+                                                 <div class="col-md-12 align-top-botm">
+				
+				
+                <div class="col-md-1">
+					<div class="month-box"><span><?php echo $newDated; ?> <?php echo $newDate; ?><br/><?php echo $newyear; ?></span></div>				
+				</div>
+				
+				 <div class="col-md-2"><?php echo $trainingdisplay['participants_attended']; ?>Participants</div>
+                <div class="col-md-2"><?php echo $trainingdisplay['experiments_conducted'];  ?>Experiments</div>
+                
+               
+                 <div class="col-md-1"> <a id='trainingdisplay-<?php echo $trainingdisplay["id"]; ?>' style="cursor: pointer;"><span id="trainingicon-<?php echo $trainingdisplay["id"]; ?>">►</span>viewReport</a></div>
+             <div style='display:none' id="trainingdisplayinner-<?php echo $trainingdisplay["id"]; ?>"></br></br></br>
+			<div class="tabbable tabs-left">
+        <ul class="nav nav-tabs no-border">
+          <li class="active"><a href="#a-<?php echo $trainingdisplay["id"]; ?>" data-toggle="tab" class="bgclr-nobg">Attendance sheets</a></li>
+          <li ><a href="#b-<?php echo $trainingdisplay["id"]; ?>" data-toggle="tab" class="bgclr-nobg">Training photos</a></li>
+        </ul>
+        <div class="tab-content only-no-border">
+         <div class="tab-pane active" id="a-<?php echo $trainingdisplay["id"]; ?>"><div style="float: right;  width:80%  ">
+			
+			
+			    	    	 
+<object data="<?php echo base_url(); ?>uploads/Report/attendance/<?php echo $trainingdisplay['attendance_sheet']; ?>" type="application/pdf" width="100%" height="250px">
+  <p>Alternative text - include a link <a href="<?php echo base_url(); ?>uploads/Report/attendance/<?php echo $trainingdisplay['attendance_sheet']; ?>">to the PDF!</a></p>
+</object>
+			
+			</div>
+         	
+		   	
 
-											<thead>
-												<tr>
+         	         	</div>
+         	
+         
+         <div class="tab-pane" id="b-<?php echo $trainingdisplay["id"]; ?>">
+		         <img src="<?php echo base_url(); ?>uploads/Report/training/<?php echo $trainingdisplay['training_photos']; ?>" width="250px" height="250px">
 
-													<th>S.No</th>
-											<th>Date</th>
-													<th>Name</th><th>Number of participants</th>
-													<th>experiments</th>
-													
-													
-												</tr>
-											</thead>
-											
-</table></div>
+	</div>
+        
+        </div>
+      </div>
+			 </div>
+			 
+			 
+        <script type="text/javascript">
+	$("#trainingdisplay-<?php echo $trainingdisplay["id"]; ?>").click(function(){
+		if($('#trainingdisplayinner-<?php echo $trainingdisplay["id"]; ?>').css('display') == 'none'){ 
+		   $('#trainingdisplayinner-<?php echo $trainingdisplay["id"]; ?>').show('slow'); 
+		   $('#trainingicon-<?php echo $trainingdisplay["id"]; ?>').html("▼");
+		} else { 
+		   $('#trainingdisplayinner-<?php echo $trainingdisplay["id"]; ?>').hide('slow'); 
+		    $('#trainingicon-<?php echo $trainingdisplay["id"]; ?>').html("►");
+		}
+	});
+</script>
+  
+                
+			</div>
+                                                
+                    	<?php
+											}
+													?> 
+	<a id="addnodaltraininglink" style="cursor: pointer;"><span id="trainingiconform">►</span>+Submit Training Report</a>
+	<!---add nodal training---->
+	<div  id="addnodaltraining" style="display:none">
+	<!-- FORMS -->
+						<div class="row">
+							<div class="col-md-12">
+								<div class="row">
+									<!-- product details -->								
+									<div class="col-md-12 col-centered" >
+										<div class="box border dark gray">
+											<div class="box-title">
+												<h4></h4>
+											</div>
+											<div class="box-body big">
+											<span id="error" class='error'></span>	
+<form class="form-horizontal" method="POST"  action="<?php echo site_url('site/traininging');?>"  enctype="multipart/form-data">
+												  
+												  <!-- Product Name -->
+												  <div class="form-group">
+													<label class="col-sm-4">Number of participants attended:<span style="color:red">*</span></label>
+													<div class="col-sm-6">
+													  <input type="text"  required name = "participants_attended" id = "participants_attended" style="width: 10%;">
+													</div>
+												  </div>
+												    <div class="form-group">
+													<label class="col-sm-4">Number of experiments conducted:<span style="color:red">*</span></label>
+													<div class="col-sm-6">
+													  <input type="text" required  name = "experiments_conducted" id = "experiments_conducted" style="width: 10%;">
+													 
+													</div>
+												  </div>
+												  <div class="uploaddocuments">Upload documents</div>
+												  
+												  <div class="form-group">
+													<label class="col-sm-4">Attendance sheet</label>
+													<div class="col-sm-6">
+													  <input type="file" required name="attendance_sheet" id ="attendance_sheet" >
+													</div>
+												  </div>
+												  <div class="form-group">
+													<label class="col-sm-4">Training photos</label>
+													<div class="col-sm-6">
+													  <input type="file" required name="training_photos" id="training_photos" >
+													  
+													</div>
+												  </div>
+												  <div class="commentsfeedback">Comments & Feedback</div>
+												  <div class="box-title">
+												
+											</div>
+												  
+												  <div class="form-group">
+													<label class="col-sm-4">Positive<span style="color:red">*</span></label>
+													<div class="col-sm-6">
+													  <textarea name="positive" style="width: 46%;" required></textarea>
+													</div>
+												  </div>
+												  <div class="form-group">
+													<label class="col-sm-4">Negative<span style="color:red">*</span></label>
+													<div class="col-sm-6">
+													  <textarea name="negative" style="width: 46%;" required></textarea></div>
+												  </div>
+												  <div class="form-group">
+													<div class="col-sm-6">
+														<?php
+														$ses_data= $this->session->userdata("user_details"); 
+														?>
+														<input type="hidden" name="outreach_id" name="outreach_id" value="<?php echo $ses_data['id']; ?>">
+													  
+													</div>
+												  </div>
+												  <div class="form-group">
+												  <label class="col-sm-4">&nbsp;</label><div class="col-sm-6">
+												 <input type="submit" name="submit" value="submit">
+												  </div><div class="col-sm-2">
+												  <a href="<?php echo base_url('nodal-coordinator')?>">	<button class="btn btn-warning" style="    float: right;    background-color: #000;    color: #fff;">Cancel</button>	</a>
+												  </div>
+												  </div> 
+												<?php /* */?>
+												  
+											</div>
+										</div>
+									</div>
+									<!-- product details -->
+						
+							
+					
+						
+
+
+		
+			</div>		
+		</div>
+	</div>														
+						</form>
+						</div>
+	
+	<!---add nodal training---->
+										</div>
+										
 <div role="tabpanel" class="tab-pane" id="addnewnodal">
 
 							<div class="col-md-12" style="margin-top: 30px;">
@@ -942,6 +1109,17 @@ foreach($workshopdataa as $workshopdataget){
 		} else { 
 		   $('#displaynodalform').hide('slow'); 
 		    $('#iconform').html("►");
+		}
+	});
+</script>
+<script type="text/javascript">
+	$("#addnodaltraininglink").click(function(){
+		if($('#addnodaltraining').css('display') == 'none'){ 
+		   $('#addnodaltraining').show('slow'); 
+		   $('#trainingiconform').html("▼");
+		} else { 
+		   $('#addnodaltraining').hide('slow'); 
+		    $('#trainingiconform').html("►");
 		}
 	});
 </script>

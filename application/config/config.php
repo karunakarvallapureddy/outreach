@@ -14,12 +14,10 @@
 | path to your installation.
 |
 */
-/*$config['base_url']	= 'http://testingserver.website/flyeasynew/';*/
 $config['base_url']	= '';
 
 
-/*$config['theme_folder_path'] = 'http://apperola.net/flyeasynew/';*/
-$config['theme_folder_path'] = 'http://testingserver.website/outreach/';
+$config['theme_folder_path'] = '';
 
 /*
 |--------------------------------------------------------------------------

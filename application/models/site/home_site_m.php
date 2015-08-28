@@ -589,10 +589,8 @@ public function cancelworkshop_m($inputdata=""){
 			 return $this->db->affected_rows();
 	
 }
-
 public function experimentcount(){
 $ses_data=$this->session->userdata('user_details'); 
-//echo $ses_data['id']; die();
 	$query = $this->db->query("SELECT SUM(participate_experiment) as experiment FROM workshop_report WHERE uid=".$ses_data['id']); 
 	return $query->row_array();
 }
@@ -631,6 +629,47 @@ public function participantscountlogin(){
 	$query = $this->db->get_where('va_users',array('id'=>$ses_data['id']));
 	return $query->row_array();
 	
+}
+public function traininging($value)
+	{		
+$this->db->insert('nodalcoordinatortraining',$value);
+return $submitreportid1= $this->db->insert_id();
+	}
+public function get_training(){
+$ses_data= $this->session->userdata("user_details"); 
+			$outreachid = $ses_data['id'];
+			 $this->db->order_by('id','asc');
+			 $query = $this->db->get_where('nodalcoordinatortraining',array('outreachid'=>$outreachid));	
+		 return  $query->result_array(); 
+}
+public function nodalcoordinatorcount(){
+	$ses_data= $this->session->userdata("user_details"); 
+			$outreachid = $ses_data['id'];
+			 $this->db->order_by('id','asc');
+			 $query = $this->db->get_where('va_users',array('user_type'=>2,'outreach_id'=>$outreachid));	
+		 return  $query->num_rows(); 
+}
+public function nodalcoordinatorworkshop(){
+		$ses_data= $this->session->userdata("user_details"); 
+		$query = $this->db->query("SELECT SUM( experiments ) AS experiments, SUM( participants ) AS participants, SUM( workshop ) AS workshop
+FROM va_users
+WHERE  `outreach_id`=".$ses_data['id']); 
+ return $query->row_array();
+}
+public function nodalcoordinatorcounthistroy(){
+	$ses_data= $this->session->userdata("user_details"); 
+	 $this->db->select('SUM(workshop_report.participate_attend) as participants,SUM(workshop_report.participate_experiment) as experiments,workshop_report.workshop_id');
+			 $this->db->from('workshop');
+			 $this->db->join('workshop_report', 'workshop.workshop_id = workshop_report.workshop_id', 'left'); 
+			 $this->db->where('workshop.outreach_id',$ses_data['id']);
+		 	 $query = $this->db->get();
+			 return $query->result_array();	 
+}
+ public function nodalcoordinatorworkshopcount(){
+	$ses_data= $this->session->userdata("user_details"); 
+			$outreachid = $ses_data['id'];
+			 $query = $this->db->get_where('workshop',array('outreach_id'=>$outreachid));		 
+		 return  $query->num_rows();
 }
 }
 ?>

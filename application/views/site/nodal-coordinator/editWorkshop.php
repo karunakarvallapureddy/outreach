@@ -115,9 +115,7 @@ foreach ($editWorkshop1 as $editWorkshop) {
 						<p class="btn-toolbar">							
 							<button class="btn btn-success">Add  Nodal Center</button></form>
 					<a href="<?php echo base_url('')?>">	<button class="btn btn-warning">Cancel</button>	</a>
-						</p>
-						<a>
-						<!-- Button trigger modal -->
+						</p>	<!-- Button trigger modal -->
 <button type="button" class="btn btn pull-right" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Cancel Workshop</button>
 
 <div class="modal fade" data-backdrop="" id="exampleModal"  role="dialog" >

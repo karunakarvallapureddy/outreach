@@ -210,7 +210,14 @@ $data['get_name']=$this->home_site_m->getnames();
 $data['get_getworkshopgr']=$this->home_site_m->getworkshopgr();
 $data['getworkshopcreated']=$this->home_site_m->getworkshopcreated();
 	$data['get_workshop1']=$this->home_site_m->get_nodal();
+	$data['training']=$this->home_site_m->get_training();
 $data['view_reports']=$this->home_site_m->getViewReport($inputdata);	
+$data['nodalcoordinatorcount']=$this->home_site_m->nodalcoordinatorcount();	
+$data['nodalcoordinatorworkshop']=$this->home_site_m->nodalcoordinatorworkshop();	
+$data['nodalcoordinatorcounthistroy']=$this->home_site_m->nodalcoordinatorcounthistroy();	
+$data['nodalcoordinatorworkshopcount']=$this->home_site_m->nodalcoordinatorworkshopcount();	
+/* $data['nodalcentercountmanage']=$this->home_site_m->nodalcentercountmanage($inputdata);	 */
+			//echo "<pre>";print_r($data['get_workshop_history']);exit;
 			$postdata=$this -> input ->post();
 				$res=$this->home_site_m->profileedit($postdata);
 				if($res==0){
@@ -249,6 +256,62 @@ $data['view_reports']=$this->home_site_m->getViewReport($inputdata);
 									 $this->load->view('site/header',$data);
 									 $this->load->view('site/outreachcoordinator/outreachcoordinatorview',$data);
 						   			 $this->load->view('site/footer');
+	}
+	/*
+	@method profile 
+	@param  Post Values 
+	@return object  if success redirect to profile page
+*/
+	public function profile($data="") {
+				$ses_data=$this->session->userdata('user_details');
+				if (empty($ses_data)){
+				redirect('Login');
+				}
+				$data['student_details']=$ses_data;
+				$this->load->view('site/header',$data);
+			    $this->load->view('site/home/change_profile',$data);
+				$this->load->view('site/footer');
+		}
+		/*
+	@method traininging 
+	@param  Post Values 
+	@return object  if success redirect to nodal-coordinator page
+*/
+		public function traininging($traininginputs=""){
+					$inputdata = $this->input->post();
+			$report_data=$this->session->userdata('report_data');	
+			$target_dir = 'uploads/Report/training/';
+			$target_dir1 = 'uploads/Report/attendance/';
+			 $attendance_sheetname = time().$_FILES["attendance_sheet"]["name"];
+			 $training_photosname = time().$_FILES["training_photos"]["name"];
+			 $target_file =  $target_dir1 . basename($attendance_sheetname);
+			 $target_file1 = $target_dir . basename($training_photosname);	
+	if (move_uploaded_file($_FILES["attendance_sheet"]["tmp_name"], $target_file)){
+			$upload_attend_sheet=$attendance_sheetname;
+				}else {
+				$upload_attend_sheet=$report_data[0]['upload_attend_sheet'];
+				}
+				if (move_uploaded_file($_FILES["training_photos"]["tmp_name"], $target_file1)) {
+				$college_report=$training_photosname;
+					} else {
+					$college_report=$report_data[0]['college_report'];
+					}
+						$filea = array(
+						'attendance_sheet'=>$upload_attend_sheet,
+						'training_photos'=>$college_report,
+						'participants_attended'=>$inputdata['participants_attended'],
+						'experiments_conducted'=>$inputdata['experiments_conducted'],
+						'positive'=>$inputdata['positive'],
+						'negative'=>$inputdata['negative'],
+						'outreachid'=>$inputdata['outreach_id']
+						);
+	
+						$res=$this->home_site_m->traininging($traininginputs);
+						if($res>0){
+								$this->session->set_flashdata('msg', 'Submit Reports Successfully');
+							redirect('nodal-coordinator',"refresh");
+							$this->session->unset_userdata('report_data');
+						}
 	}
 	
 /* End of file welcome.php */
