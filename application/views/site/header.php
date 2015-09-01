@@ -55,7 +55,7 @@
 					<i class="fa fa-angle-down"></i><span class="username"><?php echo ucfirst($ses_data['name']); ?> </span>
 					
 					
-					<img alt="" style="widht:40px;height:40px;border-radius: 50px;"src="<?php echo base_url();?>images/outreach-profile-images/<?php echo $ses_data['profile_image']; ?>"  style="border-radius: 50%;">
+					<img alt="" style="border-radius: 50px;width: 30px;height: 30px;"src="<?php echo base_url();?>images/outreach-profile-images/<?php echo $ses_data['profile_image']; ?>"  style="border-radius: 50%;">
 					
 					
 					
@@ -77,9 +77,6 @@
 
 <?php }?>
 <style>
-	.dashboard-top{
-		padding-top: 8px;
-	}
 	ul li{
 		list-style-type:none;
 	}
