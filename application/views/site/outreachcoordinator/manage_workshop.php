@@ -209,8 +209,8 @@ foreach($workshopdataa as $workshopdataget){
 				</div>
 				
 				 <div class="col-md-2"><?php echo $workshopdata['location']; ?></div>
-                <div class="col-md-1"><?php echo $workshopdata['number_of_participants'];  ?></div>
-                <div class="col-md-1"><?php echo $workshopdata['number_of_participants'];  ?></div>
+                <div class="col-md-1"><?php echo $workshopdata['participate_attend'];  ?></div>
+                <div class="col-md-1"><?php echo $workshopdata['participate_experiment'];  ?></div>
                 <div class="col-md-3 "><p style="font-size: 12px;line-height: 20px;text-align: justify;"><?php 
 $workshopdataa = explode(",", $workshopdata['participate_institute']);
 foreach($workshopdataa as $workshopdataget){

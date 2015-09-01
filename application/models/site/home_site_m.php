@@ -306,9 +306,18 @@ return $submitreportid= $this->db->insert_id();
   */
 	public function getWorkshop($value='')
 	{
-		$ses_data=$this->session->userdata('user_details'); 
+		/* $ses_data=$this->session->userdata('user_details'); 
 		 $query = $this->db->get_where('workshop',array('outreach_id'=>$ses_data['id'],'workshop_status'=>1));	
-	 return  $query->result_array();
+	 return  $query->result_array(); */
+	 $ses_data=$this->session->userdata('user_details'); 
+	 $this->db->select('workshop.*,workshop_report.*');
+$this->db->from('workshop');
+$this->db->join('workshop_report', 'workshop.workshop_id = workshop_report.workshop_id', 'left'); 
+$this->db->where('workshop.outreach_id',$ses_data['id']);
+$this->db->where('workshop.workshop_status',1);
+$query = $this->db->get();
+return $query->result_array();	
+	 
 
 	}
 	/**getWorkshop_m method  individual user workshop data
