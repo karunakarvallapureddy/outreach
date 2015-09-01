@@ -140,7 +140,7 @@ public function __construct(){
 				if ($this->form_validation->run() == FALSE ){
 				$this->load->view('site/header',$data);
 				$data['coordinator_details']=$ses_data;
-			    $this->load->view('site/home/change_profile',$data);
+				$this->load->view('site/home/change_profile',$data);
 				$this->load->view('site/footer');
 				}elseif ($this ->input->post()){
 				$postdata=$this -> input ->post();
