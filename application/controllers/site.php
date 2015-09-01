@@ -9,7 +9,6 @@ class Site extends CI_Controller {
 *profile
 *authentic_coordinator
 *manage_workshop
-*addNodal
 *nodalCoordinatorListing
 *traininging
 */
@@ -61,61 +60,61 @@ public function __construct(){
 * @param string $message
 * @return object if success redirect to the view  with status
 */
-		public function forgot_password($data="",$email="",$message="") {
-			$this->load->view('site/header',$data);
-			$this->form_validation->set_rules('email', 'User Name', 'required|xss_clean');
-			if ($this->form_validation->run() == FALSE ){
-				 $this->load->view('site/home/forgot_password',$data);
-			}elseif ($this -> input ->post()){
-						$email=$this -> input ->post('email');
-						$res=$this->home_site_m->check_email($email);
-					if($res==0){
-							$this->session->set_flashdata('msg', 'Invalid User Name');
-							$this->load->view('site/home/forgot_password',$data);
-					}else{
-							$pwd=rand(000000,999999);
-							$det=array(
-							'email'=>$res['email'],
-							'password'=>md5($pwd)
-							);
-							$upd=$this->home_site_m->forgot_password($det);
-						if($upd>0){
-								$this->load->library('amazon_ses');
-								$this->amazon_ses->to($res['email']);
-								$this->amazon_ses->subject("Request Password");
-								$message="<html><head><META http-equiv='Content-Type' content='text/html; charset=utf-8'>
-										   </head><body>
-											  <div style='margin:0;padding:0'>
-											<table border='0' cellspacing='0' cellpadding='0'>
-										   <tbody>
-										   <tr>
-												<td valign='top'><p>".$res['name']." please click bellow link to activate your TASK Account.</p></td>
-										   </tr>
-										  <tr>
-											   <td valign='top'><p><strong>User Name :</strong> ".$email."</p></td>
-										  </tr>
-										  <tr>
-											   <td valign='top'><p><strong>Password :</strong> ".$pwd."</p></td>
-										  </tr>
-									</tbody>
-								</table>  
-							 </div>
-							</body></html>";
-								$this->amazon_ses->message($message);//exit;
-							if($this->amazon_ses->send()){
-								$this->session->set_flashdata('msg', 'Please check Your Email to receive Password');
-								$this->load->view('site/home/signin',$data);
-							}else{
-								$this->session->set_flashdata('msg', 'Your Request Failed.Please Re-Try.');
-								$this->load->view('site/home/forgot_password',$data);
-							}
+	public function forgot_password($data="",$email="",$message="") {
+		$this->load->view('site/header',$data);
+		$this->form_validation->set_rules('email', 'User Name', 'required|xss_clean');
+		if ($this->form_validation->run() == FALSE ){
+			 $this->load->view('site/home/forgot_password',$data);
+		}elseif ($this -> input ->post()){
+					$email=$this -> input ->post('email');
+					$res=$this->home_site_m->check_email($email);
+				if($res==0){
+						$this->session->set_flashdata('msg', 'Invalid User Name');
+						$this->load->view('site/home/forgot_password',$data);
+				}else{
+						$pwd=rand(000000,999999);
+						$det=array(
+						'email'=>$res['email'],
+						'password'=>md5($pwd)
+						);
+						$upd=$this->home_site_m->forgot_password($det);
+					if($upd>0){
+							$this->load->library('amazon_ses');
+							$this->amazon_ses->to($res['email']);
+							$this->amazon_ses->subject("Request Password");
+							$message="<html><head><META http-equiv='Content-Type' content='text/html; charset=utf-8'>
+									   </head><body>
+										  <div style='margin:0;padding:0'>
+										<table border='0' cellspacing='0' cellpadding='0'>
+									   <tbody>
+									   <tr>
+											<td valign='top'><p>".$res['name']." please click bellow link to activate your TASK Account.</p></td>
+									   </tr>
+									  <tr>
+										   <td valign='top'><p><strong>User Name :</strong> ".$email."</p></td>
+									  </tr>
+									  <tr>
+										   <td valign='top'><p><strong>Password :</strong> ".$pwd."</p></td>
+									  </tr>
+								</tbody>
+							</table>  
+						 </div>
+						</body></html>";
+							$this->amazon_ses->message($message);//exit;
+						if($this->amazon_ses->send()){
+							$this->session->set_flashdata('msg', 'Please check Your Email to receive Password');
+							$this->load->view('site/home/signin',$data);
 						}else{
-								$this->session->set_flashdata('msg', 'Your Request Failed.Please Re-Try.');
-								$this->load->view('site/home/forgot_password',$data);
+							$this->session->set_flashdata('msg', 'Your Request Failed.Please Re-Try.');
+							$this->load->view('site/home/forgot_password',$data);
 						}
-				}
+					}else{
+							$this->session->set_flashdata('msg', 'Your Request Failed.Please Re-Try.');
+							$this->load->view('site/home/forgot_password',$data);
+					}
 			}
-			$this->load->view('site/footer');
+		}
+		$this->load->view('site/footer');
 		}
 /**
 * logout   killing admin session data
@@ -137,10 +136,24 @@ public function __construct(){
 				if (empty($ses_data)){
 						redirect('');
 				}
-				$data['student_details']=$ses_data;
+				$this->form_validation->set_rules('password', 'User password', 'required');
+				if ($this->form_validation->run() == FALSE ){
 				$this->load->view('site/header',$data);
+				$data['coordinator_details']=$ses_data;
 			    $this->load->view('site/home/change_profile',$data);
 				$this->load->view('site/footer');
+				}elseif ($this ->input->post()){
+				$postdata=$this -> input ->post();
+				$uploads_dir = '/images/outreach-profile-images/';
+				$target_dir = 'images/outreach-profile-images/';
+				$target_file = $target_dir . basename($_FILES["profile_image"]["name"]);
+				move_uploaded_file($_FILES["profile_image"]["tmp_name"], $target_file);
+				$postdata['profile_image'] = ($_FILES['profile_image']['name']);
+				$res=$this->home_site_m->profileedit($postdata);
+				if($res){
+					$this->logout();
+				}
+				}
 		}
 /**
 * authentic_coordinator method  authentic users in first time login
@@ -153,39 +166,26 @@ public function __construct(){
 					redirect('Login');
 			} 
 			$data['get_workshop']=$this->home_site_m->get_nodal();	 
-			$postdata=$this -> input ->post();
-			$uploads_dir = '/images/outreach-profile-images/';
-			$target_dir = 'images/outreach-profile-images/';
-			$target_file = $target_dir . basename($_FILES["profile_image"]["name"]);
-			if (move_uploaded_file($_FILES["profile_image"]["tmp_name"], $target_file)) {
-				} else {
-					        
-			 }
-			$postdata['profile_image'] = ($_FILES['profile_image']['name']);
-			$res=$this->home_site_m->profileedit($postdata);
-			if($res==0){
-				$ses_data= $this->session->userdata("user_details");
-				if($ses_data['user_type']==1){
-					redirect('manage-workshop');
-				}else{
-						$data['getPresentationReporting']=$this->home_site_m->getPresentationReporting();
-						$data['getGuidesMaterial']=$this->home_site_m->getGuidesMaterial();
-						$data['getWorkshopMetirial']=$this->home_site_m->getWorkshopMetirial();
-						$data['get_workshop_history']=$this->home_site_m->getWorkshopHistoryNodal();
-						$data['workshoprun']=$this->home_site_m->workshopruncountalllogin();
-						$data['workshoprunall']=$this->home_site_m-> workshopallcountlogin();
-						$data['experimentsall']=$this->home_site_m->experimentscountlogin();
-						$data['participantsall']=$this->home_site_m->participantscountlogin();
-						$data['experimentcount']=$this->home_site_m->experimentcount();
-						$data['participatecount']=$this->home_site_m->participatecount();
-						$data['get_workshop_upcoming1']=$this->home_site_m->getupcomingWorkshop();
-						$this->load->view('site/header',$data);
-						$this->load->view('site/nodal-coordinator/nodal_workshop.php',$data);
-						$this->load->view('site/footer');	
-				}
+			$ses_data= $this->session->userdata("user_details");
+			if($ses_data['user_type']==1){
+				redirect('manage-workshop');
 			}else{
-				$this->logout();
+				$data['getPresentationReporting']=$this->home_site_m->getPresentationReporting();
+				$data['getGuidesMaterial']=$this->home_site_m->getGuidesMaterial();
+				$data['getWorkshopMetirial']=$this->home_site_m->getWorkshopMetirial();
+				$data['get_workshop_history']=$this->home_site_m->getWorkshopHistoryNodal();
+				$data['workshoprun']=$this->home_site_m->workshopruncountalllogin();
+				$data['workshoprunall']=$this->home_site_m-> workshopallcountlogin();
+				$data['experimentsall']=$this->home_site_m->experimentscountlogin();
+				$data['participantsall']=$this->home_site_m->participantscountlogin();
+				$data['experimentcount']=$this->home_site_m->experimentcount();
+				$data['participatecount']=$this->home_site_m->participatecount();
+				$data['get_workshop_upcoming1']=$this->home_site_m->getupcomingWorkshop();
+				$this->load->view('site/header',$data);
+				$this->load->view('site/nodal-coordinator/nodal_workshop.php',$data);
+				$this->load->view('site/footer');	
 			}
+			
 	}	
 /**
 * manage_workshop disply the workshop details  
@@ -212,43 +212,10 @@ public function __construct(){
 			$data['nodalcoordinatorworkshop']=$this->home_site_m->nodalcoordinatorworkshop();	
 			$data['nodalcoordinatorcounthistroy']=$this->home_site_m->nodalcoordinatorcounthistroy();	
 			$data['nodalcoordinatorworkshopcount']=$this->home_site_m->nodalcoordinatorworkshopcount();	
-			$postdata=$this -> input ->post();
-			$res=$this->home_site_m->profileedit($postdata);
-			if($res==0){
-				$this->load->view('site/header',$data);
-				$this->load->view('site/outreachcoordinator/manage_workshop',$data);
-			    $this->load->view('site/footer');
-			}
-	}
-/**
-* ddNodal   Create nodal Page
-* @param string $data
-* @return object  if success redirect to Nodal Listing View with Success Message else Create Nodal View
-*/
-	public function addNodal($data=""){
-		$ses_data=$this->session->userdata('user_details');
-		if (empty($ses_data)){
-			redirect('Login');
+			$this->load->view('site/header',$data);
+			$this->load->view('site/outreachcoordinator/manage_workshop',$data);
+			$this->load->view('site/footer');
 		}
-		$this->load->view('site/header',$data);
-		$this->load->view('site/outreachcoordinator/addnodlcenter',$data);
-	    $this->load->view('site/footer');	
-	}
-/**
-* nodalCoordinatorListing  
-* @param string $data
-* @return object  if success redirect to nodal coordinator Listing View
-*/
-	public function nodalCoordinatorListing($data=""){
-		$ses_data=$this->session->userdata('user_details');
-		if (empty($ses_data)){
-			redirect('Login');
-		}
-		$data['get_workshop']=$this->home_site_m->get_nodal();	
-		$this->load->view('site/header',$data);
-		$this->load->view('site/outreachcoordinator/outreachcoordinatorview',$data);
-		$this->load->view('site/footer');
-	}
 /*
 *@method traininging 
 *@param  Post Values 

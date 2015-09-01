@@ -144,10 +144,6 @@ class home extends CI_Controller
 			$result = $this->home_site_m->addNodalcenter_m($postdata);
 			if($result > 0)			
 			{
-				$this->load->library('email');
-				$this->email->to($postdata['email']);
-				$this->email->from('noreply@outreach.com');
-				$this->email->subject('Your Nodal  account Password');
 				$message= "<html><head><META http-equiv='Content-Type' content='text/html; charset=utf-8'>
                                    </head><body>
                                       <div style='margin:0;padding:0'>
@@ -169,8 +165,6 @@ class home extends CI_Controller
 	                    </table>  
                      </div>
                     </body></html>";
-				$this->email->message($message);
-				$this->email->send();
 				$to = $postdata['email'];
 				$subject = "Your Nodal  account Password";
 				$headers  = 'MIME-Version: 1.0' . "\r\n";
@@ -178,11 +172,11 @@ class home extends CI_Controller
 				mail($to,$subject,$message,$headers);
 				$page = ucfirst($this -> input -> post('las_name'))." has been added. ";
 				$notification = array('subject' => $page, 'type' => 'Staff', 'msg_type' => 'success');			
-				$this->session->set_flashdata('msg', 'Outreach Coordinator Added Successfully');
-				redirect('nodal-coordinator-listing', 'refresh');
+				$this->session->set_flashdata('msg', 'Nodalcenter Added Successfully');
+				redirect('manage-workshop', 'refresh');
 			}else{
-				$this->session->set_flashdata('msg', 'coordinator already Exists');
-				redirect('nodal-coordinator-listing', 'refresh'); // on failure   				
+				$this->session->set_flashdata('msg', 'Nodalcenter already Exists');
+				redirect('manage-workshop', 'refresh'); // on failure   				
 			}
 	} 
 /*** editWorkshop   Updating edit Workshop Page

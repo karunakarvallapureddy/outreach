@@ -26,30 +26,40 @@
 		<section class="strip-colors">
 		<div class="container">
 			<div>
-				<div class="col-md-4 text-center workshop-run">
+				<div class="col-md-3 text-center workshop-run">
 					<div class="icon-box-top">
 					<div class="value-disp">
 						<p align="left" class="value-list">
-							<span class="counter" style="display:inline-block; color:#fff;">150</span><span class="resu-top">WORKSHOPS RUN</span>
+							<span class="counter1" style="display:inline-block; color:#fff;"><?php echo $nodalcoordinatorcounthistroy[0]['participants']; ?>/<?php echo  $nodalcoordinatorworkshop['experiments']; ?></span><span class="resu-top">EXPERIMENTS</span>
 						</p>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4 text-center labs-taken">
+				<div class="col-md-3 text-center labs-taken">
 					<div class="icon-box-top">
 						<div class="value-disp">
 						<p align="left" class="value-list">
-							<span class="counter" style="display: inline-block;color:#fff;">7,500</span><span class="resu-top">LABS TAKEN</span>
+							<span class="counter1" style="display: inline-block;color:#fff;"><?php echo $nodalcoordinatorcounthistroy[0]['experiments']; ?>/<?php echo  $nodalcoordinatorworkshop['participants']; ?></span><span class="resu-top">PARTICIPANTS</span>
 						</p>
 					</div></div>
 				</div>
-				<div class="col-md-4 text-center node-centers">
+				<div class="col-md-3 text-center workshop-run">
+					<div class="icon-box-top">
+					<div class="value-disp">
+						<p align="left" class="value-list">
+							<span class="counter1" style="display:inline-block; color:#fff;"><?php echo $nodalcoordinatorworkshopcount; ?>/<?php echo  $nodalcoordinatorworkshop['workshop']; ?></span><span class="resu-top">WORKSHOPS</span>
+						</p>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-md-3 text-center node-centers">
 					<div class="icon-box-top">
 						<div class="value-disp">
 						<p align="left" class="value-list">
-							<span class="counter" style="display: inline-block;color:#fff;">250</span><span class="resu-top">NODEL CENTERS
+							<span class="counter1" style="display: inline-block;color:#fff;"><?php echo $nodalcoordinatorcount; ?></span><span class="resu-top">NODEL CENTERS
 
-</span>
+					</span>
 						</p>
 					</div></div>
 				</div>

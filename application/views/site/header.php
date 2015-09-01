@@ -46,36 +46,55 @@
 						<?php } else {
 							
 		?>
-		<style>
+		
+<div class="col-md-2 less-padding">
 
-		</style>
+<li class="dropdown user"  id="header-user" style="list-style:none; float: right;">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					
+					<i class="fa fa-angle-down"></i><span class="username"><?php echo ucfirst($ses_data['name']); ?> </span>
+					
+					
+					<img alt="" style="widht:40px;height:40px;border-radius: 50px;"src="<?php echo base_url();?>images/outreach-profile-images/<?php echo $ses_data['profile_image']; ?>"  style="border-radius: 50%;">
+					
+					
+					
+					
+					
+				</a></br><?php if($ses_data['user_type']==1){ ?>
+				<?php } ?>
+				
+<ul class="dropdown-menu">
+					
+					<li><a href="<?php echo base_url();?>Logout"><i class="fa fa-power-off"></i> Log Out</a></li>
+				</ul>
+				</li>
+</div>
+
+
+
+
+
+<?php }?>
+<style>
+	.dashboard-top{
+		padding-top: 8px;
+	}
+	ul li{
+		list-style-type:none;
+	}
+</style>
+<div class="col-md-2 less-padding">
+<ul><li class="username dashboard-top"><?php
+if($this->uri->segment(1)!="nodal-coordinator" && $this->uri->segment(1)!="manage-workshop"){
+if($ses_data['user_type']==1){ ?><a href="<?php echo base_url(); ?>manage-workshop">My Dashboard</a><?php }elseif($ses_data['user_type']==2){?><a href="<?php echo base_url(); ?>nodal-coordinator">My Dashboard</a><?php } ?> 
+<?php } ?></li></ul>
+</div>
+
+
+
 		
-		<div class="col-md-2 less-padding">
 		
-		<li class="dropdown user"  id="header-user" style="list-style:none; float: right;">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							
-							<span class="username"><?php echo ucfirst($ses_data['name']); ?> </span>
-							<i class="fa fa-angle-down"></i>
-							<img alt="" style="widht:40px;height:40px;border-radius: 50px;"src="<?php echo base_url();?>images/outreach-profile-images/<?php echo $ses_data['profile_image']; ?>"  style="border-radius: 50%;">
-							
-							
-							
-							
-							
-						</a></br><?php if($ses_data['user_type']==1){ ?>
-						<?php } ?>
-						
-		<ul class="dropdown-menu">
-							
-							<li><a href="<?php echo base_url();?>Logout"><i class="fa fa-power-off"></i> Log Out</a></li>
-						</ul>
-						</li></div>
-		
-		<?php }?>
-		
-						
-						
 						
 						<nav class="navbar pull-right" role="navigation">
 					<div class="nav-top collapse navbar-collapse">

@@ -28,7 +28,7 @@ padding:0px
 									<?php  echo $this->session->flashdata('msg');?>
 								</div>
 								<?php } ?>
-	<form action="<?php echo base_url(); ?>site/authentic_coordinator" class="form-horizontal" method="post"enctype="multipart/form-data" name="student_login"><!--<?php// echo base_url();?>BTech-Student-Preview
+	<form action="<?php echo base_url(); ?>site/profile" class="form-horizontal" method="post"enctype="multipart/form-data" name="student_login"><!--<?php// echo base_url();?>BTech-Student-Preview
  <input type="hidden" name="done" value="done"/> -->
   <div class="row" id="printerdiv">
   	<div class="form-group">
@@ -36,18 +36,14 @@ padding:0px
 </div>
 <div style="float:left; width:100%" class="print-table">
 <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0">
-
-<tr>
-<td width="30%" align="right" class="student-title">E-mail ID</td>
-<td width="70%" align="left"  class="student-details"><?php echo $student_details['email'];?></td>
-</tr>
 <tr>
 <td width="30%" align="right" class="student-title">Enter password</td>
-<td width="70%" align="left"  class="student-details"><input type="password" required  name="password" id="password"><input type="hidden" name="userid" id="password" value="<?php echo $student_details['id'];?>"><span>password should 6-12 characters</span></td>
+<td width="70%" align="left"  class="student-details"><input type="password" required  name="password" id="password">
+<input type="hidden" name="userid" id="password" value="<?php echo $coordinator_details['id'];?>"><span>password should 6-12 characters</span></td>
 </tr>
 <tr>
 <td width="30%" align="right" class="student-title">Profile Photo<br/>
-	<img src="http://ideativedigital.com/outreach/assests/images/profile.png" alt="" class="fixed-img" /><!--<img src="..." alt="..." class="img-circle">-->
+	<img src="<?php echo base_url(); ?>assests/images/profile.png" alt="" class="fixed-img" /><!--<img src="..." alt="..." class="img-circle">-->
 </td>
 
 <style>
