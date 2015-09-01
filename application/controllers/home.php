@@ -24,6 +24,9 @@ class home extends CI_Controller
      */
 
 	public function index($data="") {
+		if($this->session->flashdata('msg')){
+			$data['msg']=$this->session->flashdata('msg');
+		}
 		$data['get_workshop_upcoming']=$this->home_site_m->getHomeWorkshop();
 		$data['nodalcenters']=$this->home_site_m->nodalcenterscount();
 		$data['workshoprun']=$this->home_site_m->workshopruncount();

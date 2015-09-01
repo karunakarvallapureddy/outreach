@@ -31,7 +31,8 @@ class Site extends CI_Controller {
 	    $this->form_validation->set_rules('password', 'Password', 'required|xss_clean');
 		if ($this->form_validation->run() == FALSE )
 		{
-			 $this->load->view('site/home/signin',$data);
+			$this->session->set_flashdata('msg', validation_errors());
+				redirect('', 'refresh');
 		}
 		else if ($this -> input ->post())
 		{
@@ -39,11 +40,7 @@ class Site extends CI_Controller {
 		$res=$this->home_site_m->signin($postdata);
 		if($res==0){
 		$this->session->set_flashdata('msg', 'Invalid User Name or password');
-	     $this->load->view('site/home/signin',$data);
-		}
-		else if($res==1){
-		$this->session->set_flashdata('msg', 'Please verify Your Email address for activation');
-	    $this->load->view('site/site/change_profile',$data);
+		redirect('', 'refresh');
 		}
 		else{
 		
