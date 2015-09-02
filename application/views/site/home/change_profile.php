@@ -28,7 +28,7 @@ padding:0px
 									<?php  echo $this->session->flashdata('msg');?>
 								</div>
 								<?php } ?>
-	<form action="<?php echo base_url(); ?>site/profile" onsubmit="isPasswordMatch()" class="form-horizontal" method="post"enctype="multipart/form-data" name="student_login"><!--<?php// echo base_url();?>BTech-Student-Preview
+	<form action="<?php echo base_url(); ?>site/profile" onsubmit="return pwdvalidation();"  class="form-horizontal" method="post"enctype="multipart/form-data" name="student_login"><!--<?php// echo base_url();?>BTech-Student-Preview
  <input type="hidden" name="done" value="done"/> -->
   <div class="row" id="printerdiv">
   	<div class="form-group">
@@ -93,7 +93,7 @@ if($ses_data['user_type']==2){
 }
 ?>
 
-<input type="submit" name="Login" value="Login" style="padding: 7px;" >
+<button class="submit_button_sub" type="submit">Login</button>
 </form>
 				<div class="clearfix">
 				</div>
@@ -120,7 +120,7 @@ if($ses_data['user_type']==2){
 	</div>
 	</div><script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 	<script>
-	function isPasswordMatch() {
+	function pwdvalidation() {
     var password = $("#password").val();
     var confirmPassword = $("#txtConfirmPassword").val();
 
@@ -133,6 +133,6 @@ if($ses_data['user_type']==2){
 		}
 	}
 	$(document).ready(function () {
-		$("#txtConfirmPassword").keyup(isPasswordMatch);
+		$("#txtConfirmPassword").keyup(pwdvalidation);
 		});
 	</script>
