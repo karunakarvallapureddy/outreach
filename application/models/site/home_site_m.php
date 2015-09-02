@@ -224,7 +224,9 @@ $this->db->update('va_users', $data);
 		} else  {
 			$permission_id=0;
 			}
-
+		$this->db->where('email', $postdata['email']);
+		$query = $this->db->get('va_users'); 
+		if($query->num_rows == 0){
 		$data = array(
 					'email'=>$postdata['email'],
 					'name'=>$postdata['lastname'],
@@ -250,6 +252,10 @@ $this->db->update('va_users', $data);
 
 		}
 		return $insert_id;
+		}else{
+				return 0;
+			
+			}
 	}
 	/**deleteNodalcenter method  delete Nodal center
   * @param   integer $nodalid

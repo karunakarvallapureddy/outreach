@@ -133,6 +133,16 @@ class home extends CI_Controller
 			if (empty($ses_data)){
 					redirect('Login');
 			}
+			$this->form_validation->set_rules('fname', 'Name of the Center', 'required');
+			$this->form_validation->set_rules('lastname', 'Name of Coordinator', 'required');
+			$this->form_validation->set_rules('email', 'email', 'required|xss_clean|valid_email');
+			$this->form_validation->set_rules('workshop', 'No of Workshops', 'required');
+			$this->form_validation->set_rules('participants', 'No of Participants', 'required');
+			$this->form_validation->set_rules('experiments', 'No of experiments', 'required');
+		if ($this->form_validation->run() == FALSE ){
+			$this->session->set_flashdata('msg', validation_errors());
+			redirect('manage-workshop', 'refresh');
+		}elseif ($this -> input ->post()){
 			$postdata = $this->input->post();
 			$target_dir = 'uploads/mou/';
 			$target_file = $target_dir . basename($_FILES["mou"]["name"]);		
@@ -140,9 +150,10 @@ class home extends CI_Controller
 				$upload_attend_sheet=$_FILES["mou"]["name"];
 			}
 			$postdata['mou'] =$_FILES["mou"]["name"];
-			$postdata['password'] = rand('000000','999999');
+			$this->load->helper('string');
+			$postdata['password'] = random_string('alnum',6);
 			$result = $this->home_site_m->addNodalcenter_m($postdata);
-			if($result > 0)			
+			if($result>0)			
 			{
 				$message= "<html><head><META http-equiv='Content-Type' content='text/html; charset=utf-8'>
                                    </head><body>
@@ -178,6 +189,7 @@ class home extends CI_Controller
 				$this->session->set_flashdata('msg', 'Nodalcenter already Exists');
 				redirect('manage-workshop', 'refresh'); // on failure   				
 			}
+		}
 	} 
 /*** editWorkshop   Updating edit Workshop Page
 * @param string $inputdata

@@ -136,7 +136,8 @@ public function __construct(){
 				if (empty($ses_data)){
 						redirect('');
 				}
-				$this->form_validation->set_rules('password', 'User password', 'required');
+					$this->form_validation->set_rules('password', 'Password', 'required');
+					$this->form_validation->set_rules('passconf', 'Password Confirmation', 'required');			
 				if ($this->form_validation->run() == FALSE ){
 				$this->load->view('site/header',$data);
 				$data['coordinator_details']=$ses_data;
