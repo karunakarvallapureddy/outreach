@@ -16,8 +16,8 @@
 					<div class="col-md-9 foote-gap">
 						<div class="pull-left smaller"> <!-- pull-right smaller -->
 							<ul id="menu-footer" class="footermenu">
-								<li class="right-infom"><a data-target="#" href="http://ideativedigital.com/outreach/Cms/About-outreach';?>">About outreach</a></li>
-								 <li class="right-infom footer-left"><a data-target="#" href="http://ideativedigital.com/outreach/Contact">Contact</a></li>
+								<li class="right-infom"><a data-target="#" href="<?php echo base_url(); ?>Cms/About-outreach';?>">About outreach</a></li>
+								 <li class="right-infom footer-left"><a data-target="#" href="<?php echo base_url(); ?>Contact">Contact</a></li>
 							</ul>
 						</div>
 						
