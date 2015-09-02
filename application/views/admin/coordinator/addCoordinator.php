@@ -18,6 +18,12 @@
 										<li><a href="<?php echo site_url('admin/home/coordinator');?>">outreach coordinator</a></li>
 										<li>Add new outreach coordinator</li>
 									</ul>
+									 <?php if($this->session->flashdata('msg')!=NULL) { ?>
+								<div class="alert col-md-12 alert-success display-none" style="display: block;">
+									<a data-dismiss="alert" href="#" aria-hidden="true" class="close">�</a>
+									<?php  echo $this->session->flashdata('msg');?>
+								</div>
+								<?php } ?>
 									<!-- /BREADCRUMBS -->
 									<div class="clearfix">
 										<h3 class="content-title pull-left">Add new outreach coordinator</h3>

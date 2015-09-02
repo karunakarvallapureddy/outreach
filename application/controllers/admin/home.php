@@ -107,7 +107,7 @@ class home extends CI_Controller {
 		
 		$session_data = $this->session->userdata('adminDetails');
 		$home_page_data['profile_details'] = element(0,$this->homemodel->getAdmin($session_data['admin_id'],$session_data['permission_id']));
-	   if($this->form_validation->run() == FALSE)
+	  if($this->form_validation->run() == FALSE)
 	   { 
 			$this->layout->view('admin/home/editProfile',$home_page_data);
 	   }
@@ -322,8 +322,10 @@ class home extends CI_Controller {
      */	
 	public function addCoordinator($message="",$home_page_data="",$postdata="")
 	{
+		if($this->session->flashdata('msg')){
+			$data['msg']=$this->session->flashdata('msg');
+		}
 		$home_page_data['menu'] = "Coordinator";
-		//$home_page_data['superadminPermissionList'] =$this->homemodel->getPermissions();
 		$this->form_validation->set_rules('last_name', 'Last Name', 'xss_clean');
 		$this->form_validation->set_rules('email', 'Email', 'required|xss_clean|valid_email');	
 		
@@ -336,25 +338,18 @@ class home extends CI_Controller {
 			$session_data = $this->session->userdata('adminDetails');
 			$postdata = $this->input->post();
 			$postdata['admin_id'] = $session_data['admin_id'];
-			$postdata['password'] = rand('000000','999999');
+			$this->load->helper('string');
+			$postdata['password'] = random_string('alnum',6);
 			$result = $this->homemodel->addCoordinator($postdata);
 			if($result > 0)			
 			{
-				 $this->load->library('email');
-				$this->email->to($postdata['email']);
-				$this->email->from('noreply@outreach.com');
-				$this->email->subject('Your Outreach  account Password');
 				$message = "Hi								
 Your Outreach Admin Email-id is : ".$postdata['email']."
 Your Outreach Admin Password is : ".$postdata['password']."
 
 Thanks & Regards ,
 Thub Team
- "; 
-				$this->email->message($message);
-				$this->email->send();
-				
-				
+ "; 		
 				$to = $postdata['email'];
 $subject = "Your Outreach  account Password";
 //$txt = "Hello world!";
@@ -376,7 +371,7 @@ mail($to,$subject,$message);
 			}
 			else
 			{
-				$this->session->set_flashdata('msg', 'coordinator already Exists');
+				$this->session->set_flashdata('msg', 'Outreach Coordinator already Exists');
 				redirect('admin/home/addCoordinator', 'refresh'); // on failure   				
 			}
 		}

@@ -67,7 +67,7 @@
 												  <div class="form-group">
 													<label class="col-sm-4 control-label">E-mail</label>
 													<div class="col-sm-8">
-													  <input type="email" class="form-control" name="email" id="email" readonly value="<?php if($profile_details['email']) { echo $profile_details['email']; } else { echo set_value('email'); } ?>">
+													  <input type="email" class="form-control" name="email" id="email" readonly value="<?php if($profile_details['admin_name']) { echo $profile_details['admin_name']; } else { echo set_value('admin_name'); } ?>">
 														<?php echo "<span style='color:red'>".form_error('email')."</span>"; ?>
 													</div>
 												  </div>	

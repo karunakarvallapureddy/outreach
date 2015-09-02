@@ -12,6 +12,44 @@ class Homemodel extends CI_Model {
         // Call the Model constructor
         parent::__construct();
     }
+	public function getAdmin($id = "",$limit= "",$offset= "") 	{
+		if($id != "") {
+			$this->db->where('vau.admin_id',$id);
+		}
+		if($limit != "" || $offset != ""){
+			$this->db->limit($limit,$offset);
+		}
+		if ($this->session->userdata('staff_filter_data') !== FALSE) {
+			   $filters=$this->session->userdata('staff_filter_data');
+			   if($filters['date_range'] != "") {
+					$daterange=explode("_",$filters['date_range']); 
+					$from_date=date("Y-m-d H:i:s", strtotime($daterange[0]));
+					
+					$to_date=date("Y-m-d H:i:s", strtotime("23:59:59",strtotime($daterange[1]))); 
+					
+					$this->db->where('vau.created_on >=', $from_date);
+					$this->db->where('vau.created_on <=', $to_date);  
+			   		}
+					if($filters['staff_name'] != "") {
+						$this->db->like('vad.first_name', $filters['staff_name'],'both');
+					}
+		}
+		$query = $this->db->select('vau.*')
+						  ->from('va_admin_users vau')
+						  ->where(array('status != '=>3))
+						  ->get();
+						  
+						  
+					
+						  
+		if ($query->num_rows() > 0)
+		{
+		  $row = $query->result_array(); 
+		}else{
+		  $row=0;
+		}
+		return $row;
+	}
 	 /**
   * login method: check user availability
   * @param   string $email
@@ -22,7 +60,10 @@ class Homemodel extends CI_Model {
 		$query = $this->db->get_where("va_admin_users",array("admin_name"=>$email,"password"=>md5($password),"status"=>'1'));
 		if ($query->num_rows() > 0)
 		{
-			$query = $this->db->select('vau.permission_id,vau.admin_id,vad.first_name,vad.last_name,vad.image,')->from('va_admin_users vau')->join('va_admin_details vad','vau.admin_id = vad.admin_id')->where(array("vau.admin_name"=>$email,"status"=>'1'))->get();
+			$query = $this->db->select('vau.permission_id,vau.admin_id,vau.first_name,vau.last_name,vau.image,')
+			->from('va_admin_users vau')
+			->where(array("vau.admin_name"=>$email,"status"=>'1'))
+			->get();
 		   $row = $query->row_array(); 
 		}else{
 		  $row=0;
@@ -95,14 +136,14 @@ public function getcoordinator($id = "",$limit= "",$offset= "") {
 	{
 		$data = array('first_name'=>$postdata['first_name'],
 					 'last_name'=>$postdata['last_name'],
-					 'email'=>$postdata['email']
+					 'admin_name'=>$postdata['email']
 					 );
 		if(isset($postdata['image']))
 		{
 			$data['image'] = $postdata['image'];
 		}
 		$query = $this->db->where('admin_id',$postdata['admin_id']);
-				 $this->db->update('va_admin_details',$data);
+				 $this->db->update('va_admin_users',$data);
 		$update_id =  $this->db->affected_rows();
 		if($update_id > 0)
 		{
@@ -165,7 +206,9 @@ public function editCoordinator($postdata)
 		} else  {
 			$permission_id=0;
 			}
-
+	$this->db->where('email', $postdata['email']);
+		$query = $this->db->get('va_users'); 
+		if($query->num_rows == 0){
 		$data = array(
 					'email'=>$postdata['email'],
 					'name'=>$postdata['last_name'],
@@ -184,6 +227,10 @@ public function editCoordinator($postdata)
 			$this->db->insert('va_user_details',$data1);
 		}
 		return $insert_id;
+		}else{
+				return 0;
+			
+			}
 	}
 	/**
   * deleteCoordinator method: delete the coordinator 

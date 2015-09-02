@@ -38,13 +38,14 @@ padding:0px
 <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0">
 <tr>
 <td width="30%" align="right" class="student-title">Enter password</td>
-<td width="70%" align="left"  class="student-details"><input type="password" required  name="password" id="password">
+<td width="70%" align="left"  class="student-details">
+<input type="password" required  name="password" id="password"  minlength=6 maxlength=12 >
 <input type="hidden" name="userid" id="password" value="<?php echo $coordinator_details['id'];?>"><span>password should 6-12 characters</span></td>
 </tr>
 <tr>
 <td width="30%" align="right" class="student-title">Enter password</td>
 <td width="70%" align="left"  class="student-details">
-<input type="password" required id="txtConfirmPassword" name="passconf">
+<input type="password" required id="txtConfirmPassword" name="passconf" minlength=6 maxlength=12>
 </tr>
 <div id="divCheckPassword" style="color:red"></div>
 <tr>
@@ -130,7 +131,7 @@ if($ses_data['user_type']==2){
 	}
     else{$("#divCheckPassword").html("Passwords match.");
 	return true;
-		}
+		}  
 	}
 	$(document).ready(function () {
 		$("#txtConfirmPassword").keyup(pwdvalidation);

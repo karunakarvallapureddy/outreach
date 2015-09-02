@@ -7,7 +7,7 @@
 class Workshop_material extends CI_Controller
 { 
 	public function __construct() {
-
+error_reporting(0);
 		parent::__construct();
 							$this->output->set_header('Last-Modified:'.gmdate('D, d M Y H:i:s').'GMT');
 							$this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate');

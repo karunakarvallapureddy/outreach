@@ -55,7 +55,7 @@
 												</tr>
 												<tr class="gradeX">
 													<td>Email</td>
-													<td><?php echo $profile_details['email'];?></td>
+													<td><?php echo $profile_details['admin_name'];?></td>
 												</tr>
 												<tr class="gradeX">
 													<td>Last Logged In</td>

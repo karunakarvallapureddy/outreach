@@ -37,10 +37,8 @@ class Usermodel extends CI_Model
 		if($limit != "" || $offset != "") {
 			$this->db->limit($limit,$offset);
 			}
-		$query = $this->db->select('vuu.*,vud.*')
-						  ->from('va_user_users vuu')
-						  ->join('va_user_details vud','vuu.user_id = vud.user_id')
-						  ->where(array('vuu.status != '=>3))
+		$query = $this->db->select('va_user_details.*')
+						  ->from('va_user_details')						 
 						  ->get();
 		if ($query->num_rows() > 0)
 		{
@@ -69,10 +67,8 @@ class Usermodel extends CI_Model
 			   $this->db->like('vud.first_name', $filters['name'],'both');
 			   }
 	
-		$query = $this->db->select('vuu.*,vud.*')
-						  ->from('va_user_users vuu')
-						  ->join('va_user_details vud','vuu.user_id = vud.user_id')
-						  ->where(array('vuu.status != '=>3))
+		$query = $this->db->select('va_user_details.*')
+						  ->from('va_user_details')
 						  ->get();
 		return $query->num_rows();
 	}

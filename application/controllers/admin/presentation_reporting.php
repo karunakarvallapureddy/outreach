@@ -7,7 +7,7 @@
 class presentation_reporting extends CI_Controller
 { 
 	public function __construct() {
-
+error_reporting(0);
 		parent::__construct();
 							$this->output->set_header('Last-Modified:'.gmdate('D, d M Y H:i:s').'GMT');
 							$this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate');
@@ -70,7 +70,7 @@ class presentation_reporting extends CI_Controller
      * @param string $postdata
      * @return object  if success redirect to presentation reporting  Listing View with Success Message else Create presentation reporting page View
      */	
-	public function add($presentation_reportingData="",) {
+	public function add($presentation_reportingData=""){
 		$presentation_reportingData['menu'] = "documents";
 		$this->form_validation->set_rules('document_name', 'Name', 'required|xss_clean');
 		$this->form_validation->set_error_delimiters('<span class="error">', '</span>');

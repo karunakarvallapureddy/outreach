@@ -187,18 +187,7 @@ $this->db->update('va_users', $data);
 		}
 	}
 	
-	/**addNodal method: add the nodal center
-  * @param   string $inputdata
-  * @return integer insert id  
-  */
-	
-	public function addNodal($inputdata='')
-	{
-		if($this->db->insert('nodal_centers',$inputdata))
-		return $this->db->insert_id();
-		else
-		return 0;
-	}
+
 	/**get_nodal method fatch the nodal center information
   * @param   string $value
   * @return array values
